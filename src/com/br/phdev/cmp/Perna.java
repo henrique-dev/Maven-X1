@@ -4,28 +4,14 @@ import com.br.phdev.driver.PCA9685;
 
 public class Perna implements Membro{
 
-	private int id;
-	private Servo servo;
+        private Tarso tarso;
+        private Femur femur;
+        private Base base;
 	
-	public Perna(int id, PCA9685 modulo, int servoChannel, int posInicial){
-		this.servo = new Servo(modulo, servoChannel, posInicial);
-		this.id = id;
-	}
-	
-	public void setId(int id){
-		this.id = id;
-	}
-	
-	public int getId(){
-		return this.id;
-	}
-	
-	public void setServo(Servo servo){
-		this.servo = servo;
-	}
-	
-	public Servo getServo(){
-		return this.servo;
+	public Perna(Tarso tarso, Femur femur, Base base){
+            this.tarso = tarso;
+            this.femur = femur;
+            this.base = base;                               
 	}
 
 }

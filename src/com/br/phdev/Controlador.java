@@ -1,7 +1,10 @@
 package com.br.phdev;
 
+import com.br.phdev.cmp.Base;
+import com.br.phdev.cmp.Femur;
 import com.br.phdev.cmp.Membro;
 import com.br.phdev.cmp.Perna;
+import com.br.phdev.cmp.Tarso;
 import com.br.phdev.driver.PCA9685;
 
 import com.pi4j.io.i2c.I2CFactory;
@@ -11,28 +14,28 @@ import com.pi4j.io.i2c.I2CFactory;
 import java.io.IOException;
 
 //import java.com.br.phdev.driver;
-
 public class Controlador {
 
-	private	final int PERNA_1 = 0;
-	private	final int PERNA_2 = 1;
-	private	final int PERNA_3 = 2;
-	private	final int PERNA_4 = 3;
+    public static void main(String[] args) throws I2CFactory.UnsupportedBusNumberException {
 
-	public static void main(String[] args) throws I2CFactory.UnsupportedBusNumberException {
+        final int PERNA_1 = 0;
+        final int PERNA_2 = 1;
+        final int PERNA_3 = 2;
+        final int PERNA_4 = 3;
 
-		PCA9685 modulo = new PCA9685();
-		modulo.setPWMFreq(60);
-		
-		Membro[] pernas = new Perna[4];
-		pernas[PERNA_1] = new Perna();
-		pernas[PERNA_2] = new Perna();
-		pernas[PERNA_3] = new Perna();
-		pernas[PERNA_4] = new Perna();
-		
+        PCA9685 modulo = new PCA9685();
+        modulo.setPWMFreq(60);
 
+        Membro[] pernas = new Perna[4];
+        pernas[PERNA_1] = new Perna(
+                new Tarso(modulo, 0, 275), new Femur(modulo, 4, 375), new Base(modulo, 5, 375));       
+        pernas[PERNA_2] = new Perna(
+                new Tarso(modulo, 1, 275), new Femur(modulo, 2, 375), new Base(modulo, 3, 375));
+        pernas[PERNA_3] = new Perna(
+                new Tarso(modulo, 14, 275), new Femur(modulo, 6, 375), new Base(modulo, 7, 375));
+        pernas[PERNA_4] = new Perna(
+                new Tarso(modulo, 15, 275), new Femur(modulo, 9, 375), new Base(modulo, 8, 375));
 
-	}
-
+    }
 
 }
