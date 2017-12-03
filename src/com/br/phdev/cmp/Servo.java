@@ -17,6 +17,11 @@ public class Servo{
 	}
         
         public void mover(){
+            if (posicao < movMin || posicao > movMax){
+                System.out.println("POSICAO EXAGERADA");
+                return;
+            }
+                
             modulo.setPWM(canal, 0, posicao);
         }
 	
