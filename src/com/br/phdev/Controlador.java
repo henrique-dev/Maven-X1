@@ -83,11 +83,12 @@ public class Controlador {
         
     }
     
-    public void receberMensagem(char opc){
+    public void receberMensagem(String msg){
+        
+        int opc = Integer.parseInt(msg);
+        
         switch (opc){
-            case 'a':
-                System.out.println("MOVENDO PARA POSICOES INICIAIS");
-                resetarPosicao();
+            case 'a':                
                 break;
             case 'b':
                 System.out.println("PARANDO MOVIMENTO");

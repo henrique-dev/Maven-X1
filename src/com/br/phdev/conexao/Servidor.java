@@ -51,13 +51,13 @@ public class Servidor extends Thread{
     
     @Override
     public void run(){
-        char msg = ' ';
+        String msg = "";
         try{
-            while(!('s' == msg)){                       
-                msg = (char)bfr.read();                
-                System.out.println("msg: " + ((int)msg));
-                if ((int)msg == 65535)
-                    break;
+            while(!(msg.equals("sair"))){
+                msg = bfr.readLine();
+                System.out.println("msg: " + msg);
+                //if ((int)msg == 65535)
+                   // break;
                 controlador.receberMensagem(msg);
             }
         }
