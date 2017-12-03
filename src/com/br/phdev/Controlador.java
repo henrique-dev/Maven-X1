@@ -19,6 +19,8 @@ import java.util.logging.Logger;
 
 //import java.com.br.phdev.driver;
 public class Controlador {
+    
+    private Controlador controlador;
 
     private final int PERNA_1 = 0;
     private final int PERNA_2 = 1;
@@ -27,7 +29,7 @@ public class Controlador {
 
     private PCA9685 modulo;
 
-    private Membro[] pernas;
+    private Perna[] pernas;
 
     public Controlador() throws I2CFactory.UnsupportedBusNumberException {
         modulo = new PCA9685();
@@ -44,16 +46,24 @@ public class Controlador {
                 new Tarso(modulo, 15, 275), new Femur(modulo, 9, 375), new Base(modulo, 8, 375));
     }
 
-    private void alinhar() {
+    private void resetarPosicao() {                
+                
         for (Membro cmp : pernas) {
+            ((Perna)cmp).getTarso().resetarPosicao();
+            ((Perna)cmp).getBase().resetarPosicao();
+            ((Perna)cmp).getFemur().resetarPosicao();
             ((Perna)cmp).getTarso().mover();            
             ((Perna)cmp).getBase().mover();
             ((Perna)cmp).getFemur().mover();
         }
     }
     
-    public void receberMensagem(){
-        
+    public void receberMensagem(char opc){
+        switch (opc){
+            case 'a':
+                resetarPosicao();
+                break;
+        }
     }
     
     private void sleep(int tempo){

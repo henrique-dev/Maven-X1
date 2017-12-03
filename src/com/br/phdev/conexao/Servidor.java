@@ -55,9 +55,10 @@ public class Servidor extends Thread{
         try{
             while(!('s' == msg)){                       
                 msg = (char)bfr.read();                
-                System.out.println("teste: " + ((int)msg));
+                System.out.println("msg: " + ((int)msg));
                 if ((int)msg == 65535)
                     break;
+                controlador.receberMensagem(msg);
             }
         }
         catch(IOException e){
