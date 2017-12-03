@@ -73,6 +73,7 @@ public class Controlador {
         //controlador.alinhar();
         
         Servidor servidor = new Servidor(controlador);
+        servidor.start();
 
     }
 
