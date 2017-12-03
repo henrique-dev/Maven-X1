@@ -22,10 +22,10 @@ public class Controlador {
     
     private Controlador controlador;
 
-    private final int PERNA_1 = 0;
-    private final int PERNA_2 = 1;
-    private final int PERNA_3 = 2;
-    private final int PERNA_4 = 3;
+    private final int PERNA_1 = 0; // PERNA TRASEIRA DIREITA
+    private final int PERNA_2 = 1; // PERNA TRASEIRA ESQUERDA
+    private final int PERNA_3 = 2; // PERNA DIANTEIRA DIREITA
+    private final int PERNA_4 = 3; // PERNA DIANTEIRA ESQUERDA
 
     private PCA9685 modulo;
 
@@ -38,6 +38,10 @@ public class Controlador {
         pernas = new Perna[4];
         pernas[PERNA_1] = new Perna(
                 new Tarso(modulo, 0, 275), new Femur(modulo, 4, 375), new Base(modulo, 5, 375));
+        pernas[PERNA_1].getTarso().setLimites(150, 400);
+        pernas[PERNA_1].getFemur().setLimites(475, 275);
+        pernas[PERNA_1].getBase().setLimites(150, 400);
+        
         pernas[PERNA_2] = new Perna(
                 new Tarso(modulo, 1, 275), new Femur(modulo, 2, 375), new Base(modulo, 3, 375));
         pernas[PERNA_3] = new Perna(
@@ -51,10 +55,7 @@ public class Controlador {
         for (Membro cmp : pernas) {
             ((Perna)cmp).getTarso().resetarPosicao();
             ((Perna)cmp).getBase().resetarPosicao();
-            ((Perna)cmp).getFemur().resetarPosicao();
-            ((Perna)cmp).getTarso().mover();            
-            ((Perna)cmp).getBase().mover();
-            ((Perna)cmp).getFemur().mover();
+            ((Perna)cmp).getFemur().resetarPosicao();            
         }
     }
     
@@ -62,17 +63,23 @@ public class Controlador {
                 
         for (Membro cmp : pernas) {
             ((Perna)cmp).getTarso().parar();
-            ((Perna)cmp).getBase().resetarPosicao();
-            ((Perna)cmp).getFemur().resetarPosicao();           
+            ((Perna)cmp).getBase().parar();
+            ((Perna)cmp).getFemur().parar();
         }
+    }
+
+    private void levantarPerna(){
+        
     }
     
     public void receberMensagem(char opc){
         switch (opc){
             case 'a':
+                System.out.println("MOVENDO PARA POSICOES INICIAIS");
                 resetarPosicao();
                 break;
             case 'b':
+                System.out.println("PARANDO MOVIMENTO");
                 pararMovimento();
                 break;
         }

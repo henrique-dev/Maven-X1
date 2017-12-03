@@ -13,6 +13,28 @@ public class Componente implements Membro{
     
     public void resetarPosicao(){
         this.servo.setPosicao(posInicial);
+        this.servo.mover();
+    }
+    
+    public void levantar(){
+        int lim1 = this.servo.getMovMax();
+        int lim2 = this.servo.getMovMin();
+        
+        if (lim1 > lim2){
+            
+        }
+    }
+    
+    public void levantar(int pos){
+        
+    }
+    
+    public void abaixar(){
+        
+    }
+    
+    public void abaixar(int pos){
+        
     }
     
     public void parar(){
@@ -33,6 +55,11 @@ public class Componente implements Membro{
     
     public void mover(int posicao){
         this.servo.mover(posicao);
+    }
+    
+    public void setLimites(int movMax, int movMin){
+        this.servo.setMovMin(movMin);
+        this.servo.setMovMax(movMax);
     }
     
 }
