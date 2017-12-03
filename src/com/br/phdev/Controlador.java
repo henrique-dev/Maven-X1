@@ -58,10 +58,22 @@ public class Controlador {
         }
     }
     
+    private void pararMovimento() {                
+                
+        for (Membro cmp : pernas) {
+            ((Perna)cmp).getTarso().parar();
+            ((Perna)cmp).getBase().resetarPosicao();
+            ((Perna)cmp).getFemur().resetarPosicao();           
+        }
+    }
+    
     public void receberMensagem(char opc){
         switch (opc){
             case 'a':
                 resetarPosicao();
+                break;
+            case 'b':
+                pararMovimento();
                 break;
         }
     }
