@@ -54,6 +54,8 @@ public class Servidor extends Thread{
         char msg = ' ';
         try{
             while(!('s' == msg)){
+                if (server.isClosed())
+                    System.out.println("DAFUQ, FECHOU");
                 msg = (char)bfr.read();
                 System.out.println("teste: " + msg);
             }
@@ -63,6 +65,7 @@ public class Servidor extends Thread{
         }
         finally{
             try{
+                System.out.println("Fechando servidor");
                 server.close();
             }
             catch(IOException e){
