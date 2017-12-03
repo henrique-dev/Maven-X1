@@ -15,6 +15,10 @@ public class Componente implements Membro{
         this.servo.setPosicao(posInicial);
     }
     
+    public void parar(){
+        this.servo.mover(0);
+    }
+    
     protected void setServo(Servo servo){
         this.servo = servo;
     }
