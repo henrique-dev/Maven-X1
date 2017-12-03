@@ -17,7 +17,7 @@ public class Servo{
 	}
         
         public void mover(){
-            modulo.setPWM(canal, 0, (int)(posicao*2.5) + 150);
+            modulo.setPWM(canal, 0, posicao);
         }
 	
 	public void mover(int pos){
