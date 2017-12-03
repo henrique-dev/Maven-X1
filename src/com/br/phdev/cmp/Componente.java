@@ -16,13 +16,9 @@ public class Componente implements Membro{
         this.servo.mover();
     }
     
-    public void levantar(){
-        int lim1 = this.servo.getMovMax();
-        int lim2 = this.servo.getMovMin();
-        
-        if (lim1 > lim2){
-            
-        }
+    public void levantar(){        
+        this.servo.setPosicao(this.servo.getMovMax());        
+        this.servo.mover();
     }
     
     public void levantar(int pos){
@@ -30,7 +26,8 @@ public class Componente implements Membro{
     }
     
     public void abaixar(){
-        
+        this.servo.setPosicao(this.servo.getMovMin());
+        this.servo.mover();
     }
     
     public void abaixar(int pos){

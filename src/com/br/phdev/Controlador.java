@@ -99,6 +99,26 @@ public class Controlador {
                 System.out.println("PARANDO MOVIMENTO");
                 pararMovimento();
                 break;
+            case '1':
+                System.out.println("LEVANTANDO PERNA 1");
+                pernas[PERNA_1].getFemur().levantar();
+                pernas[PERNA_1].getTarso().levantar();
+                break;
+            case '2':
+                System.out.println("LEVANTANDO PERNA 2");
+                pernas[PERNA_2].getFemur().levantar();
+                pernas[PERNA_2].getTarso().levantar();                
+                break;
+            case '3':
+                System.out.println("LEVANTANDO PERNA 3");
+                pernas[PERNA_3].getFemur().levantar();
+                pernas[PERNA_3].getTarso().levantar();               
+                break;
+            case '4':
+                System.out.println("LEVANTANDO PERNA 4");
+                pernas[PERNA_4].getFemur().levantar();
+                pernas[PERNA_4].getTarso().levantar();                
+                break;
         }
     }
     
