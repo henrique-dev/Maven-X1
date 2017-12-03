@@ -40,14 +40,25 @@ public class Controlador {
                 new Tarso(modulo, 0, 275), new Femur(modulo, 4, 375), new Base(modulo, 5, 375));
         pernas[PERNA_1].getTarso().setLimites(150, 400);
         pernas[PERNA_1].getFemur().setLimites(475, 275);
-        pernas[PERNA_1].getBase().setLimites(150, 400);
+        pernas[PERNA_1].getBase().setLimites(325, 425);
         
         pernas[PERNA_2] = new Perna(
                 new Tarso(modulo, 1, 275), new Femur(modulo, 2, 375), new Base(modulo, 3, 375));
+        pernas[PERNA_2].getTarso().setLimites(400, 150);
+        pernas[PERNA_2].getFemur().setLimites(275, 475);
+        pernas[PERNA_2].getBase().setLimites(325, 425);
+        
         pernas[PERNA_3] = new Perna(
                 new Tarso(modulo, 14, 275), new Femur(modulo, 6, 375), new Base(modulo, 7, 375));
+        pernas[PERNA_3].getTarso().setLimites(400, 150);
+        pernas[PERNA_3].getFemur().setLimites(275, 475);
+        pernas[PERNA_3].getBase().setLimites(325, 425);
+        
         pernas[PERNA_4] = new Perna(
                 new Tarso(modulo, 15, 275), new Femur(modulo, 9, 375), new Base(modulo, 8, 375));
+        pernas[PERNA_4].getTarso().setLimites(150, 400);
+        pernas[PERNA_4].getFemur().setLimites(475, 275);
+        pernas[PERNA_4].getBase().setLimites(325, 425);
     }
 
     private void resetarPosicao() {                
