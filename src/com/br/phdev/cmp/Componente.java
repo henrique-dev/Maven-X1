@@ -11,9 +11,7 @@ public class Componente implements Membro{
         this.servo = new Servo(modulo, servoCanal, posInicial);       
     }
     
-    public void resetarPosicao(){
-        if (this.servo.getPosicao() == posInicial)
-            return;
+    public void resetarPosicao(){        
         this.servo.setPosicao(posInicial);
         this.servo.mover();
     }
