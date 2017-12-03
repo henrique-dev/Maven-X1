@@ -65,8 +65,11 @@ public class Controlador {
                 
         for (Membro cmp : pernas) {
             ((Perna)cmp).getTarso().resetarPosicao();
+            sleep(500);
             ((Perna)cmp).getBase().resetarPosicao();
+            sleep(500);
             ((Perna)cmp).getFemur().resetarPosicao();            
+            sleep(500);
         }
     }
     
@@ -74,8 +77,11 @@ public class Controlador {
                 
         for (Membro cmp : pernas) {
             ((Perna)cmp).getTarso().parar();
+            sleep(500);
             ((Perna)cmp).getBase().parar();
+            sleep(500);
             ((Perna)cmp).getFemur().parar();
+            sleep(500);
         }
     }
 
