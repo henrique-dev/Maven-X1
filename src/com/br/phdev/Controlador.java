@@ -119,6 +119,26 @@ public class Controlador {
                 pernas[PERNA_4].getFemur().levantar();
                 pernas[PERNA_4].getTarso().levantar();                
                 break;
+            case '5':
+                System.out.println("ABAIXANDO PERNA 1");
+                pernas[PERNA_1].getFemur().abaixar();
+                pernas[PERNA_1].getTarso().abaixar();
+                break;
+            case '6':
+                System.out.println("ABAIXANDO PERNA 2");
+                pernas[PERNA_2].getFemur().abaixar();
+                pernas[PERNA_2].getTarso().abaixar();
+                break;
+            case '7':
+                System.out.println("ABAIXANDO PERNA 3");
+                pernas[PERNA_3].getFemur().abaixar();
+                pernas[PERNA_3].getTarso().abaixar();
+                break;
+            case '8':
+                System.out.println("ABAIXANDO PERNA 4");
+                pernas[PERNA_4].getFemur().abaixar();
+                pernas[PERNA_4].getTarso().abaixar();
+                break;
         }
     }
     
