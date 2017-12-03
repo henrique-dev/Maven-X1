@@ -1,5 +1,6 @@
 package com.br.phdev.conexao;
 
+import com.br.phdev.Controlador;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,13 +13,16 @@ public class Servidor extends Thread{
     private final int PORTA = 12345;
     
     private static ServerSocket server;
-    private Socket con;
     private InputStream in;
     private InputStreamReader inr;
     private BufferedReader bfr;
+    private Controlador controlador;
     
-    public Servidor(Socket con){        
-        this.con = con;
+    public Servidor(Controlador controlador){        
+        this.controlador = controlador;
+        
+        Socket con = iniciar();
+        
         try{
             in = con.getInputStream();
             inr = new InputStreamReader(in);
@@ -51,11 +55,19 @@ public class Servidor extends Thread{
         try{
             while(!('s' == msg)){
                 msg = (char)bfr.read();
-                System.out.println(msg);
+                System.out.println("teste: " + msg);
             }
         }
         catch(IOException e){
             e.printStackTrace();
+        }
+        finally{
+            try{
+                server.close();
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
         }
     }
     

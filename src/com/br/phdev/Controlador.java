@@ -51,6 +51,10 @@ public class Controlador {
         }
     }
     
+    public void getMessage(){
+        
+    }
+    
     private void sleep(int tempo){
         try {
             Thread.sleep(tempo);
