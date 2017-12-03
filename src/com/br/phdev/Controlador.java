@@ -6,6 +6,7 @@ import com.br.phdev.cmp.Femur;
 import com.br.phdev.cmp.Membro;
 import com.br.phdev.cmp.Perna;
 import com.br.phdev.cmp.Tarso;
+import com.br.phdev.conexao.Servidor;
 import com.br.phdev.driver.PCA9685;
 
 import com.pi4j.io.i2c.I2CFactory;
@@ -51,7 +52,7 @@ public class Controlador {
         }
     }
     
-    public void getMessage(){
+    public void receberMensagem(){
         
     }
     
@@ -67,9 +68,11 @@ public class Controlador {
 
         Controlador controlador = new Controlador();
         
-        controlador.sleep(1000);
+        //controlador.sleep(1000);
         
-        controlador.alinhar();
+        //controlador.alinhar();
+        
+        Servidor servidor = new Servidor(controlador);
 
     }
 
