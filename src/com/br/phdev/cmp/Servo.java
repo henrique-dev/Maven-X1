@@ -33,6 +33,7 @@ public class Servo{
             
                 
             modulo.setPWM(canal, 0, posicao);
+            delay();
         }
 	
 	public void mover(int pos){
@@ -44,6 +45,7 @@ public class Servo{
                 }
 		this.posicao = pos;
 		modulo.setPWM(canal, 0, (int)(pos*2.5) + 150);
+                delay();
 	}
 	
 	public void setCanal(int canal){
@@ -76,6 +78,15 @@ public class Servo{
         
         public int getMovMin(){
             return this.movMin;
+        }
+        
+        private void delay(){
+            try{
+                Thread.sleep(200);
+            }
+            catch(InterruptedException e){
+                e.printStackTrace();                
+            }
         }
 
 }
