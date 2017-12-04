@@ -85,51 +85,60 @@ public class Controlador {
     
     public void receberMensagem(String msg){
         
-        int opc = Integer.parseInt(msg);
+        int opc;
+        
+        try{
+            opc = Integer.parseInt(msg);
+        }        
+        catch(Exception e){
+            return;
+        }
         
         switch (opc){
-            case 'a':                
+            case 5:     
+                System.out.println("RESETANDO POSICOES");
+                resetarPosicao();
                 break;
-            case 'b':
+            case 6:
                 System.out.println("PARANDO MOVIMENTO");
                 pararMovimento();
                 break;
-            case '1':
+            case 1:
                 System.out.println("LEVANTANDO PERNA 1");
                 pernas[PERNA_1].getFemur().levantar();
                 pernas[PERNA_1].getTarso().levantar();
                 break;
-            case '2':
+            case 2:
                 System.out.println("LEVANTANDO PERNA 2");
                 pernas[PERNA_2].getFemur().levantar();
                 pernas[PERNA_2].getTarso().levantar();                
                 break;
-            case '3':
+            case 3:
                 System.out.println("LEVANTANDO PERNA 3");
                 pernas[PERNA_3].getFemur().levantar();
                 pernas[PERNA_3].getTarso().levantar();               
                 break;
-            case '4':
+            case 4:
                 System.out.println("LEVANTANDO PERNA 4");
                 pernas[PERNA_4].getFemur().levantar();
                 pernas[PERNA_4].getTarso().levantar();                
                 break;
-            case '5':
+            case 11:
                 System.out.println("ABAIXANDO PERNA 1");
                 pernas[PERNA_1].getFemur().abaixar();
                 pernas[PERNA_1].getTarso().abaixar();
                 break;
-            case '6':
+            case 22:
                 System.out.println("ABAIXANDO PERNA 2");
                 pernas[PERNA_2].getFemur().abaixar();
                 pernas[PERNA_2].getTarso().abaixar();
                 break;
-            case '7':
+            case 33:
                 System.out.println("ABAIXANDO PERNA 3");
                 pernas[PERNA_3].getFemur().abaixar();
                 pernas[PERNA_3].getTarso().abaixar();
                 break;
-            case '8':
+            case 44:
                 System.out.println("ABAIXANDO PERNA 4");
                 pernas[PERNA_4].getFemur().abaixar();
                 pernas[PERNA_4].getTarso().abaixar();
