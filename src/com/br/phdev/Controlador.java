@@ -76,8 +76,7 @@ public class Controlador {
                 index++;
             }
                 
-        }
-        index++;
+        }        
         temp[index] = -1;
         
         return temp;
