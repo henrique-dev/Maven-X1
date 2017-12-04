@@ -65,48 +65,45 @@ public class Controlador {
     private void levantarPerna() {
 
     }
-    
-    private int[] receberComandos(String msg){                
-        
+
+    private int[] receberComandos(String msg) {
+
         int[] temp = new int[msg.length() + 1];
         int index = 0;
         String tempNum = "";
-        
-        for (int i=0; i<msg.length(); i++){                                    
-            if (msg.charAt(i) != ' '){
-                tempNum = tempNum + msg.charAt(i);                
-                if (i == msg.length()-1){
+
+        for (int i = 0; i < msg.length(); i++) {
+            if (msg.charAt(i) != ' ') {
+                tempNum = tempNum + msg.charAt(i);
+                if (i == msg.length() - 1) {
                     temp[index] = Integer.parseInt(tempNum);
                     index++;
                 }
-            }
-            else{
+            } else {
                 temp[index] = Integer.parseInt(tempNum);
                 index++;
                 tempNum = "";
             }
-                
-        }       
 
-	System.out.println("Numero de comandos: " + temp.length);
+        }
+
+        System.out.println("Numero de comandos: " + temp.length);
 
         temp[index] = -1;
-        
+
         return temp;
     }
 
     public void receberMensagem(String msg) {
-                
+
         int[] comandos = receberComandos(msg);
         int index = 0;
-        
-        while(comandos[index] != -1){        
-            
+
+        while (comandos[index] != -1) {
 
             System.out.println(index);
-            
 
-            switch (comandos[index++]) {                
+            switch (comandos[index++]) {
                 case 0:
                     System.out.println("LEVANTANDO PERNA 1");
                     pernas[PERNA_1].getFemur().levantar();
@@ -120,19 +117,19 @@ public class Controlador {
                 case 2:
                     System.out.println("ABAIXANDO PERNA 1 PARA POSICAO INICIAL");
                     pernas[PERNA_1].getTarso().resetarPosicao();
-                    pernas[PERNA_1].getFemur().resetarPosicao();                    
+                    pernas[PERNA_1].getFemur().resetarPosicao();
                     break;
                 case 3:
                     System.out.println("ABRINDO BASE DA PERNA 1");
-                    pernas[PERNA_1].getBase().levantar();                    
+                    pernas[PERNA_1].getBase().levantar();
                     break;
                 case 4:
                     System.out.println("FECHANDO BASE DA PERNA 1");
-                    pernas[PERNA_1].getBase().abaixar();                    
+                    pernas[PERNA_1].getBase().abaixar();
                     break;
                 case 5:
                     System.out.println("BASE DA PERNA 1 INDO PRA POSICAO INICIAL");
-                    pernas[PERNA_1].getBase().resetarPosicao();                    
+                    pernas[PERNA_1].getBase().resetarPosicao();
                     break;
                 case 25:
                     System.out.println("LEVANTANDO PERNA 2");
@@ -147,7 +144,7 @@ public class Controlador {
                 case 27:
                     System.out.println("ABAIXANDO PERNA 2 PARA POSICAO INICIAL");
                     pernas[PERNA_2].getTarso().resetarPosicao();
-                    pernas[PERNA_2].getFemur().resetarPosicao();                    
+                    pernas[PERNA_2].getFemur().resetarPosicao();
                     break;
                 case 28:
                     System.out.println("ABRINDO BASE DA PERNA 2");
@@ -159,7 +156,7 @@ public class Controlador {
                     break;
                 case 30:
                     System.out.println("BASE DA PERNA 2 INDO PRA POSICAO INICIAL");
-                    pernas[PERNA_2].getBase().resetarPosicao();                    
+                    pernas[PERNA_2].getBase().resetarPosicao();
                     break;
                 case 50:
                     System.out.println("LEVANTANDO PERNA 3");
@@ -174,7 +171,7 @@ public class Controlador {
                 case 52:
                     System.out.println("ABAIXANDO PERNA 3 PARA POSICAO INICIAL");
                     pernas[PERNA_3].getTarso().resetarPosicao();
-                    pernas[PERNA_3].getFemur().resetarPosicao();                    
+                    pernas[PERNA_3].getFemur().resetarPosicao();
                     break;
                 case 53:
                     System.out.println("ABRINDO BASE DA PENRA 3");
@@ -186,13 +183,13 @@ public class Controlador {
                     break;
                 case 55:
                     System.out.println("BASE DA PERNA 3 INDO PRA POSICAO INICIAL");
-                    pernas[PERNA_3].getBase().resetarPosicao();                    
+                    pernas[PERNA_3].getBase().resetarPosicao();
                     break;
-                case 75:                  
+                case 75:
                     System.out.println("LEVANTANDO PERNA 4");
                     pernas[PERNA_4].getFemur().levantar();
                     pernas[PERNA_4].getTarso().levantar();
-                    break;                                                
+                    break;
                 case 76:
                     System.out.println("ABAIXANDO PERNA 4");
                     pernas[PERNA_4].getFemur().abaixar();
@@ -201,19 +198,19 @@ public class Controlador {
                 case 77:
                     System.out.println("ABAIXANDO PERNA 4 PARA POSICAO INICIAL");
                     pernas[PERNA_4].getTarso().resetarPosicao();
-                    pernas[PERNA_4].getFemur().resetarPosicao(); 
+                    pernas[PERNA_4].getFemur().resetarPosicao();
                     break;
                 case 78:
                     System.out.println("ABRINDO BASE D APERNA 4");
-                    pernas[PERNA_4].getBase().levantar();                    
+                    pernas[PERNA_4].getBase().levantar();
                     break;
                 case 79:
                     System.out.println("FECHANDO BASE DA PERNA 4");
-                    pernas[PERNA_4].getBase().abaixar();                    
+                    pernas[PERNA_4].getBase().abaixar();
                     break;
                 case 80:
                     System.out.println("BASE DA PERNA 4 INDO PRA POSICAO INICIAL");
-                    pernas[PERNA_4].getBase().resetarPosicao();                    
+                    pernas[PERNA_4].getBase().resetarPosicao();
                     break;
                 case 101:
                     System.out.println("RESETANDO POSICOES");
@@ -247,7 +244,23 @@ public class Controlador {
                     System.out.println("VELOCIDADE 0.1");
                     velocidade = 10;
                     break;
+                case 115:
+                    System.out.println("THREAD INICIADAS");
+                    for (Membro cmp : pernas) {
+                        ((Perna) cmp).iniciar();
+                        ((Perna) cmp).iniciar();
+                        ((Perna) cmp).iniciar();
+                    }
+                    break;
             }
+        }
+    }
+
+    public void parar() {
+        for (Membro cmp : pernas) {
+            ((Perna) cmp).getTarso().parar();
+            ((Perna) cmp).getBase().parar();
+            ((Perna) cmp).getFemur().parar();
         }
     }
 

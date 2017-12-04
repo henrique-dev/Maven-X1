@@ -7,11 +7,12 @@ public class Perna implements Membro {
     private Tarso tarso;
     private Femur femur;
     private Base base;
+    private PernaThread thread;
 
     public Perna(Tarso tarso, Femur femur, Base base) {
         this.tarso = tarso;
         this.femur = femur;
-        this.base = base;
+        this.base = base;        
     }
 
     public Tarso getTarso() {
@@ -36,6 +37,19 @@ public class Perna implements Membro {
 
     public void setBase(Base base) {
         this.base = base;
+    }
+    
+    public void iniciar(){
+        if (thread != null)
+            thread.start();
+        else{
+            thread = new PernaThread();
+            thread.start();
+        }
+    }
+    
+    public void parar(){
+        thread = null;
     }
     
     public class PernaThread extends Thread{                

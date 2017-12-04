@@ -67,6 +67,7 @@ public class Servidor extends Thread{
         finally{
             try{
                 System.out.println("Fechando servidor");
+                controlador.parar();
                 server.close();
             }
             catch(IOException e){
