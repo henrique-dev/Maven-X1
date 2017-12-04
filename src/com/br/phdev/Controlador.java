@@ -146,7 +146,7 @@ public class Controlador {
                     pernas[PERNA_4].getFemur().abaixar();
                     pernas[PERNA_4].getTarso().abaixar();
                     break;
-                case -1:
+                case 101:
                     System.out.println("RESETANDO POSICOES");
                     for (Membro cmp : pernas) {
                         ((Perna) cmp).getTarso().resetarPosicao();
@@ -154,7 +154,7 @@ public class Controlador {
                         ((Perna) cmp).getFemur().resetarPosicao();
                     }
                     break;
-                case -2:
+                case 102:
                     System.out.println("PARANDO MOVIMENTO");
                     for (Membro cmp : pernas) {
                         ((Perna) cmp).getTarso().parar();
