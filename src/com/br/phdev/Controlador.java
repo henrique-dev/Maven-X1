@@ -122,6 +122,18 @@ public class Controlador {
                     pernas[PERNA_1].getTarso().resetarPosicao();
                     pernas[PERNA_1].getFemur().resetarPosicao();                    
                     break;
+                case 3:
+                    System.out.println("ABRINDO BASE");
+                    pernas[PERNA_1].getBase().levantar();                    
+                    break;
+                case 4:
+                    System.out.println("FECHANDO BASE");
+                    pernas[PERNA_1].getBase().abaixar();                    
+                    break;
+                case 5:
+                    System.out.println("BASE INDO PRA POSICAO INICIAL");
+                    pernas[PERNA_1].getBase().resetarPosicao();                    
+                    break;
                 case 25:
                     System.out.println("LEVANTANDO PERNA 2");
                     pernas[PERNA_2].getFemur().levantar();
