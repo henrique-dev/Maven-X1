@@ -21,13 +21,13 @@ public class Servo{
         public void mover(){
             
             if (movMax > movMin){
-                if (posicao < movMin || posicao > movMax){
+                if ((posicao < movMin || posicao > movMax) && posicao != 0){
                     System.out.println("POSICAO EXAGERADA");
                     return;
                 }
             }
             else{
-                if (posicao > movMin || posicao < movMax){
+                if ((posicao > movMin || posicao < movMax) && posicao != 0){
                     System.out.println("POSICAO EXAGERADA");
                     return;
                 }
