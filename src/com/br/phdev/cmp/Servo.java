@@ -66,7 +66,7 @@ public class Servo{
                             delay();
                         }                    
                     else
-                        for (int i=posicaoAntiga; i>posicao; i+=passo){
+                        for (int i=posicaoAntiga; i<posicao; i+=passo){
                             modulo.setPWM(canal, 0, i);
                             System.out.println("loop4");
                             delay();
