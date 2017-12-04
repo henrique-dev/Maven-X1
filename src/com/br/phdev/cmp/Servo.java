@@ -38,7 +38,7 @@ public class Servo{
                 posicaoAntiga = posicao;
             }
             else{
-                int passo = (posicao > posicaoAntiga ? posicao - posicaoAntiga : posicaoAntiga - posicao);
+                int passo = (posicao > posicaoAntiga ? posicao - posicaoAntiga : posicaoAntiga - posicao)/Controlador.velocidade;
                 
                 if (movMax > movMin){
                     if (posicaoAntiga < posicao)
