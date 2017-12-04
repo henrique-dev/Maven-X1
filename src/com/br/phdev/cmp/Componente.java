@@ -36,6 +36,7 @@ public class Componente implements Membro{
     
     public void parar(){
         //this.servo.mover(0);
+        this.servo.setPosicao(0);
     }
     
     protected void setServo(Servo servo){

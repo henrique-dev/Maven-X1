@@ -32,7 +32,11 @@ public class Servo{
                     return;
                 }
             }
-            
+            if (posicao == 0){
+                modulo.setPWM(canal, 0, 0);
+                delay();
+                return;
+            }            
             if (Controlador.velocidade == 1){
                 modulo.setPWM(canal, 0, posicao);
                 posicaoAntiga = posicao;
