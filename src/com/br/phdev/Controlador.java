@@ -132,6 +132,10 @@ public class Controlador {
                     pernas[PERNA_2].getFemur().abaixar();
                     pernas[PERNA_2].getTarso().abaixar();
                     break;
+                case 27:
+                    System.out.println("ABAIXANDO PERNA 2 PARA POSICAO INICIAL");
+                    pernas[PERNA_2].getTarso().resetarPosicao();
+                    pernas[PERNA_2].getFemur().resetarPosicao();                    
                 case 50:
                     System.out.println("LEVANTANDO PERNA 3");
                     pernas[PERNA_3].getFemur().levantar();
@@ -141,6 +145,10 @@ public class Controlador {
                     System.out.println("ABAIXANDO PERNA 3");
                     pernas[PERNA_3].getFemur().abaixar();
                     pernas[PERNA_3].getTarso().abaixar();
+                case 52:
+                    System.out.println("ABAIXANDO PERNA 3 PARA POSICAO INICIAL");
+                    pernas[PERNA_3].getTarso().resetarPosicao();
+                    pernas[PERNA_3].getFemur().resetarPosicao();                    
                     break;
                 case 75:                  
                     System.out.println("LEVANTANDO PERNA 4");
@@ -152,6 +160,10 @@ public class Controlador {
                     pernas[PERNA_4].getFemur().abaixar();
                     pernas[PERNA_4].getTarso().abaixar();
                     break;
+                case 77:
+                    System.out.println("ABAIXANDO PERNA 4 PARA POSICAO INICIAL");
+                    pernas[PERNA_4].getTarso().resetarPosicao();
+                    pernas[PERNA_4].getFemur().resetarPosicao();                    
                 case 101:
                     System.out.println("RESETANDO POSICOES");
                     for (Membro cmp : pernas) {
