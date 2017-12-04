@@ -163,11 +163,21 @@ public class Controlador {
                         ((Perna) cmp).getFemur().parar();
                     }
                     break;
-                case 103:
+                case 110:
+                    System.out.println("VELOCIDADE 1");
+                    velocidade = 1;
+                    break;
+                case 111:
+                    System.out.println("VELOCIDADE 0.5");
                     velocidade = 2;
                     break;
-                case 104:
-                    velocidade = 1;
+                case 112:
+                    System.out.println("VELOCIDADE 0.2");
+                    velocidade = 5;
+                    break;
+                case 113:
+                    System.out.println("VELOCIDADE 0.1");
+                    velocidade = 10;
                     break;
             }
         }

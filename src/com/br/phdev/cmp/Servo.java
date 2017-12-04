@@ -38,11 +38,12 @@ public class Servo{
                 posicaoAntiga = posicao;
             }
             else{
-                int passo = (posicao - posicaoAntiga)/2;                
+                int passo = (posicao - posicaoAntiga)/10;                
                 for (int i=posicaoAntiga; i<=posicao; i+=passo){
                     modulo.setPWM(canal, 0, i);
                     delay();
                 }            
+                modulo.setPWM(canal, 0, posicao);
                 posicaoAntiga = posicao;
             }                        
             delay();
