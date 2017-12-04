@@ -38,7 +38,42 @@ public class Servo{
                 posicaoAntiga = posicao;
             }
             else{
-                int passo = (posicao - posicaoAntiga)/Controlador.velocidade;
+                int passo = (posicao > posicaoAntiga ? posicao - posicaoAntiga : posicaoAntiga - posicao);
+                
+                if (movMax > movMin){
+                    if (posicaoAntiga < posicao)
+                        for (int i=posicaoAntiga; i<=posicao; i+=passo){
+                            modulo.setPWM(canal, 0, i);
+                            System.out.println("loop1");
+                            delay();
+                        }                    
+                    else
+                        for (int i=posicaoAntiga; i>=posicao; i-=passo){
+                            modulo.setPWM(canal, 0, i);
+                            System.out.println("loop1");
+                            delay();
+                        }
+                    modulo.setPWM(canal, 0, posicao);
+                    delay();
+                }
+                else{
+                    if (posicaoAntiga > posicao)
+                        for (int i=posicaoAntiga; i>=posicao; i-=passo){
+                            modulo.setPWM(canal, 0, i);
+                            System.out.println("loop1");
+                            delay();
+                        }                    
+                    else
+                        for (int i=posicaoAntiga; i<=posicao; i+=passo){
+                            modulo.setPWM(canal, 0, i);
+                            System.out.println("loop1");
+                            delay();
+                        }
+                    modulo.setPWM(canal, 0, posicao);
+                    delay();
+                }
+                
+                /*
                 if (posicaoAntiga < posicao)
                     for (int i=posicaoAntiga; i<=posicao; i+=passo){
                         modulo.setPWM(canal, 0, i);
@@ -51,7 +86,7 @@ public class Servo{
                         System.out.println("loop2");
                         delay();
                     }
-                modulo.setPWM(canal, 0, posicao);
+                modulo.setPWM(canal, 0, posicao);*/
                 posicaoAntiga = posicao;
             }                        
             delay();
