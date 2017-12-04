@@ -151,11 +151,11 @@ public class Controlador {
                     break;
                 case 28:
                     System.out.println("ABRINDO BASE DA PERNA 2");
-                    pernas[PERNA_2].getBase().levantar();                    
+                    pernas[PERNA_2].getBase().abaixar();
                     break;
                 case 29:
                     System.out.println("FECHANDO BASE DA PERNA 2");
-                    pernas[PERNA_2].getBase().abaixar();                    
+                    pernas[PERNA_2].getBase().levantar();
                     break;
                 case 30:
                     System.out.println("BASE DA PERNA 2 INDO PRA POSICAO INICIAL");
@@ -178,11 +178,11 @@ public class Controlador {
                     break;
                 case 53:
                     System.out.println("ABRINDO BASE DA PENRA 3");
-                    pernas[PERNA_3].getBase().levantar();                    
+                    pernas[PERNA_3].getBase().abaixar();
                     break;
                 case 54:
                     System.out.println("FECHANDO BASE DA PERNA 3");
-                    pernas[PERNA_3].getBase().abaixar();                    
+                    pernas[PERNA_3].getBase().levantar();
                     break;
                 case 55:
                     System.out.println("BASE DA PERNA 3 INDO PRA POSICAO INICIAL");
