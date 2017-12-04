@@ -85,6 +85,8 @@ public class Controlador {
     
     public void receberMensagem(String msg){
         
+        System.out.println("DAFUQ");
+        
         int opc;
         
         try{
