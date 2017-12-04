@@ -53,6 +53,7 @@ public class Componente implements Membro{
     public void mover(int posicao){
         this.servo.mover(posicao);
     }
+
     
     public void setLimites(int movMax, int movMin){
         this.servo.setMovMin(movMin);

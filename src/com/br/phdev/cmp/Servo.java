@@ -91,6 +91,7 @@ public class Servo{
                 posicaoAntiga = posicao;
                 delay();
 	}
+
 	
 	public void setCanal(int canal){
 		this.canal = canal;
@@ -126,7 +127,7 @@ public class Servo{
         
         private void delay(){
             try{
-                Thread.sleep(200);
+                Thread.sleep(250);
             }
             catch(InterruptedException e){
                 e.printStackTrace();                
