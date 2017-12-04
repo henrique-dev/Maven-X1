@@ -80,11 +80,9 @@ public class Controlador {
                 }
             }
             else{
-                if (msg.charAt(i) == ' '){
-                    temp[index] = Integer.parseInt(tempNum);
-                    index++;
-                    tempNum = "";
-                }
+                temp[index] = Integer.parseInt(tempNum);
+                index++;
+                tempNum = "";
             }
                 
         }        
@@ -98,11 +96,11 @@ public class Controlador {
         int[] comandos = receberComandos(msg);
         int index = 0;
         
-        while(comandos[index] != -1){
+        while(comandos[index] != -1){        
             
-            index++;
+            System.out.println(index);
             
-            switch (comandos[index]) {
+            switch (comandos[index++]) {
                 case 5:
                     System.out.println("RESETANDO POSICOES");
                     for (Membro cmp : pernas) {
