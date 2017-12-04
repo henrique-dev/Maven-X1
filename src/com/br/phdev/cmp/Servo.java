@@ -131,7 +131,7 @@ public class Servo{
         
         private void delay(){
             try{
-                Thread.sleep(250);
+                Thread.sleep(350);
             }
             catch(InterruptedException e){
                 e.printStackTrace();                
