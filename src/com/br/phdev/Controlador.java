@@ -108,6 +108,7 @@ public class Controlador {
 
         int[] comandos = receberComandos(msg);
         int index = 0;                
+        String preMsg = "";
 
         while (comandos[index] != -1) {
 
@@ -115,10 +116,10 @@ public class Controlador {
 
             switch (comandos[index++]) {
                 case -2:
-                    pernas[PERNA_1].sleep(100);
-                    pernas[PERNA_2].sleep(100);
-                    pernas[PERNA_3].sleep(100);
-                    pernas[PERNA_4].sleep(100);
+                    pernas[PERNA_1].sleep(300);
+                    pernas[PERNA_2].sleep(300);
+                    pernas[PERNA_3].sleep(300);
+                    pernas[PERNA_4].sleep(300);
                     break;
                 case 0:
                     System.out.println("LEVANTANDO PERNA 1");
@@ -244,6 +245,17 @@ public class Controlador {
                         ((Perna) cmp).getFemur().parar();
                     }
                     break;
+                case 103:
+                    System.out.println("RESETANDO POSICOES");
+                    for (Membro cmp : pernas) {
+                        ((Perna) cmp).getTarso().resetarPosicao();
+                        sleep(100);
+                        ((Perna) cmp).getBase().resetarPosicao();
+                        sleep(100);
+                        ((Perna) cmp).getFemur().resetarPosicao();
+                        sleep(100);
+                    }
+                    break;
                 case 110:
                     System.out.println("VELOCIDADE 1");
                     velocidade = 1;
@@ -269,7 +281,12 @@ public class Controlador {
                     break;
                 case 150:
                     System.out.println("ANDANDO");
-                    String preMsg = "3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2";
+                    preMsg = "3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2";
+                    receberMensagem(preMsg);                    
+                    break;
+                case 151:                                         
+                    preMsg = "3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2-3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2"
+                            + "-3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2-3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2";
                     receberMensagem(preMsg);                    
                     break;
             }
