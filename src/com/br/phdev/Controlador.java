@@ -125,16 +125,16 @@ public class Controlador {
                 case 0:
                     System.out.println("LEVANTANDO PERNA 1");
                     pernas[PERNA_1].getFemur().levantar();
-                    pernas[PERNA_1].getTarso().levantar();
+                    //pernas[PERNA_1].getTarso().levantar();
                     break;
                 case 1:
                     System.out.println("ABAIXANDO PERNA 1");
                     pernas[PERNA_1].getFemur().abaixar();
-                    pernas[PERNA_1].getTarso().abaixar();
+                    //pernas[PERNA_1].getTarso().abaixar();
                     break;
                 case 2:
                     System.out.println("ABAIXANDO PERNA 1 PARA POSICAO INICIAL");
-                    pernas[PERNA_1].getTarso().resetarPosicao();
+                    //pernas[PERNA_1].getTarso().resetarPosicao();
                     pernas[PERNA_1].getFemur().resetarPosicao();
                     break;
                 case 3:
@@ -152,16 +152,16 @@ public class Controlador {
                 case 25:
                     System.out.println("LEVANTANDO PERNA 2");
                     pernas[PERNA_2].getFemur().levantar();
-                    pernas[PERNA_2].getTarso().levantar();
+                    //pernas[PERNA_2].getTarso().levantar();
                     break;
                 case 26:
                     System.out.println("ABAIXANDO PERNA 2");
                     pernas[PERNA_2].getFemur().abaixar();
-                    pernas[PERNA_2].getTarso().abaixar();
+                    //pernas[PERNA_2].getTarso().abaixar();
                     break;
                 case 27:
                     System.out.println("ABAIXANDO PERNA 2 PARA POSICAO INICIAL");
-                    pernas[PERNA_2].getTarso().resetarPosicao();
+                    //pernas[PERNA_2].getTarso().resetarPosicao();
                     pernas[PERNA_2].getFemur().resetarPosicao();
                     break;
                 case 28:
@@ -179,16 +179,16 @@ public class Controlador {
                 case 50:
                     System.out.println("LEVANTANDO PERNA 3");
                     pernas[PERNA_3].getFemur().levantar();
-                    pernas[PERNA_3].getTarso().levantar();
+                    //pernas[PERNA_3].getTarso().levantar();
                     break;
                 case 51:
                     System.out.println("ABAIXANDO PERNA 3");
                     pernas[PERNA_3].getFemur().abaixar();
-                    pernas[PERNA_3].getTarso().abaixar();
+                    //pernas[PERNA_3].getTarso().abaixar();
                     break;
                 case 52:
                     System.out.println("ABAIXANDO PERNA 3 PARA POSICAO INICIAL");
-                    pernas[PERNA_3].getTarso().resetarPosicao();
+                    //pernas[PERNA_3].getTarso().resetarPosicao();
                     pernas[PERNA_3].getFemur().resetarPosicao();
                     break;
                 case 53:
@@ -206,16 +206,16 @@ public class Controlador {
                 case 75:
                     System.out.println("LEVANTANDO PERNA 4");
                     pernas[PERNA_4].getFemur().levantar();
-                    pernas[PERNA_4].getTarso().levantar();
+                    //pernas[PERNA_4].getTarso().levantar();
                     break;
                 case 76:
                     System.out.println("ABAIXANDO PERNA 4");
                     pernas[PERNA_4].getFemur().abaixar();
-                    pernas[PERNA_4].getTarso().abaixar();
+                    //pernas[PERNA_4].getTarso().abaixar();
                     break;
                 case 77:
                     System.out.println("ABAIXANDO PERNA 4 PARA POSICAO INICIAL");
-                    pernas[PERNA_4].getTarso().resetarPosicao();
+                    //pernas[PERNA_4].getTarso().resetarPosicao();
                     pernas[PERNA_4].getFemur().resetarPosicao();
                     break;
                 case 78:
