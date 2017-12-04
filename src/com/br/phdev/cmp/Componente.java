@@ -13,12 +13,12 @@ public class Componente implements Membro{
     
     public void resetarPosicao(){        
         this.servo.setPosicao(posInicial);
-        this.servo.mover();
+        //this.servo.mover();
     }
     
     public void levantar(){        
         this.servo.setPosicao(this.servo.getMovMax());        
-        this.servo.mover();
+        //this.servo.mover();
     }
     
     public void levantar(int pos){
@@ -27,7 +27,7 @@ public class Componente implements Membro{
     
     public void abaixar(){
         this.servo.setPosicao(this.servo.getMovMin());
-        this.servo.mover();
+        //this.servo.mover();
     }
     
     public void abaixar(int pos){
@@ -35,7 +35,7 @@ public class Componente implements Membro{
     }
     
     public void parar(){
-        this.servo.mover(0);
+        //this.servo.mover(0);
     }
     
     protected void setServo(Servo servo){

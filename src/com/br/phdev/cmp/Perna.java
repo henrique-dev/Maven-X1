@@ -37,5 +37,18 @@ public class Perna implements Membro {
     public void setBase(Base base) {
         this.base = base;
     }
+    
+    public class PernaThread extends Thread{                
+        
+        @Override
+        public void run(){
+            while (true){
+                tarso.mover();
+                femur.mover();
+                base.mover();
+            }
+        }
+        
+    }
 
 }
