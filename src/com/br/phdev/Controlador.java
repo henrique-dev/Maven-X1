@@ -83,6 +83,7 @@ public class Controlador {
                 if (msg.charAt(i) == ' '){
                     temp[index] = Integer.parseInt(tempNum);
                     index++;
+                    tempNum = "";
                 }
             }
                 
