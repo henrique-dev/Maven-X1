@@ -74,9 +74,13 @@ public class Controlador {
         for (int i=0; i<msg.length(); i++){                                    
             if (msg.charAt(i) != ' '){
                 tempNum = tempNum + msg.charAt(i);                
+                if (i == msg.length()-1){
+                    temp[index] = Integer.parseInt(tempNum);
+                    index++;
+                }
             }
             else{
-                if (msg.charAt(i) == ' ' || i == msg.length()-1){
+                if (msg.charAt(i) == ' '){
                     temp[index] = Integer.parseInt(tempNum);
                     index++;
                 }
