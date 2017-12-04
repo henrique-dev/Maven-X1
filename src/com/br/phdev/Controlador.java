@@ -69,11 +69,17 @@ public class Controlador {
         
         int[] temp = new int[msg.length() + 1];
         int index = 0;
+        String tempNum = "";
         
         for (int i=0; i<msg.length(); i++){                                    
             if (msg.charAt(i) != ' '){
-                temp[index] = Integer.parseInt(msg.charAt(i) + "");
-                index++;
+                tempNum = tempNum + msg.charAt(i);                
+            }
+            else{
+                if (msg.charAt(i) == ' ' || i == msg.length()-1){
+                    temp[index] = Integer.parseInt(tempNum);
+                    index++;
+                }
             }
                 
         }        
