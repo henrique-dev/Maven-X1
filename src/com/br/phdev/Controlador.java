@@ -85,7 +85,10 @@ public class Controlador {
                 tempNum = "";
             }
                 
-        }        
+        }       
+
+	System.out.println("Numero de comandos: " + temp.length);
+
         temp[index] = -1;
         
         return temp;
@@ -98,8 +101,10 @@ public class Controlador {
         
         while(comandos[index] != -1){        
             
+
             System.out.println(index);
             
+
             switch (comandos[index++]) {
                 case 5:
                     System.out.println("RESETANDO POSICOES");
