@@ -74,10 +74,16 @@ public class Controlador {
 
         for (int i = 0; i < msg.length(); i++) {
             if (msg.charAt(i) != ' ') {
-                tempNum = tempNum + msg.charAt(i);
-                if (i == msg.length() - 1) {
-                    temp[index] = Integer.parseInt(tempNum);
+                if (msg.charAt(i) == '-'){
+                    temp[index] = -2;
                     index++;
+                }
+                else{
+                    tempNum = tempNum + msg.charAt(i);
+                    if (i == msg.length() - 1) {
+                        temp[index] = Integer.parseInt(tempNum);
+                        index++;
+                    }
                 }
             } else {
                 temp[index] = Integer.parseInt(tempNum);
@@ -97,13 +103,16 @@ public class Controlador {
     public void receberMensagem(String msg) {
 
         int[] comandos = receberComandos(msg);
-        int index = 0;
+        int index = 0;                
 
         while (comandos[index] != -1) {
 
-            System.out.println(index);
+            
 
             switch (comandos[index++]) {
+                case -2:
+                    System.out.println(comandos);
+                    break;
                 case 0:
                     System.out.println("LEVANTANDO PERNA 1");
                     pernas[PERNA_1].getFemur().levantar();
@@ -250,6 +259,12 @@ public class Controlador {
                     pernas[PERNA_2].iniciar();
                     pernas[PERNA_3].iniciar();
                     pernas[PERNA_4].iniciar();
+                    break;
+                case 150:
+                    System.out.println("ANDANDO");
+                    
+                    
+                    
                     break;
             }
         }
