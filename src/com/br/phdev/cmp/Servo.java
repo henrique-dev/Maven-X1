@@ -93,12 +93,12 @@ public class Servo{
         }
 	
 	public void mover(int pos){
-		if (pos < 150 || pos > 600)
-			return;
                 if (pos == 0){
                     modulo.setPWM(canal, 0, 0);
                     return;
                 }
+		if (pos < 150 || pos > 600)
+			return;                
 		this.posicao = pos;
 		modulo.setPWM(canal, 0, pos);
                 posicaoAntiga = posicao;
