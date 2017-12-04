@@ -50,7 +50,7 @@ public class Servo{
                     else
                         for (int i=posicaoAntiga; i>=posicao; i-=passo){
                             modulo.setPWM(canal, 0, i);
-                            System.out.println("loop1");
+                            System.out.println("loop2");
                             delay();
                         }
                     modulo.setPWM(canal, 0, posicao);
@@ -60,13 +60,13 @@ public class Servo{
                     if (posicaoAntiga > posicao)
                         for (int i=posicaoAntiga; i>=posicao; i-=passo){
                             modulo.setPWM(canal, 0, i);
-                            System.out.println("loop1");
+                            System.out.println("loop3");
                             delay();
                         }                    
                     else
                         for (int i=posicaoAntiga; i<=posicao; i+=passo){
                             modulo.setPWM(canal, 0, i);
-                            System.out.println("loop1");
+                            System.out.println("loop4");
                             delay();
                         }
                     modulo.setPWM(canal, 0, posicao);
