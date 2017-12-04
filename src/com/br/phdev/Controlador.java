@@ -67,7 +67,7 @@ public class Controlador {
     
     private int[] receberComandos(String msg){                
         
-        int[] temp = new int[msg.length()];
+        int[] temp = new int[msg.length() + 1];
         int index = 0;
         
         for (int i=0; i<msg.length(); i++){                                    
