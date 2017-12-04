@@ -73,22 +73,26 @@ public class Controlador {
         String tempNum = "";
 
         for (int i = 0; i < msg.length(); i++) {
-            if (msg.charAt(i) != ' ') {
+            if (msg.charAt(i) != ' ' && msg.charAt(i) != '-') {                                
+                tempNum = tempNum + msg.charAt(i);
+                if (i == msg.length() - 1) {
+                    temp[index] = Integer.parseInt(tempNum);
+                    index++;
+                    
+                }
+            } else {
                 if (msg.charAt(i) == '-'){
+                    temp[index] = Integer.parseInt(tempNum);
+                    index++;
+                    tempNum = "";
                     temp[index] = -2;
                     index++;
                 }
                 else{
-                    tempNum = tempNum + msg.charAt(i);
-                    if (i == msg.length() - 1) {
-                        temp[index] = Integer.parseInt(tempNum);
-                        index++;
-                    }
+                    temp[index] = Integer.parseInt(tempNum);
+                    index++;
+                    tempNum = "";
                 }
-            } else {
-                temp[index] = Integer.parseInt(tempNum);
-                index++;
-                tempNum = "";
             }
 
         }
