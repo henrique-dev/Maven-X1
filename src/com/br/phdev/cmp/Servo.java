@@ -1,14 +1,16 @@
 package com.br.phdev.cmp;
 
+import com.br.phdev.Controlador;
 import com.br.phdev.driver.PCA9685;
 
 public class Servo{
 
 	private PCA9685 modulo;
 	private int canal;
+        private int posicaoAntiga;
 	private int posicao;
 	private int movMax;
-	private int movMin;
+	private int movMin;        
 	
 	public Servo(PCA9685 modulo, int canal, int posInicial){
 		this.canal = canal;
@@ -31,20 +33,38 @@ public class Servo{
                 }
             }
             
-                
-            modulo.setPWM(canal, 0, posicao);
+            if (Controlador.velocidade == 1){
+                modulo.setPWM(canal, 0, posicao);
+                posicaoAntiga = posicao;
+            }
+            else{
+                int passo = (posicaoAntiga > posicao ? posicaoAntiga - posicao : posicao - posicaoAntiga)/2;
+                if (posicao > posicaoAntiga){
+                    for (int i=posicaoAntiga; i<=posicao; i+=passo){
+                        modulo.setPWM(canal, 0, i);
+                        delay();
+                    }
+                }
+                else{
+                    for (int i=posicao; i<=posicaoAntiga; i+=passo){
+                        modulo.setPWM(canal, 0, i);
+                        delay();
+                    }
+                }
+            }                        
             delay();
         }
 	
 	public void mover(int pos){
-		if (pos < 0 || pos >180)
+		if (pos < 150 || pos > 600)
 			return;
                 if (pos == 0){
                     modulo.setPWM(canal, 0, 0);
                     return;
                 }
 		this.posicao = pos;
-		modulo.setPWM(canal, 0, (int)(pos*2.5) + 150);
+		modulo.setPWM(canal, 0, pos);
+                posicaoAntiga = posicao;
                 delay();
 	}
 	

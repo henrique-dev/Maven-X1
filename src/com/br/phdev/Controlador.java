@@ -26,6 +26,7 @@ public class Controlador {
     private final int PERNA_2 = 1; // PERNA TRASEIRA ESQUERDA
     private final int PERNA_3 = 2; // PERNA DIANTEIRA DIREITA
     private final int PERNA_4 = 3; // PERNA DIANTEIRA ESQUERDA
+    public static int velocidade = 1;
 
     private PCA9685 modulo;
 
@@ -161,6 +162,12 @@ public class Controlador {
                         ((Perna) cmp).getBase().parar();
                         ((Perna) cmp).getFemur().parar();
                     }
+                    break;
+                case 103:
+                    velocidade = 2;
+                    break;
+                case 104:
+                    velocidade = 1;
                     break;
             }
         }
