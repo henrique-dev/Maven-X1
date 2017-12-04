@@ -116,10 +116,10 @@ public class Controlador {
 
             switch (comandos[index++]) {
                 case -2:
-                    pernas[PERNA_1].sleep(300);
-                    pernas[PERNA_2].sleep(300);
-                    pernas[PERNA_3].sleep(300);
-                    pernas[PERNA_4].sleep(300);
+                    pernas[PERNA_1].sleep(150);
+                    pernas[PERNA_2].sleep(150);
+                    pernas[PERNA_3].sleep(150);
+                    pernas[PERNA_4].sleep(150);
                     break;
                 case 0:
                     System.out.println("LEVANTANDO PERNA 1");
@@ -286,6 +286,8 @@ public class Controlador {
                     break;
                 case 151:                                         
                     preMsg = "3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2-3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2"
+                            + "-3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2-3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2"
+                            + "-3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2-3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2"
                             + "-3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2-3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2";
                     receberMensagem(preMsg);                    
                     break;
