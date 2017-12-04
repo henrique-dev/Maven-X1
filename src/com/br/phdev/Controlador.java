@@ -115,7 +115,10 @@ public class Controlador {
 
             switch (comandos[index++]) {
                 case -2:
-                    System.out.println(comandos);
+                    pernas[PERNA_1].sleep(500);
+                    pernas[PERNA_2].sleep(500);
+                    pernas[PERNA_3].sleep(500);
+                    pernas[PERNA_4].sleep(500);
                     break;
                 case 0:
                     System.out.println("LEVANTANDO PERNA 1");

@@ -53,6 +53,15 @@ public class Perna implements Membro {
         thread = null;
     }
     
+    public void sleep(int tempo){
+        try{
+            thread.sleep(tempo);
+        }
+        catch(InterruptedException e){
+            e.printStackTrace();
+        }        
+    }
+    
     public class PernaThread extends Thread{                
         
         @Override
