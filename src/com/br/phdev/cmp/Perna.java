@@ -40,8 +40,9 @@ public class Perna implements Membro {
     }
     
     public void iniciar(){
-        if (thread != null)
+        if (thread != null){
             thread.start();
+        }
         else{
             thread = new PernaThread();
             thread.start();

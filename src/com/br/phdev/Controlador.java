@@ -245,12 +245,11 @@ public class Controlador {
                     velocidade = 10;
                     break;
                 case 115:
-                    System.out.println("THREAD INICIADAS");
-                    for (Membro cmp : pernas) {
-                        ((Perna) cmp).iniciar();
-                        ((Perna) cmp).iniciar();
-                        ((Perna) cmp).iniciar();
-                    }
+                    System.out.println("INICIANDO PERNAS");
+                    pernas[PERNA_1].iniciar();
+                    pernas[PERNA_2].iniciar();
+                    pernas[PERNA_3].iniciar();
+                    pernas[PERNA_4].iniciar();
                     break;
             }
         }
