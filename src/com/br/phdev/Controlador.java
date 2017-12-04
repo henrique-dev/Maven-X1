@@ -38,7 +38,7 @@ public class Controlador {
 
         pernas = new Perna[4];
         pernas[PERNA_1] = new Perna(
-                new Tarso(modulo, 0, 275), new Femur(modulo, 4, 375), new Base(modulo, 5, 375));
+                new Tarso(modulo, 0, 275), new Femur(modulo, 4, 330), new Base(modulo, 5, 375));
         pernas[PERNA_1].getTarso().setLimites(150, 400);
         pernas[PERNA_1].getFemur().setLimites(475, 275);
         pernas[PERNA_1].getBase().setLimites(280, 470);
@@ -50,7 +50,7 @@ public class Controlador {
         pernas[PERNA_2].getBase().setLimites(280, 470);
 
         pernas[PERNA_3] = new Perna(
-                new Tarso(modulo, 14, 275), new Femur(modulo, 6, 375), new Base(modulo, 7, 375));
+                new Tarso(modulo, 14, 275), new Femur(modulo, 6, 400), new Base(modulo, 7, 375));
         pernas[PERNA_3].getTarso().setLimites(400, 150);
         pernas[PERNA_3].getFemur().setLimites(275, 475);
         pernas[PERNA_3].getBase().setLimites(280, 470);
