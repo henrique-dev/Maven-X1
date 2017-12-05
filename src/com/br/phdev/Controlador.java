@@ -37,28 +37,24 @@ public class Controlador {
         modulo.setPWMFreq(60);
 
         pernas = new Perna[4];
-        pernas[PERNA_1] = new Perna(
-                new Tarso(modulo, 0, 310), new Femur(modulo, 4, 398), new Base(modulo, 5, 385));
-        pernas[PERNA_1].getTarso().setLimites(200, 420);
-        pernas[PERNA_1].getFemur().setLimites(520, 275);
+        pernas[PERNA_1] = new Perna(new Base(modulo, 5, 385, new Femur(modulo, 4, 398, new Tarso(modulo, 0, 310))));
+        pernas[PERNA_1].getBase().getFemur().getTarso().setLimites(200, 420);
+        pernas[PERNA_1].getBase().getFemur().setLimites(520, 275);
         pernas[PERNA_1].getBase().setLimites(280, 490);
 
-        pernas[PERNA_2] = new Perna(
-                new Tarso(modulo, 1, 225), new Femur(modulo, 2, 330), new Base(modulo, 3, 415));
-        pernas[PERNA_2].getTarso().setLimites(330, 120);
-        pernas[PERNA_2].getFemur().setLimites(185, 475);
+        pernas[PERNA_2] = new Perna(new Base(modulo, 3, 415, new Femur(modulo, 2, 330, new Tarso(modulo, 1, 225))));              
+        pernas[PERNA_2].getBase().getFemur().getTarso().setLimites(330, 120);
+        pernas[PERNA_2].getBase().getFemur().setLimites(185, 475);
         pernas[PERNA_2].getBase().setLimites(310, 520);
 
-        pernas[PERNA_3] = new Perna(
-                new Tarso(modulo, 14, 225), new Femur(modulo, 6, 343), new Base(modulo, 7, 395));
-        pernas[PERNA_3].getTarso().setLimites(360, 150);
-        pernas[PERNA_3].getFemur().setLimites(220, 465);
+        pernas[PERNA_3] = new Perna(new Base(modulo, 7, 395, new Femur(modulo, 6, 343, new Tarso(modulo, 14, 225))));                
+        pernas[PERNA_3].getBase().getFemur().getTarso().setLimites(360, 150);
+        pernas[PERNA_3].getBase().getFemur().setLimites(220, 465);
         pernas[PERNA_3].getBase().setLimites(300, 490);
 
-        pernas[PERNA_4] = new Perna(
-                new Tarso(modulo, 15, 303), new Femur(modulo, 9, 418), new Base(modulo, 8, 390));
-        pernas[PERNA_4].getTarso().setLimites(185, 420);
-        pernas[PERNA_4].getFemur().setLimites(540, 295);
+        pernas[PERNA_4] = new Perna(new Base(modulo, 8, 390, new Femur(modulo, 9, 418, new Tarso(modulo, 15, 303))));                
+        pernas[PERNA_4].getBase().getFemur().getTarso().setLimites(185, 420);
+        pernas[PERNA_4].getBase().getFemur().setLimites(540, 295);
         pernas[PERNA_4].getBase().setLimites(290, 490);
     }
     
@@ -118,18 +114,18 @@ public class Controlador {
                     break;
                 case 0:
                     System.out.println("LEVANTANDO PERNA 1");
-                    pernas[PERNA_1].getFemur().levantar();
+                    pernas[PERNA_1].getBase().getFemur().levantar();
                     //pernas[PERNA_1].getTarso().levantar();
                     break;
                 case 1:
                     System.out.println("ABAIXANDO PERNA 1");
-                    pernas[PERNA_1].getFemur().abaixar();
+                    pernas[PERNA_1].getBase().getFemur().abaixar();
                     //pernas[PERNA_1].getTarso().abaixar();
                     break;
                 case 2:
                     System.out.println("ABAIXANDO PERNA 1 PARA POSICAO INICIAL");
                     //pernas[PERNA_1].getTarso().resetarPosicao();
-                    pernas[PERNA_1].getFemur().resetarPosicao();
+                    pernas[PERNA_1].getBase().getFemur().resetarPosicao();
                     break;
                 case 3:
                     System.out.println("ABRINDO BASE DA PERNA 1");
@@ -145,18 +141,18 @@ public class Controlador {
                     break;
                 case 25:
                     System.out.println("LEVANTANDO PERNA 2");
-                    pernas[PERNA_2].getFemur().levantar();
+                    pernas[PERNA_2].getBase().getFemur().levantar();
                     //pernas[PERNA_2].getTarso().levantar();
                     break;
                 case 26:
                     System.out.println("ABAIXANDO PERNA 2");
-                    pernas[PERNA_2].getFemur().abaixar();
+                    pernas[PERNA_2].getBase().getFemur().abaixar();
                     //pernas[PERNA_2].getTarso().abaixar();
                     break;
                 case 27:
                     System.out.println("ABAIXANDO PERNA 2 PARA POSICAO INICIAL");
                     //pernas[PERNA_2].getTarso().resetarPosicao();
-                    pernas[PERNA_2].getFemur().resetarPosicao();
+                    pernas[PERNA_2].getBase().getFemur().resetarPosicao();
                     break;
                 case 28:
                     System.out.println("ABRINDO BASE DA PERNA 2");
@@ -172,18 +168,18 @@ public class Controlador {
                     break;
                 case 50:
                     System.out.println("LEVANTANDO PERNA 3");
-                    pernas[PERNA_3].getFemur().levantar();
+                    pernas[PERNA_3].getBase().getFemur().levantar();
                     //pernas[PERNA_3].getTarso().levantar();
                     break;
                 case 51:
                     System.out.println("ABAIXANDO PERNA 3");
-                    pernas[PERNA_3].getFemur().abaixar();
+                    pernas[PERNA_3].getBase().getFemur().abaixar();
                     //pernas[PERNA_3].getTarso().abaixar();
                     break;
                 case 52:
                     System.out.println("ABAIXANDO PERNA 3 PARA POSICAO INICIAL");
                     //pernas[PERNA_3].getTarso().resetarPosicao();
-                    pernas[PERNA_3].getFemur().resetarPosicao();
+                    pernas[PERNA_3].getBase().getFemur().resetarPosicao();
                     break;
                 case 53:
                     System.out.println("ABRINDO BASE DA PENRA 3");
@@ -199,18 +195,18 @@ public class Controlador {
                     break;
                 case 75:
                     System.out.println("LEVANTANDO PERNA 4");
-                    pernas[PERNA_4].getFemur().levantar();
+                    pernas[PERNA_4].getBase().getFemur().levantar();
                     //pernas[PERNA_4].getTarso().levantar();
                     break;
                 case 76:
                     System.out.println("ABAIXANDO PERNA 4");
-                    pernas[PERNA_4].getFemur().abaixar();
+                    pernas[PERNA_4].getBase().getFemur().abaixar();
                     //pernas[PERNA_4].getTarso().abaixar();
                     break;
                 case 77:
                     System.out.println("ABAIXANDO PERNA 4 PARA POSICAO INICIAL");
                     //pernas[PERNA_4].getTarso().resetarPosicao();
-                    pernas[PERNA_4].getFemur().resetarPosicao();
+                    pernas[PERNA_4].getBase().getFemur().resetarPosicao();
                     break;
                 case 78:
                     System.out.println("ABRINDO BASE D APERNA 4");
@@ -227,27 +223,27 @@ public class Controlador {
                 case 101:
                     System.out.println("RESETANDO POSICOES");
                     for (Membro cmp : pernas) {
-                        ((Perna) cmp).getTarso().resetarPosicao();
+                        ((Perna) cmp).getBase().getFemur().resetarPosicao();
                         ((Perna) cmp).getBase().resetarPosicao();
-                        ((Perna) cmp).getFemur().resetarPosicao();
+                        ((Perna) cmp).getBase().getFemur().getTarso().resetarPosicao();
                     }
                     break;
                 case 102:
                     System.out.println("PARANDO MOVIMENTO");
                     for (Membro cmp : pernas) {
-                        ((Perna) cmp).getTarso().parar();
+                        ((Perna) cmp).getBase().getFemur().parar();
                         ((Perna) cmp).getBase().parar();
-                        ((Perna) cmp).getFemur().parar();
+                        ((Perna) cmp).getBase().getFemur().parar();
                     }
                     break;
                 case 103:
                     System.out.println("RESETANDO POSICOES");
                     for (Membro cmp : pernas) {
-                        ((Perna) cmp).getTarso().resetarPosicao();
+                        ((Perna) cmp).getBase().getFemur().resetarPosicao();
                         sleep(100);
                         ((Perna) cmp).getBase().resetarPosicao();
                         sleep(100);
-                        ((Perna) cmp).getFemur().resetarPosicao();
+                        ((Perna) cmp).getBase().getFemur().getTarso().resetarPosicao();
                         sleep(100);
                     }
                     break;
@@ -292,9 +288,9 @@ public class Controlador {
 
     public void parar() {
         for (Membro cmp : pernas) {
-            ((Perna) cmp).getTarso().parar();
             ((Perna) cmp).getBase().parar();
-            ((Perna) cmp).getFemur().parar();
+            ((Perna) cmp).getBase().getFemur().parar();            
+            ((Perna) cmp).getBase().getFemur().getTarso().parar();
         }
     }
 

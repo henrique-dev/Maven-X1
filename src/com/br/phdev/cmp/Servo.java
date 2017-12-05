@@ -102,8 +102,26 @@ public class Servo {
     }
 
     public void setPosicao(int posicao) {
-        if (!foraDosLimites(posicao))
-            this.posicao = posicao;
+        if (movMax > movMin) {                                    
+            if (posicao != 0) {
+                if (posicao < movMin)
+                    posicao = movMin;
+                else
+                    if (posicao > movMax)
+                        posicao = movMax;                
+                System.out.println("POSICAO EXAGERADA");                                
+            }
+        } else {
+            if (posicao != 0) {
+                if (posicao > movMin)
+                    posicao = movMin;
+                else
+                    if (posicao < movMax)
+                        posicao = movMax;
+                System.out.println("POSICAO EXAGERADA");                                
+            }
+        }
+        this.posicao = posicao;
     }
 
     public int getPosicao() {
@@ -124,22 +142,7 @@ public class Servo {
 
     public int getMovMin() {
         return this.movMin;
-    }
-    
-    private boolean foraDosLimites(int pos){
-        if (movMax > movMin) {
-            if ((pos < movMin || pos > movMax) && pos != 0) {
-                System.out.println("POSICAO EXAGERADA");                
-                return true;
-            }
-        } else {
-            if ((pos > movMin || pos < movMax) && pos != 0) {
-                System.out.println("POSICAO EXAGERADA");                
-                return true;
-            }
-        }
-        return false;
-    }
+    }        
 
     
     private void delay() {
