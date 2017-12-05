@@ -5,7 +5,7 @@ import com.br.phdev.driver.PCA9685;
 
 public class Servo {
 
-    private static int NUMEROS_SERVOS_ATIVOS = 0;
+    //private static int NUMEROS_SERVOS_ATIVOS = 0;
     private PCA9685 modulo;
     private int canal;
     private int posicaoAntiga;
@@ -20,14 +20,16 @@ public class Servo {
     }
 
     public void mover() {
+        /*
         while (NUMEROS_SERVOS_ATIVOS > 3) {
             System.out.println("LIMITE DE SERVOS SENDO EXECUTADOS AO MESMO TEMPO. ESPERANDO!");
         }
+*/
         //delay();
-        NUMEROS_SERVOS_ATIVOS++;
+        //NUMEROS_SERVOS_ATIVOS++;
         if (posicao == 0) {
             modulo.setPWM(canal, 0, 0);
-            NUMEROS_SERVOS_ATIVOS--;
+            //NUMEROS_SERVOS_ATIVOS--;
             //delay();
             return;
         }
@@ -74,7 +76,7 @@ public class Servo {
             }
             posicaoAntiga = posicao;
         }
-        NUMEROS_SERVOS_ATIVOS--;
+        //NUMEROS_SERVOS_ATIVOS--;
         //delay();
     }
 
