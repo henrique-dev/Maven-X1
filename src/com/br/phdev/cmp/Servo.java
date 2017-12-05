@@ -23,8 +23,7 @@ public class Servo {
         while(NUMEROS_SERVOS_ATIVOS > 3){
             System.out.println("LIMITE DE SERVOS SENDO EXECUTADOS AO MESMO TEMPO. ESPERANDO!");
         }
-        delay();
-        System.out.println("NUMERO DE SERVOS ATIVOS: " + NUMEROS_SERVOS_ATIVOS);
+        delay();        
         NUMEROS_SERVOS_ATIVOS++;        
         if (posicao == 0) {
             modulo.setPWM(canal, 0, 0);
