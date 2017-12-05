@@ -20,11 +20,11 @@ public class Servo {
     }
 
     public void mover() {
-        while(NUMEROS_SERVOS_ATIVOS > 3){
+        while (NUMEROS_SERVOS_ATIVOS > 3) {
             System.out.println("LIMITE DE SERVOS SENDO EXECUTADOS AO MESMO TEMPO. ESPERANDO!");
         }
-        delay();        
-        NUMEROS_SERVOS_ATIVOS++;        
+        delay();
+        NUMEROS_SERVOS_ATIVOS++;
         if (posicao == 0) {
             modulo.setPWM(canal, 0, 0);
             NUMEROS_SERVOS_ATIVOS--;
@@ -101,23 +101,25 @@ public class Servo {
     }
 
     public void setPosicao(int posicao) {
-        if (movMax > movMin) {                                    
+        if (movMax > movMin) {
             if (posicao != 0) {
-                if (posicao < movMin)
+                if (posicao < movMin) {
                     posicao = movMin;
-                else
-                    if (posicao > movMax)
-                        posicao = movMax;                
-                System.out.println("POSICAO EXAGERADA");                                
+                    System.out.println("POSICAO EXAGERADA");
+                } else if (posicao > movMax) {
+                    posicao = movMax;
+                    System.out.println("POSICAO EXAGERADA");
+                }
             }
         } else {
             if (posicao != 0) {
-                if (posicao > movMin)
+                if (posicao > movMin) {
                     posicao = movMin;
-                else
-                    if (posicao < movMax)
-                        posicao = movMax;
-                System.out.println("POSICAO EXAGERADA");                                
+                    System.out.println("POSICAO EXAGERADA");
+                } else if (posicao < movMax) {
+                    posicao = movMax;
+                    System.out.println("POSICAO EXAGERADA");
+                }
             }
         }
         this.posicao = posicao;
@@ -141,9 +143,8 @@ public class Servo {
 
     public int getMovMin() {
         return this.movMin;
-    }        
+    }
 
-    
     private void delay() {
         try {
             Thread.sleep(350);
@@ -151,6 +152,5 @@ public class Servo {
             e.printStackTrace();
         }
     }
-
 
 }
