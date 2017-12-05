@@ -29,6 +29,12 @@ public class Femur extends Componente{
         super.abaixar();
         tarso.levantar(mov);
     }
+    
+    @Override
+    public void resetarPosicao(){
+        super.resetarPosicao();
+        tarso.resetarPosicao();
+    }
 
     public Tarso getTarso() {
         return tarso;
