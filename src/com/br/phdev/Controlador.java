@@ -61,11 +61,7 @@ public class Controlador {
         pernas[PERNA_4].getFemur().setLimites(475, 275);
         pernas[PERNA_4].getBase().setLimites(280, 470);
     }
-
-    private void levantarPerna() {
-
-    }
-
+    
     private int[] receberComandos(String msg) {
 
         int[] temp = new int[msg.length() + 1];
