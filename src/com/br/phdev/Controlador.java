@@ -231,9 +231,9 @@ public class Controlador {
                 case 102:
                     System.out.println("PARANDO MOVIMENTO");
                     for (Membro cmp : pernas) {
-                        ((Perna) cmp).getBase().parar();
-                        ((Perna) cmp).getBase().getFemur().parar();                        
-                        ((Perna) cmp).getBase().getFemur().getTarso().parar();
+                        ((Perna) cmp).getBase().pararMovimento();
+                        ((Perna) cmp).getBase().getFemur().pararMovimento();                        
+                        ((Perna) cmp).getBase().getFemur().getTarso().pararMovimento();
                     }
                     break;
                 case 103:
@@ -288,9 +288,9 @@ public class Controlador {
 
     public void parar() {
         for (Membro cmp : pernas) {
-            ((Perna) cmp).getBase().parar();
-            ((Perna) cmp).getBase().getFemur().parar();            
-            ((Perna) cmp).getBase().getFemur().getTarso().parar();
+            ((Perna) cmp).getBase().pararMovimento();
+            ((Perna) cmp).getBase().getFemur().pararMovimento();            
+            ((Perna) cmp).getBase().getFemur().getTarso().pararMovimento();
         }
     }
 

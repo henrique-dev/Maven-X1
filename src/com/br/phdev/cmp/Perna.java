@@ -5,7 +5,7 @@ import com.br.phdev.driver.PCA9685;
 public class Perna implements Membro {
     
     private Base base;
-    private PernaThread thread;
+    //private PernaThread thread;
 
     public Perna(Base base) {        
         this.base = base;        
@@ -17,21 +17,20 @@ public class Perna implements Membro {
 
     public void setBase(Base base) {
         this.base = base;
-    }
-    
-    public void iniciar(){
-        if (thread != null){
-            thread.start();
-        }
-        else{
-            thread = new PernaThread();
-            thread.start();
-        }
-    }
+    }        
     
     public void parar(){
-        thread = null;
+        //thread = null;
     }        
+    
+    
+    public void iniciar(){
+        base.iniciar();
+        base.getFemur().iniciar();
+        base.getFemur().getTarso().iniciar();
+    }
+    
+    /*
     
     public class PernaThread extends Thread{                
         
@@ -55,7 +54,9 @@ public class Perna implements Membro {
             e.printStackTrace();
         }        
     }
+
         
     }
+    */
 
 }

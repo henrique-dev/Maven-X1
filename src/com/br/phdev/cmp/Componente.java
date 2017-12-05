@@ -3,6 +3,8 @@ package com.br.phdev.cmp;
 import com.br.phdev.driver.PCA9685;
 
 public class Componente implements Membro{
+    
+    private ThreadServo thread;
         
     protected Servo servo;  
     protected int posInicial;
@@ -40,7 +42,7 @@ public class Componente implements Membro{
             this.servo.setPosicao(servo.getPosicao() + pos);
     }
     
-    public void parar(){
+    public void pararMovimento(){
         //this.servo.mover(0);
         this.servo.setPosicao(0);
     }        
@@ -65,6 +67,30 @@ public class Componente implements Membro{
     public void setLimites(int movMax, int movMin){
         this.servo.setMovMin(movMin);
         this.servo.setMovMax(movMax);
+    }
+    
+    public void pararr(){
+        thread = null;
+    }
+    
+    public void iniciar(){
+        if (thread != null)
+            thread.start();
+        else{
+            thread = new ThreadServo();
+            thread.start();
+        }
+    }
+    
+    private class ThreadServo extends Thread{
+        
+        @Override
+        public void run(){
+            while (true){
+                servo.mover();
+            }
+        }
+        
     }
     
 }
