@@ -69,7 +69,7 @@ public class Componente implements Membro{
         this.servo.setMovMax(movMax);
     }
     
-    public void pararr(){
+    public void parar(){
         thread = null;
     }
     
@@ -89,6 +89,15 @@ public class Componente implements Membro{
             while (true){
                 servo.mover();
             }
+        }
+        
+        private void sleep(){
+            try{
+                Thread.sleep(300);
+            }
+            catch(InterruptedException e){
+                e.printStackTrace();
+            }               
         }
         
     }
