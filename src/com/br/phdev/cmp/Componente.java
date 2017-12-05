@@ -22,7 +22,10 @@ public class Componente implements Membro{
     }
     
     public void levantar(int pos){
-        
+        if (servo.getMovMax() > servo.getMovMin())
+            this.servo.setPosicao(servo.getPosicao() + pos);
+        else
+            this.servo.setPosicao(servo.getPosicao() - pos);
     }
     
     public void abaixar(){

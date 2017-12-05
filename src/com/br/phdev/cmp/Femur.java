@@ -11,6 +11,15 @@ public class Femur extends Componente{
         super.posInicial = posInicial;
         this.tarso = tarso;
     }
+    
+    @Override
+    public void levantar(){
+        int posi = super.getServo().getPosicao();
+        int posf = super.getServo().getMovMax();
+        int mov = posi > posf ? posi - posf : posf - posi;
+        super.levantar();
+        tarso.levantar(mov);
+    }
 
     public Tarso getTarso() {
         return tarso;

@@ -11,6 +11,11 @@ public class Base extends Componente {
         super.posInicial = posInicial;
         this.femur = femur;
     }
+    
+    @Override
+    public void levantar(){
+        super.levantar();
+    }
 
     public Femur getFemur() {
         return femur;
