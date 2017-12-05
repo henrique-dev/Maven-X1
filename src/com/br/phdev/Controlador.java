@@ -107,10 +107,10 @@ public class Controlador {
             switch (comandos[index++]) {
                 case -2:
                     sleep(150);
-                    pernas[PERNA_1].delay(150);
-                    pernas[PERNA_2].delay(150);
-                    pernas[PERNA_3].delay(150);
-                    pernas[PERNA_4].delay(150);                    
+                    //pernas[PERNA_1].delay(150);
+                    //pernas[PERNA_2].delay(150);
+                    //pernas[PERNA_3].delay(150);
+                    //pernas[PERNA_4].delay(150);                    
                     break;
                 case 0:
                     System.out.println("LEVANTANDO PERNA 1");
