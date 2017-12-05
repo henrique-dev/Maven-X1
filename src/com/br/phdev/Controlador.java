@@ -47,13 +47,13 @@ public class Controlador {
                 new Tarso(modulo, 1, 225), new Femur(modulo, 2, 330), new Base(modulo, 3, 415));
         pernas[PERNA_2].getTarso().setLimites(330, 120);
         pernas[PERNA_2].getFemur().setLimites(185, 475);
-        pernas[PERNA_2].getBase().setLimites(520, 310);
+        pernas[PERNA_2].getBase().setLimites(310, 520);
 
         pernas[PERNA_3] = new Perna(
                 new Tarso(modulo, 14, 225), new Femur(modulo, 6, 343), new Base(modulo, 7, 395));
         pernas[PERNA_3].getTarso().setLimites(360, 150);
         pernas[PERNA_3].getFemur().setLimites(220, 465);
-        pernas[PERNA_3].getBase().setLimites(490, 300);
+        pernas[PERNA_3].getBase().setLimites(300, 490);
 
         pernas[PERNA_4] = new Perna(
                 new Tarso(modulo, 15, 303), new Femur(modulo, 9, 418), new Base(modulo, 8, 390));
