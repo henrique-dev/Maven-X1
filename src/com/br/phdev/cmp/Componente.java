@@ -34,7 +34,10 @@ public class Componente implements Membro{
     }
     
     public void abaixar(int pos){
-        
+        if (servo.getMovMax() > servo.getMovMin())
+            this.servo.setPosicao(servo.getPosicao() - pos);
+        else
+            this.servo.setPosicao(servo.getPosicao() + pos);
     }
     
     public void parar(){
