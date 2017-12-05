@@ -88,7 +88,7 @@ public class Componente implements Membro{
         public void run(){
             while (true){
                 servo.mover();
-                delay(300);
+                delay(600);
             }
         }
         
