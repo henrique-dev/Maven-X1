@@ -31,16 +31,7 @@ public class Perna implements Membro {
     
     public void parar(){
         thread = null;
-    }
-    
-    public void delay(int tempo){
-        try{
-            thread.sleep(tempo);
-        }
-        catch(InterruptedException e){
-            e.printStackTrace();
-        }        
-    }
+    }        
     
     public class PernaThread extends Thread{                
         
@@ -55,6 +46,15 @@ public class Perna implements Membro {
                 delay(400);
             }
         }
+        
+        public void delay(int tempo){
+        try{
+            thread.sleep(tempo);            
+        }
+        catch(InterruptedException e){
+            e.printStackTrace();
+        }        
+    }
         
     }
 
