@@ -20,14 +20,16 @@ public class Servo {
     }
 
     public void mover() {
-        while(NUMEROS_SERVOS_ATIVOS > 4){
+        while(NUMEROS_SERVOS_ATIVOS > 3){
             System.out.println("LIMITE DE SERVOS SENDO EXECUTADOS AO MESMO TEMPO. ESPERANDO!");
         }
+        delay();
+        System.out.println("NUMERO DE SERVOS ATIVOS: " + NUMEROS_SERVOS_ATIVOS);
         NUMEROS_SERVOS_ATIVOS++;        
         if (posicao == 0) {
             modulo.setPWM(canal, 0, 0);
             NUMEROS_SERVOS_ATIVOS--;
-            delay();
+            //delay();
             return;
         }
         if (Controlador.velocidade == 1) {
@@ -74,7 +76,7 @@ public class Servo {
             posicaoAntiga = posicao;
         }
         NUMEROS_SERVOS_ATIVOS--;
-        delay();
+        //delay();
     }
 
     public void mover(int pos) {
