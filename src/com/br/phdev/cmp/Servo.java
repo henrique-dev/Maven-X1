@@ -27,7 +27,7 @@ public class Servo {
         if (posicao == 0) {
             modulo.setPWM(canal, 0, 0);
             NUMEROS_SERVOS_ATIVOS--;
-            //delay();
+            delay();
             return;
         }
         if (Controlador.velocidade == 1) {
@@ -74,7 +74,7 @@ public class Servo {
             posicaoAntiga = posicao;
         }
         NUMEROS_SERVOS_ATIVOS--;
-        //delay();
+        delay();
     }
 
     public void mover(int pos) {
@@ -139,7 +139,7 @@ public class Servo {
         return false;
     }
 
-    /*
+    
     private void delay() {
         try {
             Thread.sleep(350);
@@ -147,6 +147,6 @@ public class Servo {
             e.printStackTrace();
         }
     }
-*/
+
 
 }
