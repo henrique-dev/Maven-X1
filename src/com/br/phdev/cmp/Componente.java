@@ -88,12 +88,13 @@ public class Componente implements Membro{
         public void run(){
             while (true){
                 servo.mover();
+                delay(300);
             }
         }
         
-        private void sleep(){
+        private void delay(int tempo){
             try{
-                Thread.sleep(300);
+                Thread.sleep(tempo);
             }
             catch(InterruptedException e){
                 e.printStackTrace();
