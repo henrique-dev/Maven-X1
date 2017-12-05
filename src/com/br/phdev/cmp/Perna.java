@@ -33,7 +33,7 @@ public class Perna implements Membro {
         thread = null;
     }
     
-    public void sleep(int tempo){
+    public void delay(int tempo){
         try{
             thread.sleep(tempo);
         }
@@ -48,8 +48,11 @@ public class Perna implements Membro {
         public void run(){
             while (true){                
                 base.mover();
+                delay(400);
                 base.getFemur().mover();
+                delay(400);
                 base.getFemur().getTarso().mover();
+                delay(400);
             }
         }
         

@@ -107,10 +107,10 @@ public class Controlador {
             switch (comandos[index++]) {
                 case -2:
                     sleep(150);
-                    pernas[PERNA_1].sleep(150);
-                    pernas[PERNA_2].sleep(150);
-                    pernas[PERNA_3].sleep(150);
-                    pernas[PERNA_4].sleep(150);                    
+                    pernas[PERNA_1].delay(150);
+                    pernas[PERNA_2].delay(150);
+                    pernas[PERNA_3].delay(150);
+                    pernas[PERNA_4].delay(150);                    
                     break;
                 case 0:
                     System.out.println("LEVANTANDO PERNA 1");
@@ -231,9 +231,9 @@ public class Controlador {
                 case 102:
                     System.out.println("PARANDO MOVIMENTO");
                     for (Membro cmp : pernas) {
-                        ((Perna) cmp).getBase().getFemur().parar();
                         ((Perna) cmp).getBase().parar();
-                        ((Perna) cmp).getBase().getFemur().parar();
+                        ((Perna) cmp).getBase().getFemur().parar();                        
+                        ((Perna) cmp).getBase().getFemur().getTarso().parar();
                     }
                     break;
                 case 103:
