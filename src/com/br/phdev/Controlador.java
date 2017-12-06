@@ -332,7 +332,7 @@ public class Controlador {
                 startTime = System.nanoTime();
                 
                 try{
-                    Componente cmp = filaComandos.poll().getInstance();                    
+                    Componente cmp = filaComandos.remove();
                     if (cmp != null){
                         cmp.mover();
                     }
