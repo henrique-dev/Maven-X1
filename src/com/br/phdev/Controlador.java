@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 //import java.com.br.phdev.driver;
 public class Controlador {
 
-    private Controlador controlador;
+    private ControladorThread thread;    
 
     private final int PERNA_1 = 0; // PERNA TRASEIRA DIREITA
     private final int PERNA_2 = 1; // PERNA TRASEIRA ESQUERDA
@@ -42,22 +42,22 @@ public class Controlador {
         pernas[PERNA_1].getBase().getFemur().setLimites(520, 275);
         pernas[PERNA_1].getBase().setLimites(280, 490);
 
-        pernas[PERNA_2] = new Perna(new Base(modulo, 3, 415, new Femur(modulo, 2, 330, new Tarso(modulo, 1, 225))));              
+        pernas[PERNA_2] = new Perna(new Base(modulo, 3, 415, new Femur(modulo, 2, 330, new Tarso(modulo, 1, 225))));
         pernas[PERNA_2].getBase().getFemur().getTarso().setLimites(330, 120);
         pernas[PERNA_2].getBase().getFemur().setLimites(185, 475);
         pernas[PERNA_2].getBase().setLimites(310, 520);
 
-        pernas[PERNA_3] = new Perna(new Base(modulo, 7, 395, new Femur(modulo, 6, 343, new Tarso(modulo, 14, 225))));                
+        pernas[PERNA_3] = new Perna(new Base(modulo, 7, 395, new Femur(modulo, 6, 343, new Tarso(modulo, 14, 225))));
         pernas[PERNA_3].getBase().getFemur().getTarso().setLimites(360, 150);
         pernas[PERNA_3].getBase().getFemur().setLimites(220, 465);
         pernas[PERNA_3].getBase().setLimites(300, 490);
 
-        pernas[PERNA_4] = new Perna(new Base(modulo, 8, 390, new Femur(modulo, 9, 418, new Tarso(modulo, 15, 303))));                
+        pernas[PERNA_4] = new Perna(new Base(modulo, 8, 390, new Femur(modulo, 9, 418, new Tarso(modulo, 15, 303))));
         pernas[PERNA_4].getBase().getFemur().getTarso().setLimites(185, 420);
         pernas[PERNA_4].getBase().getFemur().setLimites(540, 295);
         pernas[PERNA_4].getBase().setLimites(290, 490);
     }
-    
+
     private int[] receberComandos(String msg) {
 
         int[] temp = new int[msg.length() + 1];
@@ -65,22 +65,21 @@ public class Controlador {
         String tempNum = "";
 
         for (int i = 0; i < msg.length(); i++) {
-            if (msg.charAt(i) != ' ' && msg.charAt(i) != '-') {                                
+            if (msg.charAt(i) != ' ' && msg.charAt(i) != '-') {
                 tempNum = tempNum + msg.charAt(i);
                 if (i == msg.length() - 1) {
                     temp[index] = Integer.parseInt(tempNum);
                     index++;
-                    
+
                 }
             } else {
-                if (msg.charAt(i) == '-'){
+                if (msg.charAt(i) == '-') {
                     temp[index] = Integer.parseInt(tempNum);
                     index++;
                     tempNum = "";
                     temp[index] = -2;
                     index++;
-                }
-                else{
+                } else {
                     temp[index] = Integer.parseInt(tempNum);
                     index++;
                     tempNum = "";
@@ -99,11 +98,11 @@ public class Controlador {
     public void receberMensagem(String msg) {
 
         int[] comandos = receberComandos(msg);
-        int index = 0;                
+        int index = 0;
         String preMsg = "";
 
         while (comandos[index] != -1) {
-            
+
             switch (comandos[index++]) {
                 case -2:
                     sleep(400);
@@ -232,7 +231,7 @@ public class Controlador {
                     System.out.println("PARANDO MOVIMENTO");
                     for (Membro cmp : pernas) {
                         ((Perna) cmp).getBase().pararMovimento();
-                        ((Perna) cmp).getBase().getFemur().pararMovimento();                        
+                        ((Perna) cmp).getBase().getFemur().pararMovimento();
                         ((Perna) cmp).getBase().getFemur().getTarso().pararMovimento();
                     }
                     break;
@@ -265,22 +264,24 @@ public class Controlador {
                     break;
                 case 115:
                     System.out.println("INICIANDO PERNAS");
-                    pernas[PERNA_1].iniciar();
-                    pernas[PERNA_2].iniciar();
-                    pernas[PERNA_3].iniciar();
-                    pernas[PERNA_4].iniciar();
+                    thread = new ControladorThread();
+                    thread.start();                    
+                    //pernas[PERNA_1].iniciar();
+                    //pernas[PERNA_2].iniciar();
+                    //pernas[PERNA_3].iniciar();
+                    //pernas[PERNA_4].iniciar();
                     break;
                 case 150:
                     System.out.println("ANDANDO");
                     preMsg = "3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2";
-                    receberMensagem(preMsg);                    
+                    receberMensagem(preMsg);
                     break;
-                case 151:                                         
+                case 151:
                     preMsg = "3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2-3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2"
                             + "-3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2-3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2"
                             + "-3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2-3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2"
                             + "-3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2-3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2";
-                    receberMensagem(preMsg);                    
+                    receberMensagem(preMsg);
                     break;
             }
         }
@@ -289,7 +290,7 @@ public class Controlador {
     public void parar() {
         for (Membro cmp : pernas) {
             ((Perna) cmp).getBase().pararMovimento();
-            ((Perna) cmp).getBase().getFemur().pararMovimento();            
+            ((Perna) cmp).getBase().getFemur().pararMovimento();
             ((Perna) cmp).getBase().getFemur().getTarso().pararMovimento();
         }
     }
@@ -302,14 +303,68 @@ public class Controlador {
         }
     }
 
+    public class ControladorThread extends Thread {
+        
+        private int averageTick;
+        private boolean rodando = true;
+
+        @Override
+        public void run() {            
+
+            long startTime;
+            long timeMillis;
+            long waitTime;
+            long totalTime = 0;
+            long tickCount = 0;
+            long targetTime = 1000 / 30;
+
+            while (rodando) {
+                startTime = System.nanoTime();
+                
+                try{
+                    for (Perna perna : pernas){
+                        perna.getBase().mover();
+                        perna.getBase().getFemur().mover();
+                        perna.getBase().getFemur().getTarso().mover();
+                    }
+                }
+                catch(Exception e){
+                    e.printStackTrace();
+                }
+
+                timeMillis = (System.nanoTime() - startTime) / 1000000;
+                waitTime = targetTime - timeMillis;
+                try {
+                    sleep(waitTime);
+                } catch (Exception e) {
+                    //e.printStackTrace();
+                }
+                totalTime += System.nanoTime() - startTime;
+                tickCount++;
+                if (tickCount == 30){
+                    averageTick = (int)(1000/((totalTime/tickCount)/1000000));
+                    tickCount = 0;
+                    totalTime = 0;
+                }
+            }
+        }
+        
+        public void setRodando(boolean rodando){
+            this.rodando = rodando;
+        }
+        
+        public boolean estaRodando(){
+            return this.rodando;
+        }
+
+    }
+
     public static void main(String[] args) throws I2CFactory.UnsupportedBusNumberException {
 
         Controlador controlador = new Controlador();
-
-        //controlador.sleep(1000);
-        //controlador.alinhar();
         Servidor servidor = new Servidor(controlador);
-        servidor.start();
+        servidor.start();        
+        
 
     }
 
