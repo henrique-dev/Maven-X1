@@ -45,11 +45,11 @@ public class Teste1 {
             System.out.println("TESTE COM 3 SERVOS MEXENDO SIMULTANEAMENTE");
             servoBoard.setPWM(0, 0, 150);
             servoBoard.setPWM(1, 0, 150);
-            servoBoard.setPWM(2, 0, 150);
+            //servoBoard.setPWM(2, 0, 150);
             waitFor(500);
             servoBoard.setPWM(0, 0, 600);
             servoBoard.setPWM(1, 0, 600);
-            servoBoard.setPWM(2, 0, 600);
+            //servoBoard.setPWM(2, 0, 600);
             waitFor(500);
         }
 
