@@ -1,4 +1,4 @@
 
 echo "EXECUTANDO CONFIGURADOR MAVEN"
 
-sudo java -cp .:classes:/opt/pi4j/lib/'*' com/br/phdev/Teste1
+sudo java -cp .:classes:/opt/pi4j/lib/'*' com/br/phdev/Ajustar
