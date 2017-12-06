@@ -325,7 +325,7 @@ public class Controlador {
                     for (Perna perna : pernas){
                         perna.getBase().mover();
                         perna.getBase().getFemur().mover();
-                        perna.getBase().getFemur().getTarso().mover();
+                        perna.getBase().getFemur().getTarso().mover();                        
                     }
                 }
                 catch(Exception e){

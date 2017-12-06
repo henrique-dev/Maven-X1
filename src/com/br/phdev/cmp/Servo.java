@@ -63,7 +63,7 @@ public class Servo {
             }
             posicaoAntiga = posicao;
         }            
-        delay();
+        //delay();
     }
 
     public void mover(int pos) {
