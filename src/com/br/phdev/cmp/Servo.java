@@ -20,9 +20,10 @@ public class Servo {
 
     public synchronized void mover() {    
         
-        
+        /*
         if (posicao == posicaoAntiga)
             return;
+*/
 
         
         if (posicao == 0) {
