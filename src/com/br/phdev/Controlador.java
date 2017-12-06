@@ -34,7 +34,7 @@ public class Controlador {
 
     public Controlador() throws I2CFactory.UnsupportedBusNumberException {
         modulo = new PCA9685();
-        modulo.setPWMFreq(1000);
+        modulo.setPWMFreq(59);
 
         pernas = new Perna[4];
         pernas[PERNA_1] = new Perna(new Base(modulo, 5, 385, new Femur(modulo, 4, 398, new Tarso(modulo, 0, 310))));
@@ -316,7 +316,7 @@ public class Controlador {
             long waitTime;
             long totalTime = 0;
             long tickCount = 0;
-            long targetTime = 1000 / 30;
+            long targetTime = 1000 / 60;
 
             while (rodando) {
                 startTime = System.nanoTime();
@@ -341,7 +341,7 @@ public class Controlador {
                 }
                 totalTime += System.nanoTime() - startTime;
                 tickCount++;
-                if (tickCount == 30){
+                if (tickCount == 60){
                     averageTick = (int)(1000/((totalTime/tickCount)/1000000));
                     tickCount = 0;
                     totalTime = 0;
