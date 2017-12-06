@@ -76,8 +76,8 @@ public class Servo {
             }
             posicaoAntiga = posicao;
         }
-        //NUMEROS_SERVOS_ATIVOS--;
-        //delay();
+        //NUMEROS_SERVOS_ATIVOS--;        
+        delay();
     }
 
     public void mover(int pos) {
@@ -149,7 +149,8 @@ public class Servo {
 
     private void delay() {
         try {
-            Thread.sleep(350);
+            wait(500);
+            //Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
