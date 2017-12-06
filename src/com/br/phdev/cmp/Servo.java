@@ -19,7 +19,7 @@ public class Servo {
         this.modulo = modulo;
     }
 
-    public void mover() {
+    public synchronized void mover() {
         /*
         while (NUMEROS_SERVOS_ATIVOS > 3) {
             System.out.println("LIMITE DE SERVOS SENDO EXECUTADOS AO MESMO TEMPO. ESPERANDO!");
