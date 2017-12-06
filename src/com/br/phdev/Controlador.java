@@ -339,7 +339,7 @@ public class Controlador {
                     
                 }
                 catch(Exception e){
-                    e.printStackTrace();
+                    //e.printStackTrace();
                 }
 
                 timeMillis = (System.nanoTime() - startTime) / 1000000;
