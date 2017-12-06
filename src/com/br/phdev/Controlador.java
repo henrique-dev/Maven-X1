@@ -34,7 +34,7 @@ public class Controlador {
 
     public Controlador() throws I2CFactory.UnsupportedBusNumberException {
         modulo = new PCA9685();
-        modulo.setPWMFreq(180);
+        modulo.setPWMFreq(720);
 
         pernas = new Perna[4];
         pernas[PERNA_1] = new Perna(new Base(modulo, 5, 385, new Femur(modulo, 4, 398, new Tarso(modulo, 0, 310))));
