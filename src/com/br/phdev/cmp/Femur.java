@@ -19,7 +19,7 @@ public class Femur extends Componente{
         int mov = posi > posf ? posi - posf : posf - posi;
         super.levantar();
         tarso.abaixar(mov);
-    }
+    }                
     
     @Override
     public void abaixar(){

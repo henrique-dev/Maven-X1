@@ -14,6 +14,9 @@ import com.pi4j.io.i2c.I2CBus;
 import com.pi4j.io.i2c.I2CFactory;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,6 +30,8 @@ public class Controlador {
     private final int PERNA_3 = 2; // PERNA DIANTEIRA DIREITA
     private final int PERNA_4 = 3; // PERNA DIANTEIRA ESQUERDA
     public static int velocidade = 1;
+    
+    private Queue<Componente> filaComandos;
 
     private PCA9685 modulo;
 
@@ -56,6 +61,8 @@ public class Controlador {
         pernas[PERNA_4].getBase().getFemur().getTarso().setLimites(185, 420);
         pernas[PERNA_4].getBase().getFemur().setLimites(540, 295);
         pernas[PERNA_4].getBase().setLimites(290, 490);
+        
+        filaComandos = new LinkedList<>();
     }
 
     private int[] receberComandos(String msg) {
@@ -113,18 +120,21 @@ public class Controlador {
                     break;
                 case 0:
                     System.out.println("LEVANTANDO PERNA 1");
-                    pernas[PERNA_1].getBase().getFemur().levantar();
+                    pernas[PERNA_1].getBase().getFemur().levantar();   
+                    filaComandos.add(pernas[PERNA_1].getBase().getFemur().getInstance());
                     //pernas[PERNA_1].getTarso().levantar();
                     break;
                 case 1:
                     System.out.println("ABAIXANDO PERNA 1");
                     pernas[PERNA_1].getBase().getFemur().abaixar();
+                    filaComandos.add(pernas[PERNA_1].getBase().getFemur().getInstance());
                     //pernas[PERNA_1].getTarso().abaixar();
                     break;
                 case 2:
                     System.out.println("ABAIXANDO PERNA 1 PARA POSICAO INICIAL");
                     //pernas[PERNA_1].getTarso().resetarPosicao();
                     pernas[PERNA_1].getBase().getFemur().resetarPosicao();
+                    filaComandos.add(pernas[PERNA_1].getBase().getFemur().getInstance());
                     break;
                 case 3:
                     System.out.println("ABRINDO BASE DA PERNA 1");
@@ -322,12 +332,9 @@ public class Controlador {
                 startTime = System.nanoTime();
                 
                 try{
-                    for (Perna perna : pernas){
-                        perna.getBase().mover();
-                        perna.getBase().getFemur().mover();
-                        perna.getBase().getFemur().getTarso().mover();                    
-                        System.out.println("executando");
-                    }
+                    
+                    filaComandos.poll().mover();
+                    
                 }
                 catch(Exception e){
                     e.printStackTrace();

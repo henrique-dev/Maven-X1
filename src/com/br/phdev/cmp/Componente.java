@@ -18,6 +18,10 @@ public class Componente implements Membro{
         //this.servo.mover();
     }
     
+    public Componente getInstance(){
+        return this;
+    }
+    
     public void levantar(){        
         this.servo.setPosicao(this.servo.getMovMax());        
         //this.servo.mover();
