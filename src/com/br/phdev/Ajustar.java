@@ -31,6 +31,11 @@ public class Ajustar {
 
 		int servoChannel = 0;
 		int servoPos = 0;
+                
+                for (int i=0; i<16; i++){
+                    servoBoard.setPWM(i, 0, 0);
+                    waitFor(200);
+                }
 
 		while(true){
 			System.out.println("AJUSTANDO SERVO\n\n");
