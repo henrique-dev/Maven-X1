@@ -57,7 +57,7 @@ public class PCA9685 {
 	/**
 	 * @param freq 40..1000
 	 */
-	public void setPWMFreq(int freq) {
+	public synchronized void setPWMFreq(int freq) {
 		this.freq = freq;
 		float preScaleVal = 25_000_000.0f; // 25MHz
 		preScaleVal /= 4096.0;           // 4096: 12-bit

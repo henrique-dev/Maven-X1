@@ -19,18 +19,11 @@ public class Servo {
         this.modulo = modulo;
     }
 
-    public synchronized void mover() {
-        /*
-        while (NUMEROS_SERVOS_ATIVOS > 3) {
-            System.out.println("LIMITE DE SERVOS SENDO EXECUTADOS AO MESMO TEMPO. ESPERANDO!");
-        }
-*/
-        //delay();
-        //NUMEROS_SERVOS_ATIVOS++;
+    public synchronized void mover() {    
+        if (posicao == posicaoAntiga)
+            return;
         if (posicao == 0) {
-            modulo.setPWM(canal, 0, 0);
-            //NUMEROS_SERVOS_ATIVOS--;
-            //delay();
+            modulo.setPWM(canal, 0, 0);            
             return;
         }
         if (Controlador.velocidade == 1) {
@@ -45,38 +38,31 @@ public class Servo {
                 if (posicaoAntiga < posicao) {
                     for (int i = posicaoAntiga; i < posicao; i += passo) {
                         modulo.setPWM(canal, 0, i);
-                        System.out.println("loop1");
-                        //delay();
+                        System.out.println("loop1");                        
                     }
                 } else {
                     for (int i = posicaoAntiga; i > posicao; i -= passo) {
                         modulo.setPWM(canal, 0, i);
-                        System.out.println("loop2");
-                        //delay();
+                        System.out.println("loop2");                        
                     }
                 }
-                modulo.setPWM(canal, 0, posicao);
-                //delay();
+                modulo.setPWM(canal, 0, posicao);                
             } else {
                 if (posicaoAntiga > posicao) {
                     for (int i = posicaoAntiga; i > posicao; i -= passo) {
                         modulo.setPWM(canal, 0, i);
-                        System.out.println("loop3");
-                        //delay();
+                        System.out.println("loop3");                        
                     }
                 } else {
                     for (int i = posicaoAntiga; i < posicao; i += passo) {
                         modulo.setPWM(canal, 0, i);
-                        System.out.println("loop4");
-                        //delay();
+                        System.out.println("loop4");                        
                     }
                 }
-                modulo.setPWM(canal, 0, posicao);
-                //delay();
+                modulo.setPWM(canal, 0, posicao);                
             }
             posicaoAntiga = posicao;
-        }
-        //NUMEROS_SERVOS_ATIVOS--;        
+        }            
         delay();
     }
 
