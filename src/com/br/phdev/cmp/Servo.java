@@ -4,8 +4,7 @@ import com.br.phdev.Controlador;
 import com.br.phdev.driver.PCA9685;
 
 public class Servo {
-
-    private static int NUMEROS_SERVOS_ATIVOS = 0;
+    
     private PCA9685 modulo;
     private int canal;
     private int posicaoAntiga;
@@ -22,10 +21,7 @@ public class Servo {
     public synchronized void mover() {    
         if (posicao == posicaoAntiga)
             return;
-        while (NUMEROS_SERVOS_ATIVOS > 3){
-            System.out.println("Limite de servos ativos atingidos");
-        }
-        NUMEROS_SERVOS_ATIVOS++;
+        
         if (posicao == 0) {
             modulo.setPWM(canal, 0, 0);            
             return;
@@ -67,8 +63,7 @@ public class Servo {
             }
             posicaoAntiga = posicao;
         }            
-        NUMEROS_SERVOS_ATIVOS--;
-        //delay();
+        delay();
     }
 
     public void mover(int pos) {
