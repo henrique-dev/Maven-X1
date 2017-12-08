@@ -2,7 +2,7 @@ package com.br.phdev.cmp;
 
 import com.br.phdev.driver.PCA9685;
 
-public class Base extends Componente {    
+public class Base extends Componente {
 
     private Femur femur;
 
@@ -10,7 +10,19 @@ public class Base extends Componente {
         super(modulo, servoCanal, posInicial);
         super.posInicial = posInicial;
         this.femur = femur;
-    }        
+    }
+
+    public void levantarMetade() {
+        int valor1 = super.getServo().getPosicao();
+        int valor2 = super.getServo().getMovMax();
+        super.levantar((valor1 > valor2 ? valor1 - valor2 : valor2 - valor1) / 2);
+    }
+
+    public void abaixarMetade() {
+        int valor1 = super.getServo().getPosicao();
+        int valor2 = super.getServo().getMovMax();
+        super.abaixar((valor1 > valor2 ? valor1 - valor2 : valor2 - valor1) / 2);
+    }
 
     public Femur getFemur() {
         return femur;
@@ -18,13 +30,11 @@ public class Base extends Componente {
 
     public void setFemur(Femur femur) {
         this.femur = femur;
-    }        
-    
+    }
+
     @Override
-    public Servo getServo(){
+    public Servo getServo() {
         return super.servo;
     }
-    
-    
 
 }

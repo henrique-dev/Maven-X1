@@ -159,15 +159,11 @@ public class Controlador {
                     break;
                 case 6: 
                     System.out.println("ABRINDO BASE DA PERNA 1 PELA METADE");
-                    valor1 = pernas[PERNA_1].getBase().getServo().getPosicao();
-                    valor2 = pernas[PERNA_1].getBase().getServo().getMovMax();                    
-                    pernas[PERNA_1].getBase().levantar((valor1 > valor2 ? valor1 - valor2 : valor2 - valor1)/2);
+                    pernas[PERNA_1].getBase().levantarMetade();
                     break;
                 case 7:
                     System.out.println("FECHANDO BASE DA PERNA 1 PELA METADE");
-                    valor1 = pernas[PERNA_1].getBase().getServo().getPosicao();
-                    valor2 = pernas[PERNA_1].getBase().getServo().getMovMax();                    
-                    pernas[PERNA_1].getBase().abaixar((valor1 > valor2 ? valor1 - valor2 : valor2 - valor1)/2);
+                    pernas[PERNA_1].getBase().abaixarMetade();
                     break;
                 case 8:
                     System.out.println("ESTICANDO PERNA 1");
@@ -199,6 +195,18 @@ public class Controlador {
                 case 30:
                     System.out.println("BASE DA PERNA 2 INDO PRA POSICAO INICIAL");
                     pernas[PERNA_2].getBase().resetarPosicao();
+                    break;
+                case 31: 
+                    System.out.println("ABRINDO BASE DA PERNA 2 PELA METADE");
+                    pernas[PERNA_2].getBase().levantarMetade();
+                    break;
+                case 32:
+                    System.out.println("FECHANDO BASE DA PERNA 2 PELA METADE");
+                    pernas[PERNA_2].getBase().abaixarMetade();
+                    break;
+                case 33:
+                    System.out.println("ESTICANDO PERNA 2");
+                    pernas[PERNA_2].getBase().getFemur().esticar();                    
                     break;
                 case 50:
                     System.out.println("LEVANTANDO PERNA 3");
