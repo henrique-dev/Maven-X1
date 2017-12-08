@@ -24,40 +24,6 @@ public class Perna implements Membro {
     }        
     
     
-    /*
-    public void iniciar(){
-        thread.start();
-        
-    }
-    
-    
-    
-    public class PernaThread extends Thread{                
-        
-        @Override
-        public void run(){
-            while (true){                
-                base.mover();
-                delay(400);
-                base.getFemur().mover();
-                delay(400);
-                base.getFemur().getTarso().mover();
-                delay(400);
-            }
-        }
-        
-        public void delay(int tempo){
-            try{
-                thread.sleep(tempo);            
-            }
-            catch(InterruptedException e){
-                e.printStackTrace();
-            }        
-    }
-
-        
-    }
-*/
     
 
 }

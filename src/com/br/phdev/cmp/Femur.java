@@ -44,5 +44,10 @@ public class Femur extends Componente{
         this.tarso = tarso;
     }
     
+    @Override
+    public Servo getServo(){
+        return super.servo;
+    }
+    
     
 }

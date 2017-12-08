@@ -8,5 +8,10 @@ public class Tarso extends Componente {
         super(modulo, servoCanal, posInicial);
         super.posInicial = posInicial;
     }
+    
+    @Override
+    public Servo getServo(){
+        return super.servo;
+    }
 
 }

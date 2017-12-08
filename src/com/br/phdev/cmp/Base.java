@@ -20,6 +20,11 @@ public class Base extends Componente {
         this.femur = femur;
     }
     
+    @Override
+    public Servo getServo(){
+        return super.servo;
+    }
+    
     
 
 }
