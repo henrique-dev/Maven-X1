@@ -120,7 +120,7 @@ public class Controlador {
 
             switch (comandos[index++]) {
                 case -2:
-                    delay(150);
+                    delay(400);
                     //pernas[PERNA_1].delay(150);
                     //pernas[PERNA_2].delay(150);
                     //pernas[PERNA_3].delay(150);
