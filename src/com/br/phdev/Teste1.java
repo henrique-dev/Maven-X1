@@ -43,16 +43,19 @@ public class Teste1 {
 
         while (true) {
             System.out.println("TESTE COM 3 SERVOS MEXENDO SIMULTANEAMENTE");
-            servoBoard.setPWM(0, 0, 150);
-            waitFor(500);
-            servoBoard.setPWM(1, 0, 150);
-            //servoBoard.setPWM(2, 0, 150);
-            waitFor(500);
-            servoBoard.setPWM(0, 0, 600);
-            waitFor(500);
-            servoBoard.setPWM(1, 0, 600);
-            //servoBoard.setPWM(2, 0, 600);
-            waitFor(500);
+            servoBoard.setPWM(4, 0, 398);
+            servoBoard.setPWM(2, 0, 330);
+            servoBoard.setPWM(6, 0, 343);
+            servoBoard.setPWM(9, 0, 418);
+            
+            waitFor(1000);
+            
+            servoBoard.setPWM(4, 0, 520);
+            servoBoard.setPWM(2, 0, 185);
+            servoBoard.setPWM(6, 0, 220);
+            servoBoard.setPWM(9, 0, 540);
+            
+            waitFor(1000);
         }
 
         // 375 servo middle
