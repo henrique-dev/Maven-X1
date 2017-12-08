@@ -68,7 +68,7 @@ public class ResetarPosicao {
             perna.getBase().getFemur().mover();
             delay(300);
             perna.getBase().getFemur().getTarso().resetarPosicao();
-            perna.getBase().getFemur().mover();
+            perna.getBase().getFemur().getTarso().mover();
             delay(300);
         }
     }
