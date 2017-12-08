@@ -235,10 +235,18 @@ public class Controlador {
                     System.out.println("BASE DA PERNA 3 INDO PRA POSICAO INICIAL");
                     pernas[PERNA_3].getBase().resetarPosicao();
                     break;
-                case 56:
-                    System.out.println("BASE DA PERNA 3 INDO PRA POSICAO INICIAL");
-                    pernas[PERNA_3].getBase().resetarPosicao();
+                case 56: 
+                    System.out.println("ABRINDO BASE DA PERNA 3 PELA METADE");
+                    pernas[PERNA_3].getBase().levantarMetade();
                     break;
+                case 57:
+                    System.out.println("FECHANDO BASE DA PERNA 3 PELA METADE");
+                    pernas[PERNA_3].getBase().abaixarMetade();
+                    break;
+                case 58:
+                    System.out.println("ESTICANDO PERNA 3");
+                    pernas[PERNA_3].getBase().getFemur().esticar();                    
+                    break;            
                 case 75:
                     System.out.println("LEVANTANDO PERNA 4");
                     pernas[PERNA_4].getBase().getFemur().levantar();
@@ -266,6 +274,18 @@ public class Controlador {
                     System.out.println("BASE DA PERNA 4 INDO PRA POSICAO INICIAL");
                     pernas[PERNA_4].getBase().resetarPosicao();
                     break;
+                case 81: 
+                    System.out.println("ABRINDO BASE DA PERNA 4 PELA METADE");
+                    pernas[PERNA_4].getBase().levantarMetade();
+                    break;
+                case 82:
+                    System.out.println("FECHANDO BASE DA PERNA 4 PELA METADE");
+                    pernas[PERNA_4].getBase().abaixarMetade();
+                    break;
+                case 83:
+                    System.out.println("ESTICANDO PERNA 4");
+                    pernas[PERNA_4].getBase().getFemur().esticar();                    
+                    break; 
                 case 101:
                     System.out.println("RESETANDO POSICOES");
                     for (Membro cmp : pernas) {
