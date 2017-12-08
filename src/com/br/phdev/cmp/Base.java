@@ -21,9 +21,7 @@ public class Base extends Componente {
         if (!invr)
             super.getServo().setPosicao(super.posInicial - valor3);
         else
-            super.getServo().setPosicao(super.posInicial + valor3);
-        
-        super.levantar((valor1 > valor2 ? valor1 - valor2 : valor2 - valor1) / 2);
+            super.getServo().setPosicao(super.posInicial + valor3);                
     }
 
     public void abaixarMetade() {
