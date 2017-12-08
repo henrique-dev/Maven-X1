@@ -29,7 +29,7 @@ public class Base extends Componente {
         invr = super.getServo().getMovMax() > super.getServo().getMovMin();
         int valor1 = super.posInicial;
         int valor2;
-        if (invr)            
+        if (!invr)            
             valor2 = super.getServo().getMovMin();
         else
             valor2 = super.getServo().getMovMax();
