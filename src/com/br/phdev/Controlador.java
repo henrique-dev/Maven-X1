@@ -17,6 +17,7 @@ import com.pi4j.io.i2c.I2CFactory;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,14 +25,14 @@ import java.util.logging.Logger;
 //import java.com.br.phdev.driver;
 public class Controlador {
 
-    private ControladorThread thread;    
+    private ControladorThread thread;
 
     private final int PERNA_1 = 0; // PERNA TRASEIRA DIREITA
     private final int PERNA_2 = 1; // PERNA TRASEIRA ESQUERDA
     private final int PERNA_3 = 2; // PERNA DIANTEIRA DIREITA
     private final int PERNA_4 = 3; // PERNA DIANTEIRA ESQUERDA
     public static int velocidade = 1;
-    
+
     private Queue<Componente> filaComandos;
 
     private PCA9685 modulo;
@@ -62,7 +63,7 @@ public class Controlador {
         pernas[PERNA_4].getBase().getFemur().getTarso().setLimites(185, 420);
         pernas[PERNA_4].getBase().getFemur().setLimites(540, 295);
         pernas[PERNA_4].getBase().setLimites(290, 490);
-        
+
         filaComandos = new LinkedList<>();
     }
 
@@ -113,7 +114,7 @@ public class Controlador {
 
             switch (comandos[index++]) {
                 case -2:
-                    sleep(400);
+                    delay(400);
                     //pernas[PERNA_1].delay(150);
                     //pernas[PERNA_2].delay(150);
                     //pernas[PERNA_3].delay(150);
@@ -121,7 +122,7 @@ public class Controlador {
                     break;
                 case 0:
                     System.out.println("LEVANTANDO PERNA 1");
-                    pernas[PERNA_1].getBase().getFemur().levantar();   
+                    pernas[PERNA_1].getBase().getFemur().levantar();
                     filaComandos.add(pernas[PERNA_1].getBase().getFemur().getInstance());
                     //pernas[PERNA_1].getTarso().levantar();
                     break;
@@ -250,11 +251,11 @@ public class Controlador {
                     System.out.println("RESETANDO POSICOES");
                     for (Membro cmp : pernas) {
                         ((Perna) cmp).getBase().getFemur().resetarPosicao();
-                        sleep(100);
+                        delay(100);
                         ((Perna) cmp).getBase().resetarPosicao();
-                        sleep(100);
+                        delay(100);
                         ((Perna) cmp).getBase().getFemur().getTarso().resetarPosicao();
-                        sleep(100);
+                        delay(100);
                     }
                     break;
                 case 110:
@@ -276,7 +277,7 @@ public class Controlador {
                 case 115:
                     System.out.println("INICIANDO PERNAS");
                     thread = new ControladorThread();
-                    thread.start();                    
+                    thread.start();
                     //pernas[PERNA_1].iniciar();
                     //pernas[PERNA_2].iniciar();
                     //pernas[PERNA_3].iniciar();
@@ -306,7 +307,7 @@ public class Controlador {
         }
     }
 
-    private void sleep(int tempo) {
+    private void delay(int tempo) {
         try {
             Thread.sleep(tempo);
         } catch (InterruptedException ex) {
@@ -315,12 +316,12 @@ public class Controlador {
     }
 
     public class ControladorThread extends Thread {
-        
+
         private int averageTick;
         private boolean rodando = true;
 
         @Override
-        public void run() {            
+        public void run() {
 
             long startTime;
             long timeMillis;
@@ -331,15 +332,14 @@ public class Controlador {
 
             while (rodando) {
                 startTime = System.nanoTime();
-                
-                try{
+
+                try {
                     Componente cmp = filaComandos.remove();
-                    if (cmp != null){
+                    if (cmp != null) {
                         cmp.mover();
                     }
-                    
-                }
-                catch(Exception e){
+
+                } catch (Exception e) {
                     //e.printStackTrace();
                 }
 
@@ -352,19 +352,19 @@ public class Controlador {
                 }
                 totalTime += System.nanoTime() - startTime;
                 tickCount++;
-                if (tickCount == 60){
-                    averageTick = (int)(1000/((totalTime/tickCount)/1000000));
+                if (tickCount == 60) {
+                    averageTick = (int) (1000 / ((totalTime / tickCount) / 1000000));
                     tickCount = 0;
                     totalTime = 0;
                 }
             }
         }
-        
-        public void setRodando(boolean rodando){
+
+        public void setRodando(boolean rodando) {
             this.rodando = rodando;
         }
-        
-        public boolean estaRodando(){
+
+        public boolean estaRodando() {
             return this.rodando;
         }
 
@@ -374,9 +374,18 @@ public class Controlador {
 
         //Controlador controlador = new Controlador();
         //Servidor servidor = new Servidor(controlador);
-        //servidor.start();        
+        //servidor.start();                
         MPU9150 mpu = new MPU9150();
-        
+
+        while (true) {
+            List valores = mpu.readInfo();
+            if (valores != null) {
+                if (valores.size() > 5) {
+                    System.out.println("ax: " + valores.get(0) + " - ay: " + valores.get(1) + " - az: " + valores.get(2));
+                    System.out.println("gx: " + valores.get(3) + " - gy: " + valores.get(4) + " - gz: " + valores.get(5));
+                }
+            }
+        }
 
     }
 
