@@ -36,30 +36,34 @@ public class Controlador {
     //private Queue<Componente> filaComandos;
 
     private PCA9685 modulo;
+    private MPU9150 moduloMpu;
 
     private Perna[] pernas;
 
     public Controlador() throws I2CFactory.UnsupportedBusNumberException {
+        
         modulo = new PCA9685();
         modulo.setPWMFreq(60);
+        
+        moduloMpu = new MPU9150();
 
         pernas = new Perna[4];
-        pernas[PERNA_1] = new Perna(new Base(modulo, 5, 385, new Femur(modulo, 4, 398, new Tarso(modulo, 0, 310))));
+        pernas[PERNA_1] = new Perna(new Base(modulo, 5, 385, new Femur(modulo, 4, 428, new Tarso(modulo, 0, 310))));
         pernas[PERNA_1].getBase().getFemur().getTarso().setLimites(200, 420);
         pernas[PERNA_1].getBase().getFemur().setLimites(520, 275);
         pernas[PERNA_1].getBase().setLimites(280, 490);
 
-        pernas[PERNA_2] = new Perna(new Base(modulo, 3, 415, new Femur(modulo, 2, 330, new Tarso(modulo, 1, 225))));
+        pernas[PERNA_2] = new Perna(new Base(modulo, 3, 415, new Femur(modulo, 2, 300, new Tarso(modulo, 1, 225))));
         pernas[PERNA_2].getBase().getFemur().getTarso().setLimites(340, 130);
         pernas[PERNA_2].getBase().getFemur().setLimites(185, 475);
         pernas[PERNA_2].getBase().setLimites(310, 520);
 
-        pernas[PERNA_3] = new Perna(new Base(modulo, 7, 395, new Femur(modulo, 6, 343, new Tarso(modulo, 14, 225))));
+        pernas[PERNA_3] = new Perna(new Base(modulo, 7, 395, new Femur(modulo, 6, 313, new Tarso(modulo, 14, 225))));
         pernas[PERNA_3].getBase().getFemur().getTarso().setLimites(360, 150);
         pernas[PERNA_3].getBase().getFemur().setLimites(220, 465);
         pernas[PERNA_3].getBase().setLimites(300, 490);
 
-        pernas[PERNA_4] = new Perna(new Base(modulo, 8, 390, new Femur(modulo, 9, 418, new Tarso(modulo, 15, 303))));
+        pernas[PERNA_4] = new Perna(new Base(modulo, 8, 390, new Femur(modulo, 9, 448, new Tarso(modulo, 15, 303))));
         pernas[PERNA_4].getBase().getFemur().getTarso().setLimites(185, 420);
         pernas[PERNA_4].getBase().getFemur().setLimites(540, 295);
         pernas[PERNA_4].getBase().setLimites(290, 490);
@@ -375,7 +379,7 @@ public class Controlador {
 
         Controlador controlador = new Controlador();
         Servidor servidor = new Servidor(controlador);
-        servidor.start();                        
+        servidor.start();                          
         
         
 
