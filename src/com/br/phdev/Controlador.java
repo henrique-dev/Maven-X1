@@ -33,7 +33,7 @@ public class Controlador {
     private final int PERNA_4 = 3; // PERNA DIANTEIRA ESQUERDA
     public static int velocidade = 1;
 
-    private Queue<Componente> filaComandos;
+    //private Queue<Componente> filaComandos;
 
     private PCA9685 modulo;
 
@@ -50,7 +50,7 @@ public class Controlador {
         pernas[PERNA_1].getBase().setLimites(280, 490);
 
         pernas[PERNA_2] = new Perna(new Base(modulo, 3, 415, new Femur(modulo, 2, 330, new Tarso(modulo, 1, 225))));
-        pernas[PERNA_2].getBase().getFemur().getTarso().setLimites(330, 120);
+        pernas[PERNA_2].getBase().getFemur().getTarso().setLimites(340, 130);
         pernas[PERNA_2].getBase().getFemur().setLimites(185, 475);
         pernas[PERNA_2].getBase().setLimites(310, 520);
 
@@ -64,7 +64,7 @@ public class Controlador {
         pernas[PERNA_4].getBase().getFemur().setLimites(540, 295);
         pernas[PERNA_4].getBase().setLimites(290, 490);
 
-        filaComandos = new LinkedList<>();
+        //filaComandos = new LinkedList<>();
     }
 
     private int[] receberComandos(String msg) {
@@ -123,20 +123,20 @@ public class Controlador {
                 case 0:
                     System.out.println("LEVANTANDO PERNA 1");
                     pernas[PERNA_1].getBase().getFemur().levantar();
-                    filaComandos.add(pernas[PERNA_1].getBase().getFemur().getInstance());
+                    //filaComandos.add(pernas[PERNA_1].getBase().getFemur().getInstance());
                     //pernas[PERNA_1].getTarso().levantar();
                     break;
                 case 1:
                     System.out.println("ABAIXANDO PERNA 1");
                     pernas[PERNA_1].getBase().getFemur().abaixar();
-                    filaComandos.add(pernas[PERNA_1].getBase().getFemur().getInstance());
+                    //filaComandos.add(pernas[PERNA_1].getBase().getFemur().getInstance());
                     //pernas[PERNA_1].getTarso().abaixar();
                     break;
                 case 2:
                     System.out.println("ABAIXANDO PERNA 1 PARA POSICAO INICIAL");
                     //pernas[PERNA_1].getTarso().resetarPosicao();
                     pernas[PERNA_1].getBase().getFemur().resetarPosicao();
-                    filaComandos.add(pernas[PERNA_1].getBase().getFemur().getInstance());
+                    //filaComandos.add(pernas[PERNA_1].getBase().getFemur().getInstance());
                     break;
                 case 3:
                     System.out.println("ABRINDO BASE DA PERNA 1");
@@ -334,9 +334,10 @@ public class Controlador {
                 startTime = System.nanoTime();
 
                 try {
-                    Componente cmp = filaComandos.remove();
-                    if (cmp != null) {
-                        cmp.mover();
+                    for ( Perna perna : pernas){
+                        perna.getBase().mover();
+                        perna.getBase().getFemur().mover();
+                        perna.getBase().getFemur().getTarso().mover();
                     }
 
                 } catch (Exception e) {
@@ -372,20 +373,11 @@ public class Controlador {
 
     public static void main(String[] args) throws I2CFactory.UnsupportedBusNumberException {
 
-        //Controlador controlador = new Controlador();
-        //Servidor servidor = new Servidor(controlador);
-        //servidor.start();                
-        MPU9150 mpu = new MPU9150();
-
-        while (true) {
-            List valores = mpu.readAccel();
-            if (valores != null) {
-                
-                    System.out.println("ax: " + valores.get(0) + " - ay: " + valores.get(1) + " - az: " + valores.get(2));
-                    //System.out.println("gx: " + valores.get(3) + " - gy: " + valores.get(4) + " - gz: " + valores.get(5));
-                
-            }
-        }
+        Controlador controlador = new Controlador();
+        Servidor servidor = new Servidor(controlador);
+        servidor.start();                        
+        
+        
 
     }
 
