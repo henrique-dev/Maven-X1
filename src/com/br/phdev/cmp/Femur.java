@@ -39,7 +39,7 @@ public class Femur extends Componente {
 
         int valor1 = tarso.getServo().getPosicao();
         int valor2 = tarso.getServo().getMovMax();
-        int valor3 = (valor1 > valor2 ? valor1 - valor2 : valor2 - valor1) / 3;
+        int valor3 = (valor1 > valor2 ? valor1 - valor2 : valor2 - valor1) / 2;
         tarso.getServo().setPosicao(tarso.posInicial - valor3);        
     }
 
