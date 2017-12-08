@@ -76,6 +76,16 @@ public class Componente implements Membro{
     public int getPos(){
         return servo.getPosicao();
     }
+
+    public int getPosInicial() {
+        return posInicial;
+    }
+
+    public void setPosInicial(int posInicial) {
+        this.posInicial = posInicial;
+    }
+    
+    
         
     
 }
