@@ -36,16 +36,16 @@ public class Femur extends Componente {
         int posf = super.getServo().getMovMin();
         int mov = posi > posf ? posi - posf : posf - posi;
         invr = (super.getServo().getMovMax() > super.getServo().getMovMin());
-        if (invr)
+        if (!invr)
             super.getServo().setPosicao(super.posInicial - (mov)/3);
         else
-            super.getServo().setPosicao(super.posInicial - (mov)/3);
+            super.getServo().setPosicao(super.posInicial + (mov)/3);
 
         invr = (tarso.getServo().getMovMax() > tarso.getServo().getMovMin());
         int valor1 = tarso.getServo().getPosicao();
         int valor2 = tarso.getServo().getMovMax();
         int valor3 = (valor1 > valor2 ? valor1 - valor2 : valor2 - valor1) / 2;
-        if (invr)
+        if (!invr)
             tarso.getServo().setPosicao(tarso.posInicial - valor3);        
         else
             tarso.getServo().setPosicao(tarso.posInicial + valor3);        
