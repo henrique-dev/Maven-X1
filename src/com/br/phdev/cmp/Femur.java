@@ -32,7 +32,7 @@ public class Femur extends Componente {
 
     public void esticar() {        
         boolean invr;
-        int posi = super.getServo().getPosicao();
+        int posi = super.posInicial;
         int posf = super.getServo().getMovMin();
         int mov = posi > posf ? posi - posf : posf - posi;
         invr = (super.getServo().getMovMax() > super.getServo().getMovMin());
@@ -42,7 +42,7 @@ public class Femur extends Componente {
             super.getServo().setPosicao(super.posInicial - (int)((mov)/3.5));
 
         invr = (tarso.getServo().getMovMax() > tarso.getServo().getMovMin());
-        int valor1 = tarso.getServo().getPosicao();
+        int valor1 = tarso.posInicial;
         int valor2 = tarso.getServo().getMovMax();
         int valor3 = (valor1 > valor2 ? valor1 - valor2 : valor2 - valor1) / 2;
         if (!invr)
