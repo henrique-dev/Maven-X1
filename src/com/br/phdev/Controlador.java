@@ -171,12 +171,7 @@ public class Controlador {
                     break;
                 case 8:
                     System.out.println("ESTICANDO PERNA 1");
-                    pernas[PERNA_1].getBase().getFemur().esticar();
-                    valor1 = pernas[PERNA_1].getBase().getFemur().getTarso().getServo().getPosicao();
-                    valor2 = pernas[PERNA_1].getBase().getFemur().getTarso().getServo().getMovMax();
-                    valor3 = (valor1 > valor2 ? valor1 - valor2 : valor2 - valor1)/2;
-                    pernas[PERNA_1].getBase().getFemur().getTarso().levantar();
-                    pernas[PERNA_1].getBase().getFemur().getTarso().abaixar(valor3);
+                    pernas[PERNA_1].getBase().getFemur().esticar();                    
                     break;
                 case 25:
                     System.out.println("LEVANTANDO PERNA 2");
