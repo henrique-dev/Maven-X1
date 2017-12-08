@@ -378,12 +378,12 @@ public class Controlador {
         MPU9150 mpu = new MPU9150();
 
         while (true) {
-            List valores = mpu.readInfo();
+            List valores = mpu.readAccel();
             if (valores != null) {
-                if (valores.size() > 5) {
+                
                     System.out.println("ax: " + valores.get(0) + " - ay: " + valores.get(1) + " - az: " + valores.get(2));
-                    System.out.println("gx: " + valores.get(3) + " - gy: " + valores.get(4) + " - gz: " + valores.get(5));
-                }
+                    //System.out.println("gx: " + valores.get(3) + " - gy: " + valores.get(4) + " - gz: " + valores.get(5));
+                
             }
         }
 
