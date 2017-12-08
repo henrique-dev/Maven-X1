@@ -30,7 +30,7 @@ public class Base extends Componente {
         int valor2 = super.getServo().getMovMax();
         int valor3 = (valor1 > valor2 ? valor1 - valor2 : valor2 - valor1) / 2;
         invr = super.getServo().getMovMax() > super.getServo().getMovMin();
-        if (!invr)
+        if (invr)
             super.getServo().setPosicao(super.posInicial + valor3);
         else
             super.getServo().setPosicao(super.posInicial - valor3);
