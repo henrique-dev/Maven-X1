@@ -7,6 +7,7 @@ import com.br.phdev.cmp.Membro;
 import com.br.phdev.cmp.Perna;
 import com.br.phdev.cmp.Tarso;
 import com.br.phdev.conexao.Servidor;
+import com.br.phdev.driver.MPU9150;
 import com.br.phdev.driver.PCA9685;
 
 import com.pi4j.io.i2c.I2CFactory;
@@ -371,9 +372,10 @@ public class Controlador {
 
     public static void main(String[] args) throws I2CFactory.UnsupportedBusNumberException {
 
-        Controlador controlador = new Controlador();
-        Servidor servidor = new Servidor(controlador);
-        servidor.start();        
+        //Controlador controlador = new Controlador();
+        //Servidor servidor = new Servidor(controlador);
+        //servidor.start();        
+        MPU9150 mpu = new MPU9150();
         
 
     }
