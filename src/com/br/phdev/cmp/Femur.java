@@ -30,6 +30,13 @@ public class Femur extends Componente{
         tarso.levantar(mov);
     }
     
+    public void esticar(){
+        int posi = super.getServo().getPosicao();
+        int posf = super.getServo().getMovMin();
+        int mov = posi > posf ? posi - posf : posf - posi;
+        super.abaixar(mov/2);
+    }
+    
     @Override
     public void resetarPosicao(){
         super.resetarPosicao();

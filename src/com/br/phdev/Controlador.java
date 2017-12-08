@@ -168,6 +168,10 @@ public class Controlador {
                     valor2 = pernas[PERNA_1].getBase().getServo().getMovMax();                    
                     pernas[PERNA_1].getBase().abaixar((valor1 > valor2 ? valor1 - valor2 : valor2 - valor1)/2);
                     break;
+                case 8:
+                    System.out.println("ESTICANDO PERNA 1");
+                    pernas[PERNA_1].getBase().getFemur().esticar();
+                    break;
                 case 25:
                     System.out.println("LEVANTANDO PERNA 2");
                     pernas[PERNA_2].getBase().getFemur().levantar();
