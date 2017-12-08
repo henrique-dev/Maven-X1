@@ -26,11 +26,16 @@ public class Base extends Componente {
 
     public void abaixarMetade() {
         boolean invr;
-        int valor1 = super.posInicial;
-        int valor2 = super.getServo().getMovMax();
-        int valor3 = (valor1 > valor2 ? valor1 - valor2 : valor2 - valor1) / 2;
         invr = super.getServo().getMovMax() > super.getServo().getMovMin();
-        if (invr)
+        int valor1 = super.posInicial;
+        int valor2;
+        if (invr)            
+            valor2 = super.getServo().getMovMin();
+        else
+            valor2 = super.getServo().getMovMax();
+        
+        int valor3 = (valor1 > valor2 ? valor1 - valor2 : valor2 - valor1) / 2;        
+        if (!invr)
             super.getServo().setPosicao(super.posInicial + valor3);
         else
             super.getServo().setPosicao(super.posInicial - valor3);
