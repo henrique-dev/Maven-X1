@@ -71,43 +71,11 @@ public class Componente implements Membro{
     public void setLimites(int movMax, int movMin){
         this.servo.setMovMin(movMin);
         this.servo.setMovMax(movMax);
+    }        
+    
+    public int getPos(){
+        return servo.getPosicao();
     }
-    
-    /*
-    public void parar(){
-        thread = null;
-    }
-    
-    
-    public void iniciar(){
-        if (thread != null)
-            thread.start();
-        else{
-            thread = new ThreadServo();
-            thread.start();
-        }
-    }
-    
-    private class ThreadServo extends Thread{
         
-        @Override
-        public void run(){
-            while (true){
-                servo.mover();
-                delay(600);
-            }
-        }
-        
-        private void delay(int tempo){
-            try{
-                Thread.sleep(tempo);
-            }
-            catch(InterruptedException e){
-                e.printStackTrace();
-            }               
-        }
-        
-    }
-*/
     
 }

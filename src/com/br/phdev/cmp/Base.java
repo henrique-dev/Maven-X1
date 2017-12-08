@@ -18,7 +18,7 @@ public class Base extends Componente {
 
     public void setFemur(Femur femur) {
         this.femur = femur;
-    }
+    }        
     
     @Override
     public Servo getServo(){
