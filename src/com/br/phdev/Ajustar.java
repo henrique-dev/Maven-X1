@@ -22,6 +22,7 @@ public class Ajustar {
 
     private Perna[] pernas;
 
+    private MainThread thread;
     private PCA9685 modulo;
 
     public Ajustar() throws I2CFactory.UnsupportedBusNumberException {
@@ -89,6 +90,12 @@ public class Ajustar {
             }
         }
     }
+    
+    public void iniciar(){
+        if (thread == null)
+            thread = new MainThread();
+        thread.start();
+    }
 
     private void delay(int tempo) {
         try {
@@ -96,7 +103,7 @@ public class Ajustar {
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
-    }
+    }    
 
     public class MainThread extends Thread {
 
@@ -123,6 +130,7 @@ public class Ajustar {
         int servoPos = 0;
 
         aj.resetar();
+        aj.iniciar();
 
         while (true) {
             System.out.println("AJUSTANDO SERVO\n\n");
