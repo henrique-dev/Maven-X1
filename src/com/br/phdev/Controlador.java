@@ -160,13 +160,13 @@ public class Controlador {
                     System.out.println("ABRINDO BASE DA PERNA 1 PELA METADE");
                     valor1 = pernas[PERNA_1].getBase().getServo().getPosicao();
                     valor2 = pernas[PERNA_1].getBase().getServo().getMovMax();                    
-                    pernas[PERNA_1].getBase().levantar((valor1 > valor2 ? valor1 - valor2 : valor2 - valor1)/2 + valor1);
+                    pernas[PERNA_1].getBase().levantar((valor1 > valor2 ? valor1 - valor2 : valor2 - valor1)/2);
                     break;
                 case 7:
                     System.out.println("FECHANDO BASE DA PERNA 1 PELA METADE");
                     valor1 = pernas[PERNA_1].getBase().getServo().getPosicao();
                     valor2 = pernas[PERNA_1].getBase().getServo().getMovMax();                    
-                    pernas[PERNA_1].getBase().abaixar((valor1 > valor2 ? valor1 - valor2 : valor2 - valor1)/2 + valor1);
+                    pernas[PERNA_1].getBase().abaixar((valor1 > valor2 ? valor1 - valor2 : valor2 - valor1)/2);
                     break;
                 case 25:
                     System.out.println("LEVANTANDO PERNA 2");
