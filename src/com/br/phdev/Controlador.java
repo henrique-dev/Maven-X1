@@ -114,6 +114,7 @@ public class Controlador {
         int index = 0;
         int valor1;
         int valor2;
+        int valor3;
         String preMsg = "";
 
         while (comandos[index] != -1) {
@@ -173,7 +174,9 @@ public class Controlador {
                     pernas[PERNA_1].getBase().getFemur().esticar();
                     valor1 = pernas[PERNA_1].getBase().getFemur().getTarso().getServo().getPosicao();
                     valor2 = pernas[PERNA_1].getBase().getFemur().getTarso().getServo().getMovMax();
-                    pernas[PERNA_1].getBase().getFemur().getTarso().levantar((valor1 > valor2 ? valor1 - valor2 : valor2 - valor1)/3);
+                    valor3 = (valor1 > valor2 ? valor1 - valor2 : valor2 - valor1)/2;
+                    pernas[PERNA_1].getBase().getFemur().getTarso().levantar();
+                    pernas[PERNA_1].getBase().getFemur().getTarso().abaixar(valor3);
                     break;
                 case 25:
                     System.out.println("LEVANTANDO PERNA 2");
