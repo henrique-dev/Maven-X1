@@ -339,11 +339,17 @@ public class Controlador {
                     //pernas[PERNA_4].iniciar();
                     break;
                 case 125:
-                    pernas[PERNA_1].getBase().setElevandobase(true);
-                    pernas[PERNA_2].getBase().setElevandobase(true);
-                    pernas[PERNA_3].getBase().setElevandobase(true);
-                    pernas[PERNA_4].getBase().setElevandobase(true);
+                    System.out.println("ELEVANDO BASE");
+                    pernas[PERNA_1].setElevandobase(true);
+                    pernas[PERNA_2].setElevandobase(true);
+                    pernas[PERNA_3].setElevandobase(true);
+                    pernas[PERNA_4].setElevandobase(true);
                     break;
+                case 126:
+                    System.out.println("DESCENDO BASE");
+                    break;
+                case 127:
+                    System.out.println("PARANDO ELEVAR/DESCER");
                 case 150:
                     System.out.println("ALGORITMO DE PASSO V1");
                     preMsg = "3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2";
@@ -405,8 +411,10 @@ public class Controlador {
                         perna.getBase().getFemur().mover();
                         perna.getBase().getFemur().getTarso().mover();
                         
-                        if (perna.getBase().estaElevandobase())
-                            perna.getBase().elevarBase();
+                        if (perna.estaElevandobase())
+                            perna.elevarBase();
+                        if (perna.estaDescendobase())
+                            perna.descerBase();
                     }
 
                 } catch (Exception e) {

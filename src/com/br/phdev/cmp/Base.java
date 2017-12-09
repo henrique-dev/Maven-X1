@@ -3,8 +3,7 @@ package com.br.phdev.cmp;
 import com.br.phdev.driver.PCA9685;
 
 public class Base extends Componente {
-
-    private boolean elevandobase = false;
+    
     private Femur femur;
 
     public Base(PCA9685 modulo, int servoCanal, int posInicial, Femur femur) {
@@ -42,34 +41,7 @@ public class Base extends Componente {
         else
             super.getServo().setPosicao(super.posInicial - valor3);
 
-    }
-    
-    public boolean estaElevandobase(){
-        return elevandobase;
-    }
-    
-    public void setElevandobase(boolean elevandobase){
-        this.elevandobase = elevandobase;
-    }
-    
-    public void elevarBase(){        
-        boolean invr = (femur.getServo().getMovMax() > femur.getServo().getMovMin());        
-        int pos = femur.getServo().getPosicao();                        
-        if (invr){
-            if (pos - 1 == femur.getServo().getMovMin()){
-                elevandobase = false;
-                return;
-            }            
-            femur.getServo().setPosicao(pos - 1);
-        }
-        else{
-            if (pos + 1 == femur.getServo().getMovMin()){
-                elevandobase = false;
-                return;
-            }
-            femur.getServo().setPosicao(pos + 1);
-        }
-    }
+    }        
     
     
 
