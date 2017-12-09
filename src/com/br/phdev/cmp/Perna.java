@@ -46,46 +46,55 @@ public class Perna implements Membro {
 
     public void elevarBase() {
         boolean invr = (base.getFemur().getServo().getMovMax() > base.getFemur().getServo().getMovMin());
-        int pos = base.getFemur().getServo().getPosicao();
-        int posf = base.getFemur().getServo().getMovMax();
-        int movt = pos > posf ? pos - posf : posf - pos;
+        boolean invrt = (base.getFemur().getTarso().getServo().getMovMax() > base.getFemur().getTarso().getServo().getMovMin());
+        int posb = base.getFemur().getServo().getPosicao();        
+        int post = base.getFemur().getTarso().getServo().getPosicao();
         
         if (invr) {
-            if (pos - 1 <= base.getFemur().getServo().getMovMin()) {
+            if (posb - 1 <= base.getFemur().getServo().getMovMin()) {
                 elevandobase = false;
                 return;
-            }
-            base.getFemur().getServo().setPosicao(pos - 1);
-            base.getFemur().getTarso().levantar(movt);
+            }            
+            base.getFemur().getServo().setPosicao(posb - 1);            
         } else {
-            if (pos + 1 >= base.getFemur().getServo().getMovMin()) {
+            if (posb + 1 >= base.getFemur().getServo().getMovMin()) {
                 elevandobase = false;
                 return;
             }
-            base.getFemur().getServo().setPosicao(pos + 1);
-            base.getFemur().getTarso().levantar(movt);
+            base.getFemur().getServo().setPosicao(posb + 1);            
+        }
+        if (invrt){
+            if (post + 1 >= base.getFemur().getTarso().getServo().getMovMax()) {
+                elevandobase = false;
+                return;
+            }            
+            base.getFemur().getTarso().getServo().setPosicao(post + 1);            
+        } else {
+            if (post - 1 <= base.getFemur().getTarso().getServo().getMovMax()) {
+                elevandobase = false;
+                return;
+            }
+            base.getFemur().getTarso().getServo().setPosicao(post - 1);            
         }
     }
     
     public void descerBase(){
         boolean invr = (base.getFemur().getServo().getMovMax() > base.getFemur().getServo().getMovMin());
-        int pos = base.getFemur().getServo().getPosicao();
-        int posf = base.getFemur().getServo().getMovMax();
-        int movt = pos > posf ? pos - posf : posf - pos;
+        int posb = base.getFemur().getServo().getPosicao();        
         
         if (invr) {
-            if (pos + 1 >= base.getFemur().getServo().getMovMax()) {
+            if (posb + 1 >= base.getFemur().getServo().getMovMax()) {
                 descendobase = false;
                 return;
             }
-            base.getFemur().getServo().setPosicao(pos + 1);
+            base.getFemur().getServo().setPosicao(posb + 1);
             base.getFemur().getTarso().abaixar(movt);
         } else {
-            if (pos - 1 <= base.getFemur().getServo().getMovMax()) {
+            if (posb - 1 <= base.getFemur().getServo().getMovMax()) {
                 descendobase = false;
                 return;
             }
-            base.getFemur().getServo().setPosicao(pos - 1);
+            base.getFemur().getServo().setPosicao(posb - 1);
             base.getFemur().getTarso().abaixar(movt);
         }
     }
