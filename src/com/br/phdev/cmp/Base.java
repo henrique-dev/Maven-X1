@@ -36,7 +36,7 @@ public class Base extends Componente {
         
         int valor3 = (valor1 > valor2 ? valor1 - valor2 : valor2 - valor1) / 2;     
         System.out.println(valor3);
-        super.getServo().setPosicao(super.posInicial + valor3);
+        super.getServo().setPosicao(super.posInicial - valor3);
         /*
         if (!invr)
             super.getServo().setPosicao(super.posInicial + valor3);
