@@ -25,6 +25,7 @@ import java.util.logging.Logger;
 //import java.com.br.phdev.driver;
 public class Controlador {
 
+    private Servidor servidor;
     private ControladorThread thread;
 
     private final int PERNA_1 = 0; // PERNA TRASEIRA DIREITA
@@ -34,41 +35,50 @@ public class Controlador {
     public static int velocidade = 1;
 
     //private Queue<Componente> filaComandos;
-
-    private PCA9685 modulo;
-    private MPU9150 moduloMpu;
+    private PCA9685 moduloPWM;
+    private MPU9150 moduloMPU;
 
     private Perna[] pernas;
 
     public Controlador() throws I2CFactory.UnsupportedBusNumberException {
-        
-        modulo = new PCA9685();
-        modulo.setPWMFreq(60);
-        
-        moduloMpu = new MPU9150();
 
+        if (moduloPWM == null) {
+            moduloPWM = new PCA9685();
+            moduloPWM.setPWMFreq(60);
+        }
+        if (moduloMPU == null) {
+            moduloMPU = new MPU9150();
+        }
+        
+        inicializarPernas();
+
+        servidor = new Servidor(this);
+        servidor.start();
+
+        //filaComandos = new LinkedList<>();
+    }
+
+    private void inicializarPernas() {
         pernas = new Perna[4];
-        pernas[PERNA_1] = new Perna(new Base(modulo, 5, 385, new Femur(modulo, 4, 428, new Tarso(modulo, 0, 340))));
+        pernas[PERNA_1] = new Perna(new Base(moduloPWM, 5, 385, new Femur(moduloPWM, 4, 428, new Tarso(moduloPWM, 0, 340))));
         pernas[PERNA_1].getBase().getFemur().getTarso().setLimites(200, 420);
         pernas[PERNA_1].getBase().getFemur().setLimites(520, 275);
         pernas[PERNA_1].getBase().setLimites(280, 490);
 
-        pernas[PERNA_2] = new Perna(new Base(modulo, 3, 415, new Femur(modulo, 2, 300, new Tarso(modulo, 1, 195))));
+        pernas[PERNA_2] = new Perna(new Base(moduloPWM, 3, 415, new Femur(moduloPWM, 2, 300, new Tarso(moduloPWM, 1, 195))));
         pernas[PERNA_2].getBase().getFemur().getTarso().setLimites(340, 130);
         pernas[PERNA_2].getBase().getFemur().setLimites(185, 475);
         pernas[PERNA_2].getBase().setLimites(310, 520);
 
-        pernas[PERNA_3] = new Perna(new Base(modulo, 7, 395, new Femur(modulo, 6, 313, new Tarso(modulo, 14, 195))));
+        pernas[PERNA_3] = new Perna(new Base(moduloPWM, 7, 395, new Femur(moduloPWM, 6, 313, new Tarso(moduloPWM, 14, 195))));
         pernas[PERNA_3].getBase().getFemur().getTarso().setLimites(360, 150);
         pernas[PERNA_3].getBase().getFemur().setLimites(220, 465);
         pernas[PERNA_3].getBase().setLimites(300, 490);
 
-        pernas[PERNA_4] = new Perna(new Base(modulo, 8, 390, new Femur(modulo, 9, 448, new Tarso(modulo, 15, 333))));
+        pernas[PERNA_4] = new Perna(new Base(moduloPWM, 8, 390, new Femur(moduloPWM, 9, 448, new Tarso(moduloPWM, 15, 333))));
         pernas[PERNA_4].getBase().getFemur().getTarso().setLimites(185, 420);
         pernas[PERNA_4].getBase().getFemur().setLimites(540, 295);
         pernas[PERNA_4].getBase().setLimites(290, 490);
-
-        //filaComandos = new LinkedList<>();
     }
 
     private int[] receberComandos(String msg) {
@@ -111,11 +121,12 @@ public class Controlador {
     public void receberMensagem(String msg, int[] cmds) {
 
         int[] comandos;
-        if (cmds == null)
+        if (cmds == null) {
             comandos = receberComandos(msg);
-        else
+        } else {
             comandos = cmds;
-        
+        }
+
         int index = 0;
         int valor1;
         int valor2;
@@ -162,7 +173,7 @@ public class Controlador {
                     System.out.println("BASE DA PERNA 1 INDO PRA POSICAO INICIAL");
                     pernas[PERNA_1].getBase().resetarPosicao();
                     break;
-                case 6: 
+                case 6:
                     System.out.println("ABRINDO BASE DA PERNA 1 PELA METADE");
                     pernas[PERNA_1].getBase().levantarMetade();
                     break;
@@ -172,7 +183,7 @@ public class Controlador {
                     break;
                 case 8:
                     System.out.println("ESTICANDO PERNA 1");
-                    pernas[PERNA_1].getBase().getFemur().esticar();                    
+                    pernas[PERNA_1].getBase().getFemur().esticar();
                     break;
                 case 25:
                     System.out.println("LEVANTANDO PERNA 2");
@@ -201,8 +212,8 @@ public class Controlador {
                     System.out.println("BASE DA PERNA 2 INDO PRA POSICAO INICIAL");
                     pernas[PERNA_2].getBase().resetarPosicao();
                     break;
-                case 31: 
-                    System.out.println("ABRINDO BASE DA PERNA 2 PELA METADE");                    
+                case 31:
+                    System.out.println("ABRINDO BASE DA PERNA 2 PELA METADE");
                     pernas[PERNA_2].getBase().abaixarMetade();
                     break;
                 case 32:
@@ -211,7 +222,7 @@ public class Controlador {
                     break;
                 case 33:
                     System.out.println("ESTICANDO PERNA 2");
-                    pernas[PERNA_2].getBase().getFemur().esticar();                    
+                    pernas[PERNA_2].getBase().getFemur().esticar();
                     break;
                 case 50:
                     System.out.println("LEVANTANDO PERNA 3");
@@ -240,18 +251,18 @@ public class Controlador {
                     System.out.println("BASE DA PERNA 3 INDO PRA POSICAO INICIAL");
                     pernas[PERNA_3].getBase().resetarPosicao();
                     break;
-                case 56: 
-                    System.out.println("ABRINDO BASE DA PERNA 3 PELA METADE");                     
-                    pernas[PERNA_3].getBase().abaixarMetade();                    
+                case 56:
+                    System.out.println("ABRINDO BASE DA PERNA 3 PELA METADE");
+                    pernas[PERNA_3].getBase().abaixarMetade();
                     break;
                 case 57:
-                    System.out.println("FECHANDO BASE DA PERNA 3 PELA METADE");                                        
+                    System.out.println("FECHANDO BASE DA PERNA 3 PELA METADE");
                     pernas[PERNA_3].getBase().levantarMetade();
                     break;
                 case 58:
                     System.out.println("ESTICANDO PERNA 3");
-                    pernas[PERNA_3].getBase().getFemur().esticar();                    
-                    break;            
+                    pernas[PERNA_3].getBase().getFemur().esticar();
+                    break;
                 case 75:
                     System.out.println("LEVANTANDO PERNA 4");
                     pernas[PERNA_4].getBase().getFemur().levantar();
@@ -279,7 +290,7 @@ public class Controlador {
                     System.out.println("BASE DA PERNA 4 INDO PRA POSICAO INICIAL");
                     pernas[PERNA_4].getBase().resetarPosicao();
                     break;
-                case 81: 
+                case 81:
                     System.out.println("ABRINDO BASE DA PERNA 4 PELA METADE");
                     pernas[PERNA_4].getBase().levantarMetade();
                     break;
@@ -289,8 +300,8 @@ public class Controlador {
                     break;
                 case 83:
                     System.out.println("ESTICANDO PERNA 4");
-                    pernas[PERNA_4].getBase().getFemur().esticar();                    
-                    break; 
+                    pernas[PERNA_4].getBase().getFemur().esticar();
+                    break;
                 case 101:
                     System.out.println("RESETANDO POSICOES");
                     for (Membro cmp : pernas) {
@@ -371,15 +382,15 @@ public class Controlador {
                 case 150:
                     System.out.println("ALGORITMO DE PASSO V1");
                     //preMsg = "3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2";                    
-                    receberMensagem(preMsg, new int[]{3 ,53 ,-2 ,50 ,-2 ,54 ,-2 ,52 ,-2 ,5, 29, 55, 78, -2, 25, -2, 28, -2, 
+                    receberMensagem(preMsg, new int[]{3, 53, -2, 50, -2, 54, -2, 52, -2, 5, 29, 55, 78, -2, 25, -2, 28, -2,
                         27, -2, 75, -2, 79, -2, 77, -2, 53, 80, 4, 30, -2, 0, -2, 3, -2, 2});
                     break;
-                case 151:                    
+                case 151:
                     System.out.println("ALGORITMO DE PASSO V2");
                     //preMsg = "3 53-50-57-58-55 52 78 5 32 33-25-28-27-75-82-83-80 77 53 7 8 30-0-3-2";
-                    receberMensagem(preMsg, new int[]{3, 53 ,-2 ,50 ,-2 ,57 ,-2 ,58 ,-2 ,55, 52, 78, 5, 32, 33,-2 ,25 ,-2 ,28 ,-2 ,27 ,-2 ,
-                        75 ,-2 ,82 ,-2 ,83 ,-2 ,80 , 77, 53, 7, 8, 30,-2 ,0 ,-2 ,3 ,-2 ,2});
-                    break;                
+                    receberMensagem(preMsg, new int[]{3, 53, -2, 50, -2, 57, -2, 58, -2, 55, 52, 78, 5, 32, 33, -2, 25, -2, 28, -2, 27, -2,
+                        75, -2, 82, -2, 83, -2, 80, 77, 53, 7, 8, 30, -2, 0, -2, 3, -2, 2});
+                    break;
             }
         }
     }
@@ -390,6 +401,10 @@ public class Controlador {
             ((Perna) cmp).getBase().getFemur().pararMovimento();
             ((Perna) cmp).getBase().getFemur().getTarso().pararMovimento();
         }
+        pernas = null;
+        inicializarPernas();
+        servidor = new Servidor(this);
+        servidor.start();        
     }
 
     private void delay(int tempo) {
@@ -419,15 +434,17 @@ public class Controlador {
                 startTime = System.nanoTime();
 
                 try {
-                    for ( Perna perna : pernas){
+                    for (Perna perna : pernas) {
                         perna.getBase().mover();
                         perna.getBase().getFemur().mover();
                         perna.getBase().getFemur().getTarso().mover();
-                        
-                        if (perna.estaElevandobase())
+
+                        if (perna.estaElevandobase()) {
                             perna.elevarBase(Perna.ATE_O_LIMITE);
-                        if (perna.estaDescendobase())
+                        }
+                        if (perna.estaDescendobase()) {
                             perna.descerBase(Perna.ATE_O_LIMITE);
+                        }
                     }
 
                 } catch (Exception e) {
@@ -464,10 +481,6 @@ public class Controlador {
     public static void main(String[] args) throws I2CFactory.UnsupportedBusNumberException {
 
         Controlador controlador = new Controlador();
-        Servidor servidor = new Servidor(controlador);
-        servidor.start();                          
-        
-        
 
     }
 
