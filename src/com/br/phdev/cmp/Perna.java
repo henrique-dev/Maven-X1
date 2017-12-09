@@ -137,7 +137,7 @@ public class Perna implements Membro {
         }
 
         if (invrt) {
-            if (post - 1 >= base.getFemur().getTarso().getServo().getMovMin()) {
+            if (post - 1 <= base.getFemur().getTarso().getServo().getMovMin()) {
                 elevandobase = false;
                 return;
             }
@@ -145,7 +145,7 @@ public class Perna implements Membro {
             base.getFemur().getTarso().getServo().setPosicao(novaPos);
             base.getFemur().getTarso().setPosInicial(novaPos);
         } else {
-            if (post + 1 <= base.getFemur().getTarso().getServo().getMovMin()) {
+            if (post + 1 >= base.getFemur().getTarso().getServo().getMovMin()) {
                 elevandobase = false;
                 return;
             }
