@@ -338,6 +338,11 @@ public class Controlador {
                     //pernas[PERNA_3].iniciar();
                     //pernas[PERNA_4].iniciar();
                     break;
+                case 125:
+                    pernas[PERNA_1].getBase().setElevandobase(true);
+                    pernas[PERNA_2].getBase().setElevandobase(true);
+                    pernas[PERNA_3].getBase().setElevandobase(true);
+                    pernas[PERNA_4].getBase().setElevandobase(true);
                 case 150:
                     System.out.println("ALGORITMO DE PASSO V1");
                     preMsg = "3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2";

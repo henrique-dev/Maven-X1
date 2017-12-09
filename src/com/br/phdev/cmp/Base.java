@@ -4,7 +4,7 @@ import com.br.phdev.driver.PCA9685;
 
 public class Base extends Componente {
 
-    private boolean elevandobase;
+    private boolean elevandobase = false;
     private Femur femur;
 
     public Base(PCA9685 modulo, int servoCanal, int posInicial, Femur femur) {
