@@ -347,9 +347,21 @@ public class Controlador {
                     break;
                 case 126:
                     System.out.println("DESCENDO BASE");
+                    pernas[PERNA_1].setDescendobase(true);
+                    pernas[PERNA_2].setDescendobase(true);
+                    pernas[PERNA_3].setDescendobase(true);
+                    pernas[PERNA_4].setDescendobase(true);
                     break;
                 case 127:
                     System.out.println("PARANDO ELEVAR/DESCER");
+                    pernas[PERNA_1].setElevandobase(false);
+                    pernas[PERNA_2].setElevandobase(false);
+                    pernas[PERNA_3].setElevandobase(false);
+                    pernas[PERNA_4].setElevandobase(false);
+                    pernas[PERNA_1].setDescendobase(false);
+                    pernas[PERNA_2].setDescendobase(false);
+                    pernas[PERNA_3].setDescendobase(false);
+                    pernas[PERNA_4].setDescendobase(false);
                 case 150:
                     System.out.println("ALGORITMO DE PASSO V1");
                     preMsg = "3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2";
