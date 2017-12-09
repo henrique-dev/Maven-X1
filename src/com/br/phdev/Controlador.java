@@ -108,9 +108,14 @@ public class Controlador {
         return temp;
     }
 
-    public void receberMensagem(String msg) {
+    public void receberMensagem(String msg, int[] cmds) {
 
-        int[] comandos = receberComandos(msg);
+        int[] comandos;
+        if (cmds == null)
+            comandos = receberComandos(msg);
+        else
+            comandos = cmds;
+        
         int index = 0;
         int valor1;
         int valor2;
@@ -365,21 +370,16 @@ public class Controlador {
                     break;
                 case 150:
                     System.out.println("ALGORITMO DE PASSO V1");
-                    preMsg = "3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2";
-                    receberMensagem(preMsg);
+                    //preMsg = "3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2";                    
+                    receberMensagem(preMsg, new int[]{3 ,53 ,-2 ,50 ,-2 ,54 ,-2 ,52 ,-2 ,5, 29, 55, 78, -2, 25, -2, 28, -2, 
+                        27, -2, 75, -2, 79, -2, 77, -2, 53, 80, 4, 30, -2, 0, -2, 3, -2, 2});
                     break;
-                case 151:
-                    preMsg = "3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2-3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2"
-                            + "-3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2-3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2"
-                            + "-3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2-3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2"
-                            + "-3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2-3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2";
-                    receberMensagem(preMsg);
-                    break;
-                case 152:
+                case 151:                    
                     System.out.println("ALGORITMO DE PASSO V2");
-                    preMsg = "3 53-50-57-58-55 52 78 5 32 33-25-28-27-75-82-83-80 77 53 7 8 30-0-3-2";
-                    receberMensagem(preMsg);
-                    break;
+                    //preMsg = "3 53-50-57-58-55 52 78 5 32 33-25-28-27-75-82-83-80 77 53 7 8 30-0-3-2";
+                    receberMensagem(preMsg, new int[]{3, 53 ,-2 ,50 ,-2 ,57 ,-2 ,58 ,-2 ,55, 52, 78, 5, 32, 33,-2 ,25 ,-2 ,28 ,-2 ,27 ,-2 ,
+                        75 ,-2 ,82 ,-2 ,83 ,-2 ,80 , 77, 53, 7, 8, 30,-2 ,0 ,-2 ,3 ,-2 ,2});
+                    break;                
             }
         }
     }
@@ -425,9 +425,9 @@ public class Controlador {
                         perna.getBase().getFemur().getTarso().mover();
                         
                         if (perna.estaElevandobase())
-                            perna.elevarBase();
+                            perna.elevarBase(Perna.ATE_O_LIMITE);
                         if (perna.estaDescendobase())
-                            perna.descerBase();
+                            perna.descerBase(Perna.ATE_O_LIMITE);
                     }
 
                 } catch (Exception e) {

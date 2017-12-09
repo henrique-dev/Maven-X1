@@ -11,11 +11,13 @@ public class Servo {
     private int posicao;
     private int movMax;
     private int movMin;
+    private int posicaoInicial;
 
     public Servo(PCA9685 modulo, int canal, int posInicial) {
         this.canal = canal;
         this.posicao = posInicial;
         this.modulo = modulo;
+        this.posicaoInicial = posInicial;
     }
 
     public synchronized void mover() {    
@@ -130,6 +132,14 @@ public class Servo {
     public int getMovMin() {
         return this.movMin;
     }
+
+    public int getPosicaoInicial() {
+        return posicaoInicial;
+    }
+
+    public void setPosicaoInicial(int posicaoInicial) {
+        this.posicaoInicial = posicaoInicial;
+    }        
 
     private void delay() {
         try {
