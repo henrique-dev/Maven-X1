@@ -88,14 +88,14 @@ public class Perna implements Membro {
                 return;
             }
             base.getFemur().getServo().setPosicao(posb + 1);
-            base.getFemur().getTarso().abaixar(movt);
+            
         } else {
             if (posb - 1 <= base.getFemur().getServo().getMovMax()) {
                 descendobase = false;
                 return;
             }
             base.getFemur().getServo().setPosicao(posb - 1);
-            base.getFemur().getTarso().abaixar(movt);
+            
         }
     }
 
