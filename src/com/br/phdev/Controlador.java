@@ -236,12 +236,12 @@ public class Controlador {
                     pernas[PERNA_3].getBase().resetarPosicao();
                     break;
                 case 56: 
-                    System.out.println("ABRINDO BASE DA PERNA 3 PELA METADE");                    
-                    pernas[PERNA_3].getBase().abaixarMetade();
+                    System.out.println("ABRINDO BASE DA PERNA 3 PELA METADE");                     
+                    pernas[PERNA_3].getBase().levantarMetade();
                     break;
                 case 57:
-                    System.out.println("FECHANDO BASE DA PERNA 3 PELA METADE");                    
-                    pernas[PERNA_3].getBase().levantarMetade();
+                    System.out.println("FECHANDO BASE DA PERNA 3 PELA METADE");                                        
+                    pernas[PERNA_3].getBase().abaixarMetade();
                     break;
                 case 58:
                     System.out.println("ESTICANDO PERNA 3");
