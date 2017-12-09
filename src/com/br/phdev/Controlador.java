@@ -398,6 +398,9 @@ public class Controlador {
                         perna.getBase().mover();
                         perna.getBase().getFemur().mover();
                         perna.getBase().getFemur().getTarso().mover();
+                        
+                        if (perna.getBase().estaElevandobase())
+                            perna.getBase().elevarBase();
                     }
 
                 } catch (Exception e) {

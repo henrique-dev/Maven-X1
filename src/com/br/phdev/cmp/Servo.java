@@ -34,33 +34,27 @@ public class Servo {
             modulo.setPWM(canal, 0, posicao);
             posicaoAntiga = posicao;
         } else {
-            int passo = (posicao > posicaoAntiga ? posicao - posicaoAntiga : posicaoAntiga - posicao) / Controlador.velocidade;
-
-            System.out.println(posicao + " - posicao antiga: " + posicaoAntiga);
+            int passo = (posicao > posicaoAntiga ? posicao - posicaoAntiga : posicaoAntiga - posicao) / Controlador.velocidade;           
 
             if (movMax > movMin) {
                 if (posicaoAntiga < posicao) {
                     for (int i = posicaoAntiga; i < posicao; i += passo) {
-                        modulo.setPWM(canal, 0, i);
-                        System.out.println("loop1");                        
+                        modulo.setPWM(canal, 0, i);                        
                     }
                 } else {
                     for (int i = posicaoAntiga; i > posicao; i -= passo) {
-                        modulo.setPWM(canal, 0, i);
-                        System.out.println("loop2");                        
+                        modulo.setPWM(canal, 0, i);                        
                     }
                 }
                 modulo.setPWM(canal, 0, posicao);                
             } else {
                 if (posicaoAntiga > posicao) {
                     for (int i = posicaoAntiga; i > posicao; i -= passo) {
-                        modulo.setPWM(canal, 0, i);
-                        System.out.println("loop3");                        
+                        modulo.setPWM(canal, 0, i);                        
                     }
                 } else {
                     for (int i = posicaoAntiga; i < posicao; i += passo) {
-                        modulo.setPWM(canal, 0, i);
-                        System.out.println("loop4");                        
+                        modulo.setPWM(canal, 0, i);                        
                     }
                 }
                 modulo.setPWM(canal, 0, posicao);                
