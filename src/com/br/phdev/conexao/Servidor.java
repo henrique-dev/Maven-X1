@@ -38,8 +38,9 @@ public class Servidor extends Thread{
     
     private Socket iniciar(){
         
-        try{                        
-            server = new ServerSocket(PORTA);
+        try{          
+            if (server == null)
+                server = new ServerSocket(PORTA);
             while(true){
                 Socket con = server.accept();
                 System.out.println("Conectado");
@@ -48,7 +49,7 @@ public class Servidor extends Thread{
             }
         }
         catch(IOException e){
-            e.printStackTrace();            
+            e.printStackTrace();                 
         }
         
         return null;
@@ -58,9 +59,9 @@ public class Servidor extends Thread{
     public void run(){
         String msg = "";
         try{
-            while(rodando){
+            while(rodando){                
                 msg = bfr.readLine();                                
-                controlador.receberMensagem(msg, null);
+                controlador.receberMensagem(msg, null);                       
             }
         }
         catch(IOException e){
@@ -71,6 +72,7 @@ public class Servidor extends Thread{
                 System.out.println("Fechando servidor");
                 controlador.parar();     
                 rodando = false;
+                iniciar();
                 //server.close();                
                 //server = null;                
             }
