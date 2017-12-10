@@ -68,23 +68,6 @@ public class Perna implements Membro {
         else
             limite = arg;
 
-        if (invr) {
-            if (posb - 1 <= limite) {
-                elevandobase = false;
-                return;
-            }
-            int novaPos = posb - 1;
-            base.getFemur().getServo().setPosicao(novaPos);
-            base.getFemur().setPosInicial(novaPos);
-        } else {
-            if (posb + 1 >= limite) {
-                elevandobase = false;
-                return;
-            }
-            int novaPos = posb + 1;
-            base.getFemur().getServo().setPosicao(novaPos);
-            base.getFemur().setPosInicial(novaPos);
-        }
         if (invrt) {
             if (post + 1 >= base.getFemur().getTarso().getServo().getMovMax()) {
                 elevandobase = false;
@@ -102,6 +85,24 @@ public class Perna implements Membro {
             base.getFemur().getTarso().getServo().setPosicao(novaPos);
             base.getFemur().getTarso().setPosInicial(novaPos);
         }
+        
+        if (invr) {
+            if (posb - 1 <= limite) {
+                elevandobase = false;
+                return;
+            }
+            int novaPos = posb - 1;
+            base.getFemur().getServo().setPosicao(novaPos);
+            base.getFemur().setPosInicial(novaPos);
+        } else {
+            if (posb + 1 >= limite) {
+                elevandobase = false;
+                return;
+            }
+            int novaPos = posb + 1;
+            base.getFemur().getServo().setPosicao(novaPos);
+            base.getFemur().setPosInicial(novaPos);
+        }        
 
     }
 
@@ -117,25 +118,7 @@ public class Perna implements Membro {
             limite = base.getFemur().getServo().getMovMin();
         else
             limite = arg;
-
-        if (invr) {
-            if (posb + 1 >= base.getFemur().getServo().getMovMax()) {
-                descendobase = false;
-                return;
-            }
-            int novaPos = posb + 1;
-            base.getFemur().getServo().setPosicao(novaPos);
-            base.getFemur().getServo().setPosicaoInicial(novaPos);
-        } else {
-            if (posb - 1 <= base.getFemur().getServo().getMovMax()) {
-                descendobase = false;
-                return;
-            }
-            int novaPos = posb - 1;
-            base.getFemur().getServo().setPosicao(novaPos);
-            base.getFemur().setPosInicial(novaPos);
-        }
-
+        
         if (invrt) {
             if (post - 1 <= base.getFemur().getTarso().getServo().getMovMin()) {
                 descendobase = false;
@@ -153,6 +136,24 @@ public class Perna implements Membro {
             base.getFemur().getTarso().getServo().setPosicao(novaPos);
             base.getFemur().getTarso().setPosInicial(novaPos);
         }
+
+        if (invr) {
+            if (posb + 1 >= base.getFemur().getServo().getMovMax()) {
+                descendobase = false;
+                return;
+            }
+            int novaPos = posb + 1;
+            base.getFemur().getServo().setPosicao(novaPos);
+            base.getFemur().getServo().setPosicaoInicial(novaPos);
+        } else {
+            if (posb - 1 <= base.getFemur().getServo().getMovMax()) {
+                descendobase = false;
+                return;
+            }
+            int novaPos = posb - 1;
+            base.getFemur().getServo().setPosicao(novaPos);
+            base.getFemur().setPosInicial(novaPos);
+        }       
 
     }
 
