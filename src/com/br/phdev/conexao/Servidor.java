@@ -25,7 +25,10 @@ public class Servidor extends Thread{
         this.controlador = controlador;
         
         Socket con = iniciar();
-        
+        iniciarStream(con);        
+    }
+    
+    private void iniciarStream(Socket con){
         try{
             in = con.getInputStream();
             inr = new InputStreamReader(in);
@@ -79,7 +82,8 @@ public class Servidor extends Thread{
                 controlador.parar();     
                 rodando = false;
                 server.close();     
-                iniciar();                           
+                Socket con = iniciar();                           
+                iniciarStream(con);
                 //server = null;                
             }
             catch(Exception e){
