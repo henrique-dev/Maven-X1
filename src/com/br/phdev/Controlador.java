@@ -333,7 +333,7 @@ public class Controlador {
                     }
                     break;
                 case 105:
-                    System.out.println("DELAY DE COMANDOS ALTERADO PARA 300ms");
+                    System.out.println("DELAY DE COMANDOS ALTERADO PARA 150ms");
                     delayComandos = 150;
                     break;
                 case 106:
@@ -341,11 +341,11 @@ public class Controlador {
                     delayComandos = 300;
                     break;
                 case 107:
-                    System.out.println("DELAY DE COMANDOS ALTERADO PARA 300ms");
+                    System.out.println("DELAY DE COMANDOS ALTERADO PARA 450ms");
                     delayComandos = 450;
                     break;
                 case 108:
-                    System.out.println("DELAY DE COMANDOS ALTERADO PARA 300ms");
+                    System.out.println("DELAY DE COMANDOS ALTERADO PARA 600ms");
                     delayComandos = 600;
                     break;
                 case 110:
