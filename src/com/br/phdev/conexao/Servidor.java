@@ -75,15 +75,11 @@ public class Servidor extends Thread{
                 System.out.println("Fechando servidor");
                 controlador.parar();                
                 server.close();                
-                server = null;
-                sleep(2000);
+                server = null;                
             }
             catch(IOException e){
                 e.printStackTrace();
-            }
-            catch(InterruptedException e){
-                e.printStackTrace();
-            }
+            }            
         }
     }
     
