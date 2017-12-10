@@ -13,6 +13,8 @@ public class Servidor extends Thread{
     
     private final int PORTA = 12345;
     
+    private boolean rodando = false;
+    
     private static ServerSocket server;
     private InputStream in;
     private InputStreamReader inr;
@@ -41,6 +43,7 @@ public class Servidor extends Thread{
             while(true){
                 Socket con = server.accept();
                 System.out.println("Conectado");
+                rodando = true;
                 return con;
             }
         }
@@ -55,7 +58,7 @@ public class Servidor extends Thread{
     public void run(){
         String msg = "";
         try{
-            while(!(msg.equals("sair"))){
+            while(rodando){
                 msg = bfr.readLine();                                
                 controlador.receberMensagem(msg, null);
             }
@@ -66,7 +69,8 @@ public class Servidor extends Thread{
         finally{
             try{
                 System.out.println("Fechando servidor");
-                controlador.parar();                
+                controlador.parar();     
+                rodando = false;
                 //server.close();                
                 //server = null;                
             }
