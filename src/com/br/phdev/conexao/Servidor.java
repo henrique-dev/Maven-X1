@@ -55,11 +55,15 @@ public class Servidor extends Thread{
         return null;
     }
     
+    public void setRodando(){
+        
+    }
+    
     @Override
     public void run(){
         String msg = "";
         try{
-            while(rodando){                
+            while(!server.isClosed()){                
                 msg = bfr.readLine();                                
                 controlador.receberMensagem(msg, null);                       
             }
