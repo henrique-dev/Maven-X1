@@ -53,6 +53,9 @@ public class Controlador {
 
         servidor = new Servidor(this);
         servidor.start();
+        
+        thread = new ControladorThread();
+        thread.start();
 
         //filaComandos = new LinkedList<>();
     }
@@ -363,8 +366,8 @@ public class Controlador {
                     break;
                 case 115:
                     System.out.println("INICIANDO PERNAS");
-                    thread = new ControladorThread();
-                    thread.start();
+                    //thread = new ControladorThread();
+                    //thread.start();
                     //pernas[PERNA_1].iniciar();
                     //pernas[PERNA_2].iniciar();
                     //pernas[PERNA_3].iniciar();
