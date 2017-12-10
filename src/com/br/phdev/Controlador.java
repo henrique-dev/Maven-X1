@@ -31,6 +31,16 @@ public class Controlador {
     private MPU9150 moduloMPU;
 
     private Perna[] pernas;
+    
+    private final int algoritmoPasso1[] = new int[]{3, 53, -2, 50, -2, 54, -2, 52, -2, 5, 29, 55, 78, -2, 25, -2, 28, -2,
+                        27, -2, 75, -2, 79, -2, 77, -2, 53, 80, 4, 30, -2, 0, -2, 3, -2, 2, -1};
+    private final int algoritmoPasso2[] = new int[]{3, 53, -2, 50, -2, 57, -2, 58, -2, 55, 52, 78, 5, 32, 33, -2, 25, -2, 28, -2, 27, -2,
+                        75, -2, 82, -2, 83, -2, 80, 77, 53, 7, 8, 30, -2, 0, -2, 3, -2, 2, -1};
+    
+    private int movimentoAtual = 0;
+    private int movimentoIndex = 0;
+    private boolean movimentoParaFrente = false;
+    private boolean movimentoParaTras = false;
 
     public Controlador() throws I2CFactory.UnsupportedBusNumberException {
 
@@ -388,14 +398,18 @@ public class Controlador {
                 case 150:
                     System.out.println("ALGORITMO DE PASSO V1");
                    //preMsg = "3 53-50-54-52-5 29 55 78-25-28-27-75-79-77-53 80 4 30-0-3-2";                    
-                    receberMensagem(null, new int[]{3, 53, -2, 50, -2, 54, -2, 52, -2, 5, 29, 55, 78, -2, 25, -2, 28, -2,
-                        27, -2, 75, -2, 79, -2, 77, -2, 53, 80, 4, 30, -2, 0, -2, 3, -2, 2, -1});
+                    receberMensagem(null, algoritmoPasso1);
                     break;
                 case 151:
                     System.out.println("ALGORITMO DE PASSO V2");
                     //preMsg = "3 53-50-57-58-55 52 78 5 32 33-25-28-27-75-82-83-80 77 53 7 8 30-0-3-2";
-                    receberMensagem(null, new int[]{3, 53, -2, 50, -2, 57, -2, 58, -2, 55, 52, 78, 5, 32, 33, -2, 25, -2, 28, -2, 27, -2,
-                        75, -2, 82, -2, 83, -2, 80, 77, 53, 7, 8, 30, -2, 0, -2, 3, -2, 2, -1});
+                    receberMensagem(null, algoritmoPasso2);
+                    break;
+                case 304:
+                    movimentoParaFrente = true;
+                    break;
+                case 305:
+                    movimentoParaFrente = false;
                     break;
             }
         }
@@ -450,6 +464,12 @@ public class Controlador {
                         }
                         if (perna.estaDescendobase()) {
                             perna.descerBase(Perna.ATE_O_LIMITE);                            
+                        }
+                        if (movimentoParaFrente){
+                            receberMensagem(algoritmoPasso2[movimentoIndex] + "", null);
+                            movimentoIndex++;
+                            if (algoritmoPasso2[movimentoIndex] == -1)
+                                movimentoIndex = 0;
                         }
                     }
 
