@@ -441,9 +441,11 @@ public class Controlador {
 
                         if (perna.estaElevandobase()) {
                             perna.elevarBase(Perna.ATE_O_LIMITE);
+                            System.out.println("Elevando base");
                         }
                         if (perna.estaDescendobase()) {
                             perna.descerBase(Perna.ATE_O_LIMITE);
+                            System.out.println("Descendo base");
                         }
                     }
 
