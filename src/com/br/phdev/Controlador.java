@@ -403,8 +403,8 @@ public class Controlador {
         }
         pernas = null;
         inicializarPernas();
-        servidor = new Servidor(this);
-        servidor.start();        
+        //servidor = new Servidor(this);
+        //servidor.start();        
     }
 
     private void delay(int tempo) {
