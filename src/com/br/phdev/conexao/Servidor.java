@@ -58,11 +58,7 @@ public class Servidor extends Thread{
         }
         
         return null;
-    }
-    
-    public void setRodando(){
-        
-    }
+    }        
     
     @Override
     public void run(){
@@ -84,6 +80,7 @@ public class Servidor extends Thread{
                 server.close();     
                 Socket con = iniciar();                           
                 iniciarStream(con);
+                this.run();
                 //server = null;                
             }
             catch(Exception e){
