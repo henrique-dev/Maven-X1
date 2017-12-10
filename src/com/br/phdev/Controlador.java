@@ -60,22 +60,22 @@ public class Controlador {
 
     private void inicializarPernas() {
         pernas = new Perna[4];
-        pernas[PERNA_1] = new Perna(new Base(moduloPWM, 5, 385, new Femur(moduloPWM, 4, 428, new Tarso(moduloPWM, 0, 340))));
+        pernas[PERNA_1] = new Perna(new Base(moduloPWM, 2, 385, new Femur(moduloPWM, 5, 428, new Tarso(moduloPWM, 0, 340))));
         pernas[PERNA_1].getBase().getFemur().getTarso().setLimites(200, 420);
         pernas[PERNA_1].getBase().getFemur().setLimites(520, 275);
         pernas[PERNA_1].getBase().setLimites(280, 490);
 
-        pernas[PERNA_2] = new Perna(new Base(moduloPWM, 3, 415, new Femur(moduloPWM, 2, 300, new Tarso(moduloPWM, 1, 195))));
+        pernas[PERNA_2] = new Perna(new Base(moduloPWM, 3, 415, new Femur(moduloPWM, 7, 300, new Tarso(moduloPWM, 1, 195))));
         pernas[PERNA_2].getBase().getFemur().getTarso().setLimites(340, 130);
         pernas[PERNA_2].getBase().getFemur().setLimites(185, 475);
         pernas[PERNA_2].getBase().setLimites(310, 520);
 
-        pernas[PERNA_3] = new Perna(new Base(moduloPWM, 7, 395, new Femur(moduloPWM, 6, 313, new Tarso(moduloPWM, 14, 195))));
+        pernas[PERNA_3] = new Perna(new Base(moduloPWM, 8, 395, new Femur(moduloPWM, 10, 313, new Tarso(moduloPWM, 14, 195))));
         pernas[PERNA_3].getBase().getFemur().getTarso().setLimites(360, 150);
         pernas[PERNA_3].getBase().getFemur().setLimites(220, 465);
         pernas[PERNA_3].getBase().setLimites(300, 490);
 
-        pernas[PERNA_4] = new Perna(new Base(moduloPWM, 8, 390, new Femur(moduloPWM, 9, 448, new Tarso(moduloPWM, 15, 333))));
+        pernas[PERNA_4] = new Perna(new Base(moduloPWM, 12, 390, new Femur(moduloPWM, 13, 448, new Tarso(moduloPWM, 15, 333))));
         pernas[PERNA_4].getBase().getFemur().getTarso().setLimites(185, 420);
         pernas[PERNA_4].getBase().getFemur().setLimites(540, 295);
         pernas[PERNA_4].getBase().setLimites(290, 490);
