@@ -33,6 +33,8 @@ public class Controlador {
     private final int PERNA_3 = 2; // PERNA DIANTEIRA DIREITA
     private final int PERNA_4 = 3; // PERNA DIANTEIRA ESQUERDA
     public static int velocidade = 1;
+    
+    private int delayComandos = 150;
 
     //private Queue<Componente> filaComandos;
     private PCA9685 moduloPWM;
@@ -142,11 +144,7 @@ public class Controlador {
 
             switch (comandos[index++]) {
                 case -2:
-                    delay(150);
-                    //pernas[PERNA_1].delay(150);
-                    //pernas[PERNA_2].delay(150);
-                    //pernas[PERNA_3].delay(150);
-                    //pernas[PERNA_4].delay(150);                    
+                    delay(delayComandos);                                       
                     break;
                 case 0:
                     System.out.println("LEVANTANDO PERNA 1");
@@ -333,6 +331,22 @@ public class Controlador {
                         ((Perna) cmp).getBase().getFemur().getTarso().resetarPosicao();
                         delay(100);
                     }
+                    break;
+                case 105:
+                    System.out.println("DELAY DE COMANDOS ALTERADO PARA 300ms");
+                    delayComandos = 150;
+                    break;
+                case 106:
+                    System.out.println("DELAY DE COMANDOS ALTERADO PARA 300ms");
+                    delayComandos = 300;
+                    break;
+                case 107:
+                    System.out.println("DELAY DE COMANDOS ALTERADO PARA 300ms");
+                    delayComandos = 450;
+                    break;
+                case 108:
+                    System.out.println("DELAY DE COMANDOS ALTERADO PARA 300ms");
+                    delayComandos = 600;
                     break;
                 case 110:
                     System.out.println("VELOCIDADE 1");
