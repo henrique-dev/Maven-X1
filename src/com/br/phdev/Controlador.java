@@ -410,9 +410,11 @@ public class Controlador {
                     break;
                 case 304:
                     movimentoParaFrente = true;
+                    System.out.println("Frente");
                     break;
                 case 305:
                     movimentoParaFrente = false;
+                    System.out.println("Tras");
                     break;
             }
         }
