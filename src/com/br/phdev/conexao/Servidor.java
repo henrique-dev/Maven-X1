@@ -35,7 +35,7 @@ public class Servidor extends Thread{
     
     private Socket iniciar(){
         
-        try{
+        try{            
             server = new ServerSocket(PORTA);
             while(true){
                 Socket con = server.accept();
@@ -64,8 +64,9 @@ public class Servidor extends Thread{
         finally{
             try{
                 System.out.println("Fechando servidor");
-                controlador.parar();
+                controlador.parar();                
                 server.close();
+                server = null;
             }
             catch(IOException e){
                 e.printStackTrace();
