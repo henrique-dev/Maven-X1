@@ -63,7 +63,7 @@ public class Servidor extends Thread{
     public void run(){
         String msg = "";
         try{
-            while(!server.isClosed()){                
+            while(bfr != null){                
                 msg = bfr.readLine();                                
                 controlador.receberMensagem(msg, null);                       
             }
