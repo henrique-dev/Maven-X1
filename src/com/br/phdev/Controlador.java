@@ -477,7 +477,7 @@ public class Controlador {
                             movimentoIndex++;
                             if (algoritmoPasso2[movimentoIndex] == -1)
                                 movimentoIndex = 0;
-                            delay(delayComandos);
+                            //delay(delayComandos);
                             System.out.println(algoritmoPasso2[movimentoIndex]);
                         }                        
                     }
