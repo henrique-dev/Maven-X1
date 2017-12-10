@@ -30,7 +30,7 @@ public class Ajustar {
     }
     
     public void setServoPos(int ch, int pos){
-        
+        modulo.setPWM(ch, 0, pos);
     }        
 
     private void delay(int tempo) {
