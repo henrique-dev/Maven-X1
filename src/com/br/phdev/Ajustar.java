@@ -1,16 +1,9 @@
 package com.br.phdev;
 
-import com.br.phdev.cmp.Base;
-import com.br.phdev.cmp.Femur;
-import com.br.phdev.cmp.Perna;
-import com.br.phdev.cmp.Tarso;
 import com.br.phdev.driver.PCA9685;
 
 import com.pi4j.io.i2c.I2CFactory;
-import com.pi4j.io.i2c.I2CBus;
-import com.pi4j.io.i2c.I2CFactory;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Ajustar {    

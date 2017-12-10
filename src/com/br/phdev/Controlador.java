@@ -1,7 +1,6 @@
 package com.br.phdev;
 
 import com.br.phdev.cmp.Base;
-import com.br.phdev.cmp.Componente;
 import com.br.phdev.cmp.Femur;
 import com.br.phdev.cmp.Membro;
 import com.br.phdev.cmp.Perna;
@@ -11,16 +10,7 @@ import com.br.phdev.driver.MPU9150;
 import com.br.phdev.driver.PCA9685;
 
 import com.pi4j.io.i2c.I2CFactory;
-import com.pi4j.io.i2c.I2CBus;
-import com.pi4j.io.i2c.I2CFactory;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 //import java.com.br.phdev.driver;
 public class Controlador {
