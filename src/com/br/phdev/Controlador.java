@@ -477,8 +477,9 @@ public class Controlador {
                             movimentoIndex++;
                             if (algoritmoPasso2[movimentoIndex] == -1)
                                 movimentoIndex = 0;
-                        }
-                        System.out.println("repetindo");
+                            delay(delayComandos);
+                            System.out.println(algoritmoPasso2[movimentoIndex]);
+                        }                        
                     }
 
                 } catch (Exception e) {
