@@ -73,7 +73,7 @@ public class Servidor extends Thread{
                 controlador.parar();     
                 rodando = false;
                 iniciar();
-                //server.close();                
+                server.close();                
                 //server = null;                
             }
             catch(Exception e){
