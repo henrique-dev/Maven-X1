@@ -9,7 +9,6 @@ import com.br.phdev.driver.PCA9685;
 import com.pi4j.io.i2c.I2CFactory;
 import com.pi4j.io.i2c.I2CBus;
 import com.pi4j.io.i2c.I2CFactory;
-import com.sun.javafx.fxml.expression.Expression;
 
 import java.io.IOException;
 import java.util.Scanner;
