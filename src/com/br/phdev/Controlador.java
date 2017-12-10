@@ -473,7 +473,7 @@ public class Controlador {
                             perna.descerBase(Perna.ATE_O_LIMITE);                            
                         }
                         if (movimentoParaFrente){
-                            receberMensagem(algoritmoPasso2[movimentoIndex] + "", null);
+                            receberMensagem(null, new int[]{algoritmoPasso2[movimentoIndex]});
                             movimentoIndex++;
                             if (algoritmoPasso2[movimentoIndex] == -1)
                                 movimentoIndex = 0;
