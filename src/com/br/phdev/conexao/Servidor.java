@@ -46,7 +46,7 @@ public class Servidor extends Thread{
         catch(IOException e){
             e.printStackTrace();
         }
-        return iniciar();
+        return null;
     }
     
     @Override
