@@ -83,6 +83,9 @@ public class Controlador {
 
     private int[] receberComandos(String msg) {
 
+        if (msg == null)
+            return null;
+        
         int[] temp = new int[msg.length() + 1];
         int index = 0;
         String tempNum = "";
@@ -123,6 +126,8 @@ public class Controlador {
         int[] comandos;
         if (cmds == null) {
             comandos = receberComandos(msg);
+            if (comandos == null)
+                return;
         } else {
             comandos = cmds;
         }
