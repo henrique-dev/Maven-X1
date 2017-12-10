@@ -124,6 +124,8 @@ public class Controlador {
     }
 
     public void receberMensagem(String msg, int[] cmds) {
+        
+        System.out.println("recebendo comandos");
 
         int[] comandos;
         if (cmds == null) {
