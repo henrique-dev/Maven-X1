@@ -476,6 +476,7 @@ public class Controlador {
                             if (algoritmoPasso2[movimentoIndex] == -1)
                                 movimentoIndex = 0;
                         }
+                        System.out.println("repetindo");
                     }
 
                 } catch (Exception e) {
