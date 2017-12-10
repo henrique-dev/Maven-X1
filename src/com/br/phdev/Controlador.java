@@ -34,13 +34,10 @@ public class Controlador {
 
     public Controlador() throws I2CFactory.UnsupportedBusNumberException {
 
-        if (moduloPWM == null) {
-            moduloPWM = new PCA9685();
-            moduloPWM.setPWMFreq(60);
-        }
-        if (moduloMPU == null) {
-            moduloMPU = new MPU9150();
-        }
+        moduloPWM = new PCA9685();
+        moduloPWM.setPWMFreq(60);        
+        //moduloMPU = new MPU9150();
+        
         
         inicializarPernas();
 
