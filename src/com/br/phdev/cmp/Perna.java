@@ -103,6 +103,7 @@ public class Perna implements Membro {
             base.getFemur().getServo().setPosicao(novaPos);
             base.getFemur().setPosInicial(novaPos);
         }        
+        System.out.println("elevando");
 
     }
 
@@ -154,6 +155,7 @@ public class Perna implements Membro {
             base.getFemur().getServo().setPosicao(novaPos);
             base.getFemur().setPosInicial(novaPos);
         }       
+        System.out.println("descendo");
 
     }
 

@@ -459,12 +459,10 @@ public class Controlador {
                         perna.getBase().getFemur().getTarso().mover();
 
                         if (perna.estaElevandobase()) {
-                            perna.elevarBase(Perna.ATE_O_LIMITE);
-                            System.out.println("Elevando base");
+                            perna.elevarBase(Perna.ATE_O_LIMITE);                            
                         }
                         if (perna.estaDescendobase()) {
-                            perna.descerBase(Perna.ATE_O_LIMITE);
-                            System.out.println("Descendo base");
+                            perna.descerBase(Perna.ATE_O_LIMITE);                            
                         }
                     }
 
