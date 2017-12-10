@@ -42,6 +42,8 @@ public class Servidor extends Thread{
             if (server == null)
                 server = new ServerSocket(PORTA);
             while(true){
+                if (server.isClosed())
+                    server = new ServerSocket(PORTA);
                 Socket con = server.accept();
                 System.out.println("Conectado");
                 rodando = true;
