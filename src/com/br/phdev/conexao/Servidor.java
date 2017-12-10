@@ -66,7 +66,8 @@ public class Servidor extends Thread{
         try{
             while(!(msg.equals("sair"))){                
                 msg = bfr.readLine();                                
-                controlador.receberMensagem(msg, null);                       
+                controlador.receberMensagem(msg, null);   
+                System.out.println("recebendo mensagem");
             }                        
         }
         catch(IOException e){
