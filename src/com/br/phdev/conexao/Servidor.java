@@ -45,14 +45,7 @@ public class Servidor extends Thread{
             }
         }
         catch(IOException e){
-            e.printStackTrace();
-            try{
-                sleep(2000);
-                iniciar();
-            }
-            catch(InterruptedException ex){
-                ex.printStackTrace();
-            }            
+            e.printStackTrace();            
         }
         
         return null;
