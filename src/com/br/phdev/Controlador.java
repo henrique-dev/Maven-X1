@@ -39,7 +39,8 @@ public class Controlador {
     private List<int[]> algPasV2;
     private final int algoritmoPasso2[] = new int[]{3, 53, -2, 50, -2, 57, -2, 58, -2, 55, 52, 78, 5, 32, 33, -2, 25, -2, 28, -2, 27, -2,
         75, -2, 82, -2, 83, -2, 80, 77, 53, 7, 8, 30, -2, 0, -2, 3, -2, 2, -1};
-    private final int algotitmoPasso2R[] = new int[]{};
+    private final int algoritmoPasso2R[] = new int[]{3, 53, -2, 0, -2, 7, -2, 8, -2, 55, 5, 2, 83, 82, 28, -2, 75, -2, 78, -2, 77, -2,
+        25, -2, 32, -2, 33, -2, 57, 58, 80, 30, 27, 3, -2, 50, -2, 53, -2, 52, -1};
     
     private int movimentoAtual = 0;
     private int movimentoIndex = 0;
@@ -457,6 +458,9 @@ public class Controlador {
                 //System.out.println("ALGORITMO DE PASSO V2");
                 //preMsg = "3 53-50-57-58-55 52 78 5 32 33-25-28-27-75-82-83-80 77 53 7 8 30-0-3-2";
                 receberMensagem(null, algoritmoPasso2);
+                break;
+            case 153:
+                receberMensagem(null, algoritmoPasso2R);
                 break;
             case 303: // Botão B
                 switch (delayComandos) {
