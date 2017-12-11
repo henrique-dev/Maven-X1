@@ -181,6 +181,7 @@ public class Controlador {
     }
 
     public void executarComando(int comando) {
+        System.out.println("EXECUTANDO O COMANDO " + comando);
         switch (comando) {
                 case -2:
                     delay(delayComandos);
