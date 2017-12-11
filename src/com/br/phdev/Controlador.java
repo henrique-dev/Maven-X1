@@ -513,12 +513,14 @@ public class Controlador {
                 }
                 break;
             case 304: // Botãao cima pressionado
-                movimentoParaFrente = true;
+                movimentoParaTras = false;
+                movimentoParaFrente = true;                
                 break;
             case 305: // Botão cima solto
                 movimentoParaFrente = false;
                 break;
             case 324: // Botão pra baixo pressionado
+                movimentoParaFrente = false;
                 movimentoParaTras = true;
                 break;
             case 325: // Botão pra baixo solto
@@ -588,13 +590,14 @@ public class Controlador {
                         else
                             movimentoIndex = 0;                                                
                     }
-                    if (movimentoParaTras) {
-                        int index = movimentoIndex++;
-                        if (index < algPasV2.size())
-                            receberMensagem(null, algPasV2.get(index));
-                        else
-                            movimentoIndex = 0;
-                    }
+                    else
+                        if (movimentoParaTras) {
+                            int index = movimentoIndex++;
+                            if (index < algPasV2R.size())
+                                receberMensagem(null, algPasV2R.get(index));
+                            else
+                                movimentoIndex = 0;
+                        }
 
                     for (Perna perna : pernas) {
                         perna.getBase().mover();
