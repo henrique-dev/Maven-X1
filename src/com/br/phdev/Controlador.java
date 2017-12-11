@@ -176,8 +176,12 @@ public class Controlador {
         int index = 0;
 
         while (comandos[index] != -1) {
-            //executarComando(comandos[index++]);
-            switch (comandos[index++]) {
+            executarComando(comandos[index++]);            
+        }
+    }
+
+    public void executarComando(int comando) {
+        switch (comando) {
                 case -2:
                     delay(delayComandos);
                     break;
@@ -471,11 +475,6 @@ public class Controlador {
                     movimentoParaFrente = false;
                     break;
             }
-        }
-    }
-
-    public void executarComando(int comando) {
-
     }
 
     public void parar() {
@@ -568,6 +567,10 @@ public class Controlador {
         }
 
     }
+
+    public ControladorThread getThread() {
+        return thread;
+    }        
 
     public static void main(String[] args) throws I2CFactory.UnsupportedBusNumberException {
 
