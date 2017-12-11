@@ -180,7 +180,7 @@ public class Controlador {
         }
     }
 
-    public synchronized void executarComando(int comando) {
+    public void executarComando(int comando) {
         switch (comando) {
                 case -2:
                     delay(delayComandos);
