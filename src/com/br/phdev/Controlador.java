@@ -538,8 +538,8 @@ public class Controlador {
                 try {
                     if (movimentoParaFrente) {                          
                         int index = movimentoIndex++;
-                        if (movimentoIndex < algPasV2.size())
-                            receberMensagem(null, algPasV2.get(movimentoIndex++));                        
+                        if (index < algPasV2.size())
+                            receberMensagem(null, algPasV2.get(index));                        
                         else
                             movimentoIndex = 0;                                                
                     }
