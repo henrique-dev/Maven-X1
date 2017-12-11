@@ -105,7 +105,7 @@ public class Controlador {
     private void inicializarPernas() {
         pernas = new Perna[4];
         pernas[PERNA_1] = new Perna(new Base(moduloPWM, 2, 385, new Femur(moduloPWM, 5, 428, new Tarso(moduloPWM, 0, 340))));
-        pernas[PERNA_1].getBase().getFemur().getTarso().setLimites(200, 420);
+        pernas[PERNA_1].getBase().getFemur().getTarso().setLimites(200, 410);
         pernas[PERNA_1].getBase().getFemur().setLimites(520, 275);
         pernas[PERNA_1].getBase().setLimites(280, 490);
 
@@ -529,6 +529,7 @@ public class Controlador {
 
         private int averageTick;
         private boolean rodando = true;
+        private int tx = 60;
 
         @Override
         public void run() {
@@ -538,10 +539,12 @@ public class Controlador {
             long waitTime;
             long totalTime = 0;
             long tickCount = 0;
-            long targetTime = 1000 / 120;
+            long targetTime = 1000 / tx;
 
             while (rodando) {
                 startTime = System.nanoTime();
+                
+                System.out.println(averageTick);
 
                 try {
                     if (movimentoParaFrente) {                          
@@ -582,7 +585,7 @@ public class Controlador {
                 }
                 totalTime += System.nanoTime() - startTime;
                 tickCount++;
-                if (tickCount == 120) {
+                if (tickCount == tx) {
                     averageTick = (int) (1000 / ((totalTime / tickCount) / 1000000));
                     tickCount = 0;
                     totalTime = 0;
