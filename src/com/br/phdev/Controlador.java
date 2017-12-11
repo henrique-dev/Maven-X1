@@ -343,6 +343,7 @@ public class Controlador {
                 case 315: // Botão X
                 case 101:
                     //System.out.println("RESETANDO POSICOES");
+                    movimentoIndex = 0;
                     for (Membro cmp : pernas) {
                         ((Perna) cmp).getBase().getFemur().resetarPosicao();
                         ((Perna) cmp).getBase().resetarPosicao();
@@ -527,10 +528,9 @@ public class Controlador {
                         if (perna.estaDescendobase()) {
                             perna.descerBase(Perna.ATE_O_LIMITE);
                         }
-                        if (movimentoParaFrente) {
-                            System.out.println("AQUI = " + movimentoIndex + "Comando: " + algPasV2.get(movimentoIndex)[1]);
-                            receberMensagem(null, algPasV2.get(movimentoIndex++));
-                            System.out.println("Movimento atual: " + movimentoIndex);                            
+                        if (movimentoParaFrente) {                            
+                            receberMensagem(null, algPasV2.get(movimentoIndex++));                            
+                            delay(delayComandos/5);
                             if (movimentoIndex == algPasV2.size() - 1) {
                                 movimentoIndex = 0;
                             }
