@@ -527,7 +527,8 @@ public class Controlador {
                         if (perna.estaDescendobase()) {
                             perna.descerBase(Perna.ATE_O_LIMITE);
                         }
-                        if (movimentoParaFrente) {                            
+                        if (movimentoParaFrente) {  
+                            System.out.println("AQUI");
                             receberMensagem(null, algPasV2.get(movimentoIndex));
                             System.out.println("Movimento atual: " + movimentoIndex);
                             movimentoIndex++;
