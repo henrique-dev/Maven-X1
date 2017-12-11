@@ -146,7 +146,7 @@ public class Controlador {
         pernas[PERNA_2] = new Perna(new Base(moduloPWM, 3, 415, new Femur(moduloPWM, 7, 300, new Tarso(moduloPWM, 1, 195))));
         pernas[PERNA_2].getBase().getFemur().getTarso().setLimites(340, 130);
         pernas[PERNA_2].getBase().getFemur().setLimites(185, 475);
-        pernas[PERNA_2].getBase().setLimites(310, 520);
+        pernas[PERNA_2].getBase().setLimites(310, 510);
 
         pernas[PERNA_3] = new Perna(new Base(moduloPWM, 8, 395, new Femur(moduloPWM, 10, 313, new Tarso(moduloPWM, 14, 195))));
         pernas[PERNA_3].getBase().getFemur().getTarso().setLimites(360, 150);
