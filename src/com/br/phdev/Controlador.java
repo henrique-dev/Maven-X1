@@ -90,7 +90,9 @@ public class Controlador {
         algPasV2.add(new int[]{-2, -1});
         algPasV2.add(new int[]{3, -1});
         algPasV2.add(new int[]{2, -1});
-        algPasV2.add(new int[]{-2, -1});        
+        algPasV2.add(new int[]{-2, -1});   
+        
+        System.out.println(algPasV2.size());
 
         //filaComandos = new LinkedList<>();
     }
