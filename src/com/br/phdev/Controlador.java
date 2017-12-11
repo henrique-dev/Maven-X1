@@ -512,7 +512,7 @@ public class Controlador {
             long totalTime = 0;
             long tickCount = 0;
             long targetTime = 1000 / 120;            
-            int index = 0;
+            int index = 0;            
 
             while (rodando) {
                 startTime = System.nanoTime();
@@ -532,8 +532,8 @@ public class Controlador {
                         if (movimentoParaFrente) {                                                        
                             //receberMensagem(null, algPasV2.get(movimentoIndex++));    
                             //int comando = algPasV2.get(movimentoIndex)[index];
-                            while (algPasV2.get(movimentoIndex)[index++] != -1){
-                                executarComando(algPasV2.get(movimentoIndex)[index]);                                
+                            while (algPasV2.get(movimentoIndex)[index] != -1){
+                                executarComando(algPasV2.get(movimentoIndex)[index++]);                                
                             }
                             if (index == -1)
                                 index = 0;
