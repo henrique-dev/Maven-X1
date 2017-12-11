@@ -533,12 +533,13 @@ public class Controlador {
                             //receberMensagem(null, algPasV2.get(movimentoIndex++));    
                             //int comando = algPasV2.get(movimentoIndex)[index];                            
                             int index = 0;
-                            int[] mov = algPasV2.get(movimentoIndex++);
+                            int[] mov = algPasV2.get(movimentoIndex);
                             while (mov[index] != -1){
                                 System.out.println("index " + index);
                                 executarComando(algPasV2.get(movimentoIndex)[index++]);                                
                             }                                                                         
                             System.out.println("movimentoindex " + movimentoIndex);
+                            movimentoIndex++;
                             delay(delayComandos/5);
                             if (movimentoIndex == algPasV2.size() - 1) {
                                 movimentoIndex = 0;
