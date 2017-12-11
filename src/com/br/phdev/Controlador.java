@@ -565,7 +565,7 @@ public class Controlador {
 
         private int averageTick;
         private boolean rodando = true;
-        private int tx = 60;
+        private int tx = 30;
 
         @Override
         public void run() {
