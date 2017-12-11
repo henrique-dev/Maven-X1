@@ -20,13 +20,9 @@ public class Servo {
         this.posicaoInicial = posInicial;
     }
 
-    public synchronized void mover() {    
-        
-        /*
+    public synchronized void mover() {                    
         if (posicao == posicaoAntiga)
             return;
-*/
-
         
         if (posicao == 0) {
             modulo.setPWM(canal, 0, 0);            
