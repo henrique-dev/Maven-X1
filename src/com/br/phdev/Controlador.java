@@ -39,8 +39,7 @@ public class Controlador {
     private List<int[]> algPasV2;
     private final int algoritmoPasso2[] = new int[]{3, 53, -2, 50, -2, 57, -2, 58, -2, 55, 52, 78, 5, 32, 33, -2, 25, -2, 28, -2, 27, -2,
         75, -2, 82, -2, 83, -2, 80, 77, 53, 7, 8, 30, -2, 0, -2, 3, -2, 2, -1};
-
-    // "3 53-50-57-58-55 52 78 5 32 33-25-28-27-75-82-83-80 77 53 7 8 30-0-3-2";
+    
     private int movimentoAtual = 0;
     private int movimentoIndex = -1;
     private boolean movimentoParaFrente = false;
@@ -69,7 +68,7 @@ public class Controlador {
         algPasV2.add(new int[]{-2, -1});
         algPasV2.add(new int[]{58, -1});
         algPasV2.add(new int[]{-2, -1});
-        algPasV2.add(new int[]{-2, 55, 52, 78, 5, 32, 33, -1});
+        algPasV2.add(new int[]{ 55, 52, 78, 5, 32, 33, -1});
         algPasV2.add(new int[]{-2, -1});
         algPasV2.add(new int[]{25, -1});
         algPasV2.add(new int[]{-2, -1});
@@ -83,13 +82,15 @@ public class Controlador {
         algPasV2.add(new int[]{-2, -1});
         algPasV2.add(new int[]{83, -1});
         algPasV2.add(new int[]{-2, -1});
-        algPasV2.add(new int[]{-2, 80, 77, 53, 7, 8, 30 - 1});
+        algPasV2.add(new int[]{ 80, 77, 53, 7, 8, 30 - 1});
         algPasV2.add(new int[]{-2, -1});
         algPasV2.add(new int[]{0, -1});
         algPasV2.add(new int[]{-2, -1});
         algPasV2.add(new int[]{3, -1});
+        algPasV2.add(new int[]{-2, -1});
         algPasV2.add(new int[]{2, -1});
         algPasV2.add(new int[]{-2, -1});
+        // "3 53-50-57-58-55 52 78 5 32 33-25-28-27-75-82-83-80 77 53 7 8 30-0-3-2";
 
         System.out.println(algPasV2.size());
 
@@ -540,9 +541,11 @@ public class Controlador {
                             executarComando(algPasV2.get(movimentoIndex)[index++]);
                         }
                         System.out.println("movimentoindex " + movimentoIndex);                                       
+                        */
                         if (movimentoIndex == algPasV2.size() - 1) {
                             movimentoIndex = -1;
                         }
+                        /*
                         //delay(delayComandos);                            
                          */
                     }
