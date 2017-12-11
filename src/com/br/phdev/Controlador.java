@@ -163,10 +163,10 @@ public class Controlador {
         //System.out.println("recebendo comandos");
         int[] comandos;
         if (cmds == null) {
-            System.out.println("Vetor nulo");
+            //System.out.println("Vetor nulo");
             comandos = receberComandos(msg);
             if (comandos == null) {
-                System.out.println("String nula");
+                //System.out.println("String nula");
                 return;
             }
         } else {
@@ -533,9 +533,9 @@ public class Controlador {
                             //int comando = algPasV2.get(movimentoIndex)[index];                            
                             int index = 0;
                             while (algPasV2.get(movimentoIndex++)[index] != -1){
+                                System.out.println("index " + index);
                                 executarComando(algPasV2.get(movimentoIndex)[index++]);                                
-                            }                                             
-                            System.out.println("index " + index);
+                            }                                                                         
                             System.out.println("movimentoindex " + movimentoIndex);
                             delay(delayComandos/5);
                             if (movimentoIndex == algPasV2.size() - 1) {
