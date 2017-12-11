@@ -511,7 +511,7 @@ public class Controlador {
             long waitTime;
             long totalTime = 0;
             long tickCount = 0;
-            long targetTime = 1000 / 120;
+            long targetTime = 1000 / 120;            
 
             while (rodando) {
                 startTime = System.nanoTime();
@@ -529,7 +529,12 @@ public class Controlador {
                             perna.descerBase(Perna.ATE_O_LIMITE);
                         }
                         if (movimentoParaFrente) {                            
-                            receberMensagem(null, algPasV2.get(movimentoIndex++));                            
+                            int index = 0;
+                            //receberMensagem(null, algPasV2.get(movimentoIndex++));    
+                            while (algPasV2.get(movimentoIndex)[index++] != -1){
+                                executarComando(index);
+                            }
+                            movimentoIndex++;
                             delay(delayComandos/5);
                             if (movimentoIndex == algPasV2.size() - 1) {
                                 movimentoIndex = 0;

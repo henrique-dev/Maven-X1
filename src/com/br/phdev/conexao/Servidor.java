@@ -76,7 +76,7 @@ public class Servidor extends Thread{
         finally{
             try{
                 System.out.println("Fechando servidor");
-                controlador.parar();
+                controlador.parar();     
                 rodando = false;
                 server.close();     
                 Socket con = iniciar();                           
