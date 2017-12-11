@@ -41,7 +41,7 @@ public class Controlador {
         75, -2, 82, -2, 83, -2, 80, 77, 53, 7, 8, 30, -2, 0, -2, 3, -2, 2, -1};
     
     private int movimentoAtual = 0;
-    private int movimentoIndex = -1;
+    private int movimentoIndex = 0;
     private boolean movimentoParaFrente = false;
     private boolean movimentoParaTras = false;
 
@@ -349,7 +349,7 @@ public class Controlador {
             case 315: // Botão X
             case 101:
                 //System.out.println("RESETANDO POSICOES");
-                movimentoIndex = -1;
+                movimentoIndex = 0;
                 for (Membro cmp : pernas) {
                     ((Perna) cmp).getBase().getFemur().resetarPosicao();
                     ((Perna) cmp).getBase().resetarPosicao();
@@ -470,19 +470,26 @@ public class Controlador {
                         break;
                 }
                 break;
-            case 304: // Botãao cima                
+            case 304: // Botãao cima pressionado
                 movimentoParaFrente = true;
                 break;
-            case 305: // Botão baixo
+            case 305: // Botão cima solto
                 movimentoParaFrente = false;
                 break;
+            case 324: // Botão pra baixo pressionado
+                movimentoParaTras = true;
+                break;
+            case 325: // Botão pra baixo solto
+                movimentoParaTras = false;
+                break;
+                
         }
     }
 
     public void parar() {
         pernas = null;
         inicializarPernas();
-        movimentoIndex = -1;
+        movimentoIndex = 0;
         delay(300);
         for (Membro cmp : pernas) {
             ((Perna) cmp).getBase().pararMovimento();
@@ -529,25 +536,15 @@ public class Controlador {
                 startTime = System.nanoTime();
 
                 try {
-                    if (movimentoParaFrente) {
-                        //receberMensagem(null, algPasV2.get(movimentoIndex++));    
-                        //int comando = algPasV2.get(movimentoIndex)[index];    
-                        receberMensagem(null, algPasV2.get(movimentoIndex++));
-                        /*
-                        int index = 0;
-                        int[] mov = algPasV2.get(movimentoIndex++);
-                        while (mov[index] != -1) {
-                            System.out.println("index " + index);
-                            executarComando(algPasV2.get(movimentoIndex)[index++]);
-                        }
-                        System.out.println("movimentoindex " + movimentoIndex);                                       
-                        */
-                        if (movimentoIndex == algPasV2.size() - 1) {
-                            movimentoIndex = -1;
-                        }
-                        /*
-                        //delay(delayComandos);                            
-                         */
+                    if (movimentoParaFrente) {                          
+                        int index = movimentoIndex++;
+                        if (movimentoIndex < algPasV2.size())
+                            receberMensagem(null, algPasV2.get(movimentoIndex++));                        
+                        else
+                            movimentoIndex = 0;                                                
+                    }
+                    if (movimentoParaTras) {
+                        receberMensagem(null, algPasV2.get(movimentoIndex--));
                     }
 
                     for (Perna perna : pernas) {
