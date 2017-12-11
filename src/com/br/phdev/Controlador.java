@@ -528,21 +528,11 @@ public class Controlador {
                 startTime = System.nanoTime();
 
                 try {
-                    for (Perna perna : pernas) {
-                        perna.getBase().mover();
-                        perna.getBase().getFemur().mover();
-                        perna.getBase().getFemur().getTarso().mover();
-
-                        if (perna.estaElevandobase()) {
-                            perna.elevarBase(Perna.ATE_O_LIMITE);
-                        }
-                        if (perna.estaDescendobase()) {
-                            perna.descerBase(Perna.ATE_O_LIMITE);
-                        }
-                    }
                     if (movimentoParaFrente) {
                         //receberMensagem(null, algPasV2.get(movimentoIndex++));    
-                        //int comando = algPasV2.get(movimentoIndex)[index];                            
+                        //int comando = algPasV2.get(movimentoIndex)[index];    
+                        receberMensagem(null, algPasV2.get(movimentoIndex++));
+                        /*
                         int index = 0;
                         int[] mov = algPasV2.get(movimentoIndex++);
                         while (mov[index] != -1) {
@@ -554,6 +544,20 @@ public class Controlador {
                             movimentoIndex = -1;
                         }
                         //delay(delayComandos);                            
+                         */
+                    }
+
+                    for (Perna perna : pernas) {
+                        perna.getBase().mover();
+                        perna.getBase().getFemur().mover();
+                        perna.getBase().getFemur().getTarso().mover();
+
+                        if (perna.estaElevandobase()) {
+                            perna.elevarBase(Perna.ATE_O_LIMITE);
+                        }
+                        if (perna.estaDescendobase()) {
+                            perna.descerBase(Perna.ATE_O_LIMITE);
+                        }
                     }
 
                 } catch (Exception e) {
