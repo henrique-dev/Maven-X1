@@ -42,7 +42,7 @@ public class Controlador {
 
     // "3 53-50-57-58-55 52 78 5 32 33-25-28-27-75-82-83-80 77 53 7 8 30-0-3-2";
     private int movimentoAtual = 0;
-    private int movimentoIndex = 0;
+    private int movimentoIndex = -1;
     private boolean movimentoParaFrente = false;
     private boolean movimentoParaTras = false;
 
@@ -348,7 +348,7 @@ public class Controlador {
             case 315: // Botão X
             case 101:
                 //System.out.println("RESETANDO POSICOES");
-                movimentoIndex = 0;
+                movimentoIndex = -1;
                 for (Membro cmp : pernas) {
                     ((Perna) cmp).getBase().getFemur().resetarPosicao();
                     ((Perna) cmp).getBase().resetarPosicao();
@@ -481,6 +481,7 @@ public class Controlador {
     public void parar() {
         pernas = null;
         inicializarPernas();
+        movimentoIndex = -1;
         delay(300);
         for (Membro cmp : pernas) {
             ((Perna) cmp).getBase().pararMovimento();
@@ -543,16 +544,15 @@ public class Controlador {
                         //receberMensagem(null, algPasV2.get(movimentoIndex++));    
                         //int comando = algPasV2.get(movimentoIndex)[index];                            
                         int index = 0;
-                        int[] mov = algPasV2.get(movimentoIndex);
+                        int[] mov = algPasV2.get(movimentoIndex++);
                         while (mov[index] != -1) {
                             System.out.println("index " + index);
                             executarComando(algPasV2.get(movimentoIndex)[index++]);
                         }
                         System.out.println("movimentoindex " + movimentoIndex);
-                        movimentoIndex++;
-                        delay(delayComandos / 5);
+                        movimentoIndex++;                        
                         if (movimentoIndex == algPasV2.size() - 1) {
-                            movimentoIndex = 0;
+                            movimentoIndex = -1;
                         }
                         //delay(delayComandos);                            
                     }
