@@ -180,7 +180,7 @@ public class Controlador {
         }
     }
 
-    public void executarComando(int comando) {
+    public synchronized void executarComando(int comando) {
         switch (comando) {
                 case -2:
                     delay(delayComandos);
@@ -485,7 +485,7 @@ public class Controlador {
             ((Perna) cmp).getBase().pararMovimento();
             ((Perna) cmp).getBase().getFemur().pararMovimento();
             ((Perna) cmp).getBase().getFemur().getTarso().pararMovimento();
-        }        
+        }               
         //servidor = new Servidor(this);
         //servidor.start();        
     }
@@ -532,7 +532,8 @@ public class Controlador {
                             //receberMensagem(null, algPasV2.get(movimentoIndex++));    
                             //int comando = algPasV2.get(movimentoIndex)[index];                            
                             int index = 0;
-                            while (algPasV2.get(movimentoIndex++)[index] != -1){
+                            int[] mov = algPasV2.get(movimentoIndex++);
+                            while (mov[index] != -1){
                                 System.out.println("index " + index);
                                 executarComando(algPasV2.get(movimentoIndex)[index++]);                                
                             }                                                                         
