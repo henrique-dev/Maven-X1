@@ -529,7 +529,7 @@ public class Controlador {
                             receberMensagem(null, algPasV2.get(movimentoIndex));
                             System.out.println("Movimento atual: " + movimentoIndex);
                             movimentoIndex++;
-                            if (movimentoIndex == algPasV2.size()) {
+                            if (movimentoIndex == algPasV2.size()-1) {
                                 movimentoIndex = 0;
                             }
                             //delay(delayComandos);                            
