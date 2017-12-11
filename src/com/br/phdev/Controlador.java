@@ -464,13 +464,11 @@ public class Controlador {
                         break;
                 }
                 break;
-            case 304: // Botãao cima
-                movimentoParaTras = false;
+            case 304: // Botãao cima                
                 movimentoParaFrente = true;
                 break;
             case 305: // Botão baixo
-                movimentoParaFrente = false;
-                movimentoParaTras = true;
+                movimentoParaFrente = false;                
                 break;                                                                                        
         }
     }
@@ -525,7 +523,7 @@ public class Controlador {
                         if (perna.estaDescendobase()) {
                             perna.descerBase(Perna.ATE_O_LIMITE);
                         }
-                        if (movimentoParaFrente) {
+                        if (movimentoParaFrente) {                            
                             receberMensagem(null, algPasV2.get(movimentoIndex));
                             System.out.println("Movimento atual: " + movimentoIndex);
                             movimentoIndex++;
