@@ -549,8 +549,7 @@ public class Controlador {
                             System.out.println("index " + index);
                             executarComando(algPasV2.get(movimentoIndex)[index++]);
                         }
-                        System.out.println("movimentoindex " + movimentoIndex);
-                        movimentoIndex++;                        
+                        System.out.println("movimentoindex " + movimentoIndex);                                       
                         if (movimentoIndex == algPasV2.size() - 1) {
                             movimentoIndex = -1;
                         }
