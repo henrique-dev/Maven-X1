@@ -69,7 +69,7 @@ public class Controlador {
         algPasV2.add(new int[]{-2, -1});
         algPasV2.add(new int[]{58, -1});
         algPasV2.add(new int[]{-2, -1});
-        algPasV2.add(new int[]{55, 52, 78, 5, 32, 33, -1});
+        algPasV2.add(new int[]{-2, 55, 52, 78, 5, 32, 33, -1});
         algPasV2.add(new int[]{-2, -1});
         algPasV2.add(new int[]{25, -1});
         algPasV2.add(new int[]{-2, -1});
@@ -83,7 +83,7 @@ public class Controlador {
         algPasV2.add(new int[]{-2, -1});
         algPasV2.add(new int[]{83, -1});
         algPasV2.add(new int[]{-2, -1});
-        algPasV2.add(new int[]{80, 77, 53, 7, 8, 30 - 1});
+        algPasV2.add(new int[]{-2, 80, 77, 53, 7, 8, 30 - 1});
         algPasV2.add(new int[]{-2, -1});
         algPasV2.add(new int[]{0, -1});
         algPasV2.add(new int[]{-2, -1});
