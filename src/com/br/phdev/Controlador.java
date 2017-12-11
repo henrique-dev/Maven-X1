@@ -477,14 +477,15 @@ public class Controlador {
             }
     }
 
-    public void parar() {
+    public void parar() {        
+        pernas = null;
+        inicializarPernas();
+        delay(300);
         for (Membro cmp : pernas) {
             ((Perna) cmp).getBase().pararMovimento();
             ((Perna) cmp).getBase().getFemur().pararMovimento();
             ((Perna) cmp).getBase().getFemur().getTarso().pararMovimento();
-        }
-        pernas = null;
-        inicializarPernas();
+        }        
         //servidor = new Servidor(this);
         //servidor.start();        
     }
