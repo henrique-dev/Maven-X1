@@ -10,6 +10,8 @@ import com.br.phdev.driver.MPU9150;
 import com.br.phdev.driver.PCA9685;
 
 import com.pi4j.io.i2c.I2CFactory;
+import java.util.ArrayList;
+import java.util.List;
 
 //import java.com.br.phdev.driver;
 public class Controlador {
@@ -34,6 +36,7 @@ public class Controlador {
     private final int algoritmoPasso1[] = new int[]{3, 53, -2, 50, -2, 54, -2, 52, -2, 5, 29, 55, 78, -2, 25, -2, 28, -2,
         27, -2, 75, -2, 79, -2, 77, -2, 53, 80, 4, 30, -2, 0, -2, 3, -2, 2, -1};
     
+    private List<int[]> algPasV2;
     private final int algoritmoPasso2[] = new int[]{3, 53, -2, 50, -2, 57, -2, 58, -2, 55, 52, 78, 5, 32, 33, -2, 25, -2, 28, -2, 27, -2,
         75, -2, 82, -2, 83, -2, 80, 77, 53, 7, 8, 30, -2, 0, -2, 3, -2, 2, -1};
     
@@ -56,7 +59,38 @@ public class Controlador {
         servidor.start();
 
         thread = new ControladorThread();
-        thread.start();
+        thread.start();                
+        
+        algPasV2 = new ArrayList<>();
+        algPasV2.add(new int[]{3, 53, -1});
+        algPasV2.add(new int[]{-2, -1});
+        algPasV2.add(new int[]{50, -1});
+        algPasV2.add(new int[]{-2, -1});
+        algPasV2.add(new int[]{57, -1});
+        algPasV2.add(new int[]{-2, -1});
+        algPasV2.add(new int[]{58, -1});
+        algPasV2.add(new int[]{-2, -1});
+        algPasV2.add(new int[]{55, 52, 78, 5, 32, 33, -1});
+        algPasV2.add(new int[]{-2, -1});
+        algPasV2.add(new int[]{25, -1});
+        algPasV2.add(new int[]{-2, -1});
+        algPasV2.add(new int[]{28, -1});
+        algPasV2.add(new int[]{-2, -1});
+        algPasV2.add(new int[]{27, -1});
+        algPasV2.add(new int[]{-2, -1});
+        algPasV2.add(new int[]{75, -1});
+        algPasV2.add(new int[]{-2, -1});
+        algPasV2.add(new int[]{82, -1});
+        algPasV2.add(new int[]{-2, -1});
+        algPasV2.add(new int[]{83, -1});
+        algPasV2.add(new int[]{-2, -1});
+        algPasV2.add(new int[]{80, 77, 53, 7, 8, 30 -1});
+        algPasV2.add(new int[]{-2, -1});
+        algPasV2.add(new int[]{0, -1});
+        algPasV2.add(new int[]{-2, -1});
+        algPasV2.add(new int[]{3, -1});
+        algPasV2.add(new int[]{2, -1});
+        algPasV2.add(new int[]{-2, -1});        
 
         //filaComandos = new LinkedList<>();
     }
@@ -136,11 +170,7 @@ public class Controlador {
             comandos = cmds;
         }
 
-        int index = 0;
-        int valor1;
-        int valor2;
-        int valor3;
-        String preMsg = "";
+        int index = 0;       
 
         while (comandos[index] != -1) {
             executarComando(comandos[index++]);
@@ -496,7 +526,7 @@ public class Controlador {
                             perna.descerBase(Perna.ATE_O_LIMITE);
                         }
                         if (movimentoParaFrente) {
-                            receberMensagem(null, new int[]{algoritmoPasso2[movimentoIndex], -1});
+                            receberMensagem(null, algPasV2.get(movimentoIndex));
                             System.out.println("Movimento atual: " + movimentoIndex);
                             movimentoIndex++;
                             if (algoritmoPasso2[movimentoIndex] == -1) {
@@ -541,6 +571,6 @@ public class Controlador {
 
         Controlador controlador = new Controlador();
 
-    }
+    }        
 
 }
