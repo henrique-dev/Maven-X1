@@ -164,8 +164,10 @@ public class Controlador {
         //System.out.println("recebendo comandos");
         int[] comandos;
         if (cmds == null) {
+            System.out.println("Vetor nulo");
             comandos = receberComandos(msg);
             if (comandos == null) {
+                System.out.println("String nula");
                 return;
             }
         } else {
