@@ -410,14 +410,51 @@ public class Controlador {
                     //preMsg = "3 53-50-57-58-55 52 78 5 32 33-25-28-27-75-82-83-80 77 53 7 8 30-0-3-2";
                     receberMensagem(null, algoritmoPasso2);
                     break;
-                case 304:
-                    movimentoParaFrente = true;
-                    System.out.println("Frente");
+                case 301: // Botão A
+                    pernas[PERNA_1].setElevandobase(true);
+                    pernas[PERNA_2].setElevandobase(true);
+                    pernas[PERNA_3].setElevandobase(true);
+                    pernas[PERNA_4].setElevandobase(true);
                     break;
-                case 305:
+                case 303: // Botão B
+                    switch (delayComandos){
+                        case 150:
+                            delayComandos = 300;
+                            break;
+                        case 300:
+                            delayComandos = 450;
+                            break;
+                        case 450:
+                            delayComandos = 600;
+                            break;
+                        case 600:
+                            delayComandos = 150;
+                            break;
+                    }                    
+                case 304: // Botãao cima
+                    movimentoParaTras = false;
+                    movimentoParaFrente = true;                    
+                    break;
+                case 305: // Botão baixo
                     movimentoParaFrente = false;
-                    System.out.println("Tras");
+                    movimentoParaTras = true;                    
+                    break;                
+                case 311: // Botão E
+                    pernas[PERNA_1].setElevandobase(false);
+                    pernas[PERNA_2].setElevandobase(false);
+                    pernas[PERNA_3].setElevandobase(false);
+                    pernas[PERNA_4].setElevandobase(false);
+                    pernas[PERNA_1].setDescendobase(false);
+                    pernas[PERNA_2].setDescendobase(false);
+                    pernas[PERNA_3].setDescendobase(false);
+                    pernas[PERNA_4].setDescendobase(false);
                     break;
+                case 321: // Botão G
+                    pernas[PERNA_1].setDescendobase(true);
+                    pernas[PERNA_2].setDescendobase(true);
+                    pernas[PERNA_3].setDescendobase(true);
+                    pernas[PERNA_4].setDescendobase(true);
+                    break;                    
             }
         }
     }
