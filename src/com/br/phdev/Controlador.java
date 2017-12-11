@@ -37,8 +37,10 @@ public class Controlador {
         27, -2, 75, -2, 79, -2, 77, -2, 53, 80, 4, 30, -2, 0, -2, 3, -2, 2, -1};
 
     private List<int[]> algPasV2;
+    private List<int[]> algPasV2R;
     private final int algoritmoPasso2[] = new int[]{3, 53, -2, 50, -2, 57, -2, 58, -2, 55, 52, 78, 5, 32, 33, -2, 25, -2, 28, -2, 27, -2,
         75, -2, 82, -2, 83, -2, 80, 77, 53, 7, 8, 30, -2, 0, -2, 3, -2, 2, -1};
+    
     private final int algoritmoPasso2R[] = new int[]{3, 53, -2, 0, -2, 7, -2, 8, -2, 55, 5, 2, 83, 82, 28, -2, 75, -2, 78, -2, 77, -2,
         25, -2, 32, -2, 33, -2, 57, 58, 80, 30, 27, 3, -2, 50, -2, 53, -2, 52, -1};
     
@@ -92,6 +94,38 @@ public class Controlador {
         algPasV2.add(new int[]{-2, -1});
         algPasV2.add(new int[]{2, -1});
         algPasV2.add(new int[]{-2, -1});
+        
+        algPasV2R = new ArrayList<>();
+        algPasV2R.add(new int[]{3, 53, -1});
+        algPasV2R.add(new int[]{-2, -1});
+        algPasV2R.add(new int[]{0, -1});
+        algPasV2R.add(new int[]{-2, -1});
+        algPasV2R.add(new int[]{7, -1});
+        algPasV2R.add(new int[]{-2, -1});
+        algPasV2R.add(new int[]{8, -1});
+        algPasV2R.add(new int[]{-2, -1});
+        algPasV2R.add(new int[]{ 55, 5, 2, 83, 82, 28, -1});
+        algPasV2R.add(new int[]{-2, -1});
+        algPasV2R.add(new int[]{75, -1});
+        algPasV2R.add(new int[]{-2, -1});
+        algPasV2R.add(new int[]{78, -1});
+        algPasV2R.add(new int[]{-2, -1});
+        algPasV2R.add(new int[]{77, -1});
+        algPasV2R.add(new int[]{-2, -1});
+        algPasV2R.add(new int[]{25, -1});
+        algPasV2R.add(new int[]{-2, -1});
+        algPasV2R.add(new int[]{32, -1});
+        algPasV2R.add(new int[]{-2, -1});
+        algPasV2R.add(new int[]{33, -1});
+        algPasV2R.add(new int[]{-2, -1});
+        algPasV2R.add(new int[]{ 57, 58, 80, 30, 27, 3, -1});
+        algPasV2R.add(new int[]{-2, -1});
+        algPasV2R.add(new int[]{50, -1});
+        algPasV2R.add(new int[]{-2, -1});
+        algPasV2R.add(new int[]{53, -1});
+        algPasV2R.add(new int[]{-2, -1});
+        algPasV2R.add(new int[]{52, -1});
+        algPasV2R.add(new int[]{-2, -1});
         // "3 53-50-57-58-55 52 78 5 32 33-25-28-27-75-82-83-80 77 53 7 8 30-0-3-2";
         // 
         System.out.println(algPasV2.size());
@@ -544,7 +578,7 @@ public class Controlador {
             while (rodando) {
                 startTime = System.nanoTime();
                 
-                System.out.println(averageTick);
+                //System.out.println(averageTick);
 
                 try {
                     if (movimentoParaFrente) {                          
@@ -555,8 +589,11 @@ public class Controlador {
                             movimentoIndex = 0;                                                
                     }
                     if (movimentoParaTras) {
-                        int index = movimentoIndex--;
-                        receberMensagem(null, algPasV2.get(movimentoIndex--));
+                        int index = movimentoIndex++;
+                        if (index < algPasV2.size())
+                            receberMensagem(null, algPasV2.get(index));
+                        else
+                            movimentoIndex = 0;
                     }
 
                     for (Perna perna : pernas) {
