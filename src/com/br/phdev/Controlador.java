@@ -510,7 +510,7 @@ public class Controlador {
             long waitTime;
             long totalTime = 0;
             long tickCount = 0;
-            long targetTime = 1000 / 60;
+            long targetTime = 1000 / 120;
 
             while (rodando) {
                 startTime = System.nanoTime();
@@ -551,7 +551,7 @@ public class Controlador {
                 }
                 totalTime += System.nanoTime() - startTime;
                 tickCount++;
-                if (tickCount == 60) {
+                if (tickCount == 120) {
                     averageTick = (int) (1000 / ((totalTime / tickCount) / 1000000));
                     tickCount = 0;
                     totalTime = 0;
