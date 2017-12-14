@@ -43,6 +43,12 @@ public class Controlador {
     
     private final int algoritmoPasso2R[] = new int[]{3, 53, -2, 0, -2, 7, -2, 8, -2, 55, 5, 2, 83, 82, 28, -2, 75, -2, 78, -2, 77, -2,
         25, -2, 32, -2, 33, -2, 57, 58, 80, 30, 27, 3, -2, 50, -2, 53, -2, 52, -1};
+
+    private final int algoritmoQuebraD1[] = new int[]{0, -2, 5, -2, 2, -2, 3, 55, 29, 78, -2, 0, -2, 5, -2, 2, -2, 25, -2, 28, -2, 27, -2, -1};
+    private final int algoritmoQuebraD2[] = new int[]{75, -2, 80, -2, 77, -2, 3, 54, 78, 30, -2, 75, -2, 80, -2, 77, -2, 50, -2, 53, -2, 52, -1};
+
+    private final int algoritmoQuebraE1[] = new int[]{50, -2, 55, -2, 52, -2, 5, 53, 79, 28, -2, 50, -2, 55, -2, 52, -2, 75, -2, 78,-2 , 77, -2, -1};
+    private final int algoritmoQuebraE2[] = new int[]{25, -2, 30, -2, 27, -2, 28, 80, 4, 53, -2, 25, -2, 30, -2, 27, -2, 0, -2, 3, -2, 2, -1};
     
     private int movimentoAtual = 0;
     private int movimentoIndex = 0;
@@ -139,12 +145,12 @@ public class Controlador {
     private void inicializarPernas() {
         pernas = new Perna[4];
         pernas[PERNA_1] = new Perna(new Base(moduloPWM, 2, 385, new Femur(moduloPWM, 5, 428, new Tarso(moduloPWM, 0, 340))));
-        pernas[PERNA_1].getBase().getFemur().getTarso().setLimites(200, 410);
+        pernas[PERNA_1].getBase().getFemur().getTarso().setLimites(180, 400);
         pernas[PERNA_1].getBase().getFemur().setLimites(520, 275);
         pernas[PERNA_1].getBase().setLimites(280, 490);
 
-        pernas[PERNA_2] = new Perna(new Base(moduloPWM, 3, 415, new Femur(moduloPWM, 7, 300, new Tarso(moduloPWM, 1, 195))));
-        pernas[PERNA_2].getBase().getFemur().getTarso().setLimites(340, 130);
+        pernas[PERNA_2] = new Perna(new Base(moduloPWM, 3, 415, new Femur(moduloPWM, 7, 300, new Tarso(moduloPWM, 1, 220))));
+        pernas[PERNA_2].getBase().getFemur().getTarso().setLimites(340, 170);
         pernas[PERNA_2].getBase().getFemur().setLimites(185, 475);
         pernas[PERNA_2].getBase().setLimites(310, 510);
 
@@ -153,8 +159,8 @@ public class Controlador {
         pernas[PERNA_3].getBase().getFemur().setLimites(220, 465);
         pernas[PERNA_3].getBase().setLimites(300, 490);
 
-        pernas[PERNA_4] = new Perna(new Base(moduloPWM, 12, 390, new Femur(moduloPWM, 13, 448, new Tarso(moduloPWM, 15, 333))));
-        pernas[PERNA_4].getBase().getFemur().getTarso().setLimites(185, 420);
+        pernas[PERNA_4] = new Perna(new Base(moduloPWM, 12, 390, new Femur(moduloPWM, 13, 448, new Tarso(moduloPWM, 15, 340))));
+        pernas[PERNA_4].getBase().getFemur().getTarso().setLimites(185, 410);
         pernas[PERNA_4].getBase().getFemur().setLimites(540, 295);
         pernas[PERNA_4].getBase().setLimites(290, 490);
     }
@@ -496,6 +502,14 @@ public class Controlador {
             case 153:
                 receberMensagem(null, algoritmoPasso2R);
                 break;
+	    case 154:
+		receberMensagem(null, algoritmoQuebraD1);
+		receberMensagem(null, algoritmoQuebraD2);
+		break;
+	    case 156:
+		receberMensagem(null, algoritmoQuebraE1);
+		receberMensagem(null, algoritmoQuebraE2);
+		break;
             case 303: // Botão B
                 switch (delayComandos) {
                     case 150:
