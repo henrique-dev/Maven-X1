@@ -1,3 +1,0 @@
-Manifest-Version: 1.0
-Class-Path: /opt/pi4j/lib/'*'
-Main-Class: com.br.phdev.Controlador
