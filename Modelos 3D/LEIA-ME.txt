@@ -1,0 +1,16 @@
+1 x Piece 1 -> Base (parte de baixo)
+1 x Piece 2 -> Base (parte de cima)
+2 x Piece 3 -> Femur I (direita)
+2 x Piece 4 -> Femur I (esquerda)
+2 x Piece 5 -> Femur II (direita)
+2 x Piece 6 -> Femur II (esquerda)
+2 x Piece 7 -> Tarso I (direita)
+2 x Piece 8 -> Tarso I (esquerda)
+2 x Piece 9 -> Tarso II (direita)
+2 x Piece 10 -> Tarso II (esquerda)
+2 x Piece 11 -> Presilha (direita)
+2 x Piece 12 -> Presilha (esquerda)
+4 x Piece 14 -> Suporte do femur
+4 x Piece 15 -> Suporte de eixo da coxa
+4 x Piece 16 -> Suporte de eixo do femur
+4 x Piece 17 -> Suporte de eixo do tarso
