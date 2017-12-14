@@ -1,0 +1,48 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          maven
+# Required-Start:    $local_fs $network
+# Required-Stop:     $local_fs $network
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start/stop Controlador MavenX1
+### END INIT INFO
+#
+# Author: Paulo Henrique
+#
+
+PATH=/sbin:/usr/sbin:/bin:/usr/bin
+DESC="Controlador Maven"
+NAME=maven
+SCRIPTNAME=/etc/init.d/$NAME
+
+# Read configuration variable file if it is present
+[ -r /etc/default/$NAME ] && . /etc/default/$NAME
+
+# Define LSB log_* functions. Depend on lsb-base (>= 3.0-6)
+#. /lib/lsb/init-functions
+# using echo instead lsb's log_*
+
+
+case "$1" in
+  start)
+    echo -n "Iniciando o controlador Maven"
+
+    sudo bash /opt/servidor/iniciar.sh
+    ;;
+  stop)
+    echo -n "Parando controlador Maven"
+
+    sudo bash /opt/servidor/parar.sh
+    ;;
+  restart|force-reload)
+    echo -n "Reiniciando controlador Maven"
+
+    sudo bash /opt/servidor/parar.sh
+    sudo bash /opt/servidor/iniciar.sh
+    ;;
+  *)
+    ;;
+esac
+
+:

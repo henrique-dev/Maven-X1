@@ -1,0 +1,9 @@
+<<<<<<< HEAD:src/manifest.mf
+Manifest-Version: 1.0
+Class-Path: lib/pi4j-core.jar lib/pi4j-device.jar lib/pi4j-gpio-extension.jar lib/pi4j-service.jar
+Main-Class: com.br.phdev.Controlador
+=======
+Manifest-Version: 1.0
+Class-Path: /opt/pi4j/lib/'*'
+Main-Class: com.br.phdev.Controlador
+>>>>>>> 2ce4865951c2084f1d8d5879be6510a765a05990:Raspberry/src/manifest.mf
