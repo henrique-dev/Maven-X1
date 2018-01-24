@@ -15,7 +15,7 @@ Passos concluídos:
 Construido a partir de um modelo 3D, seu controle é realizado através da comunicação
 entre as aplicações deste com a de um smartphone. Ambas as aplicações foram feitas em Java.
 
-Sua movimentação se dá por movimentos já pré-determinados, sendo nessario um esquema algoritmico. 
+Sua movimentação se dá por movimentos já pré-determinados, sendo necessário um esquema algorítmico. 
 
 Seu hardware é composto por:
 - 1 Raspberry pi zero
