@@ -1,7 +1,7 @@
 # Maven-X1
 ## Robô quadrupede
 
-Este projeto se econtra em atualização.
+Este projeto se encontra em atualização.
 
 Passos a serem concluidos:
 - [ ] Implementação do MPU9250
